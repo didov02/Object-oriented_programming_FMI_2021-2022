@@ -3,9 +3,11 @@
 ### Създаване на променливи (в статичната и динамичната памет)
 
 ```c++
+#include <iostream>
+
 int main()
 { 
-   int a = 10;			    // int in the stack
+   int a = 10;		   // int in the stack
    int* ptr = new int(30); // int in the dyniamic memory (we use a pointer on the stack to point to the int)
 
    std::cout << "First number: " << a << " " << " second number: " << (*ptr) << std::endl;
@@ -30,6 +32,7 @@ int main()
 Подаване по копие.
 ```c++
 #include <iostream>
+
 void f(int a)
 {
    a++;
@@ -46,10 +49,12 @@ int main()
 Подаване по референция.
 ```c++
 #include <iostream>
+
 void f(int& a)
 {
    a++; //a++ will increment the pointer
 }
+
 int main()
 {
    int a = 10;
@@ -105,8 +110,8 @@ OОП е програмна парадигма.
 ```c++
 struct Point
 {
-	int x;
-	int y;
+       int x;
+       int y;
 }
 ```
  
@@ -134,8 +139,8 @@ int distance(const Point& q,const Point& p)
 }
 
 ```
+
 Може и само по **референция**, но тогава промените ще се отразят върху подадения аргумент.
-   
 ```c++
 void readPoint(Point& D)
 {
