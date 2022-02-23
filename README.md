@@ -1,2 +1,5 @@
-# Object-oriented_programming_FMI_2021-2022
-Materials for the "Object-oriented programming" course given by me @ Faculty of Mathematics and Informatics, Sofia University
+## Материали от семинарите и практикумите по "Обектно-ориентирано програмиране"
+#### летен семестър 2021/2022, спец. Софтуерно инженерство
+
+- Тема 1: Преговор на указатели, референции и динамична памет. Увод в Обектно-ориентираното програмиране.
+- Тема 2: Структури и обединения.Представяне в паметта. 
