@@ -170,14 +170,14 @@ Point revertPoint(Point F)
 ```c++
 int main()
 {
- int a = 50;
- double value = a;
+	int a = 50;
+	double value = a;
 }
 
 int main()
 {
- int a = 50;
- double value = (double)a;
+	int a = 50;
+	double value = (double)a;
 }
 ```
 
@@ -186,28 +186,30 @@ int main()
 
 int main()
 {
- int a = 50;
- double value = *(double*)&a;
+	int a = 50;
+	double value = *(double*)&a;
+}
 ```
 
 ```c++
 struct Entity
 {
-int x,y;
-
-int* GetPosition()
-{
-  return &x;
-}
+	int x,y;
+	
+	int* GetPosition()
+	{
+		return &x;
+	}
 };
 
 int main()
 {
-Entity e = { 1, 2};
-int* position = (int*)&e;
-
-int y = *(int*)((char*)&e + 4);
-std::cout << y << std::endl;
+	Entity e = { 1, 2};
+	int* position = (int*)&e;
+	
+	int y = *(int*)((char*)&e + 4);
+	std::cout << y << std::endl;
+}
 ```
 
 ## Обединения (union)
@@ -217,44 +219,44 @@ std::cout << y << std::endl;
 ```c++
 union Example
 {
- int a;
- char b;
+	int a;
+	char b;
 }var;
 
 int main()
 {
- var.a = 65;
- std::cout << var.a << " " << var.b; // 65 A
+	var.a = 65;
+	std::cout << var.a << " " << var.b; // 65 A
 }
 ```
 
 ```c++
 union Example
 {
- int a;
- char b;
- double c;
- float d;
+	int a;
+	char b;
+	double c;
+	float d;
 };
 
 int main()
 {
- std::cout << sizeof(union Example); //8
+	std::cout << sizeof(union Example); //8
 }
 ```
 
 ```c++
 union Example
 {
- int a;
- char b;
+	int a;
+	char b;
 }var;
 
 int main()
 {
-  var.a = 90;
-  union Example *p = &var;
-  std::cout << p->a << " " << p->b; //90 Z
+	var.a = 90;
+	union Example *p = &var;
+	std::cout << p->a << " " << p->b; //90 Z
 }
 ```
 
