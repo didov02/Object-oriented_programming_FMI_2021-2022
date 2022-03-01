@@ -162,3 +162,100 @@ Point revertPoint(Point F)
 
 **Задача:** Въвежда се цяло число **N**  и после **N** тригъгълника в равнината, определени от 3 точки (6 координати).
 Отпечатайте тригълниците **сортирани по лицата им.**
+
+
+![plot](./images/Selection-Sort.png)
+
+## Type punning 
+```c++
+int main()
+{
+ int a = 50;
+ double value = a;
+}
+
+int main()
+{
+ int a = 50;
+ double value = (double)a;
+}
+```
+
+```c++
+//Pretty Bad as they are different sizes
+
+int main()
+{
+ int a = 50;
+ double value = *(double*)&a;
+```
+
+```c++
+struct Entity
+{
+int x,y;
+
+int* GetPosition()
+{
+  return &x;
+}
+};
+
+int main()
+{
+Entity e = { 1, 2};
+int* position = (int*)&e;
+
+int y = *(int*)((char*)&e + 4);
+std::cout << y << std::endl;
+```
+
+## Обединения (union)
+
+Използва едно и също място в паметта за всеки от своите членове.
+
+```c++
+union Example
+{
+ int a;
+ char b;
+}var;
+
+int main()
+{
+ var.a = 65;
+ std::cout << var.a << " " << var.b; // 65 A
+}
+```
+
+```c++
+union Example
+{
+ int a;
+ char b;
+ double c;
+ float d;
+};
+
+int main()
+{
+ std::cout << sizeof(union Example); //8
+}
+```
+
+```c++
+union Example
+{
+ int a;
+ char b;
+}var;
+
+int main()
+{
+  var.a = 90;
+  union Example *p = &var;
+  std::cout << p->a << " " << p->b; //90 Z
+}
+```
+
+![plot](./images/Union.JPG)
