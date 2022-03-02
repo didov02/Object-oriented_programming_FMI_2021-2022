@@ -16,8 +16,6 @@ void printComplexNumber(const ComplexNumber& cn) {
     std::cout << cn.realPart << "+ i*" << cn.imaginaryPart << std::endl;
 }
 
-
-
 int main()
 {
     ComplexNumber c1 = { 1, 1 };
