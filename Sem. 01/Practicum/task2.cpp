@@ -34,8 +34,6 @@ void printStudent(const Student& student) {
     std::cout << std::endl << "Grade: " << student.averageGrade << std::endl;
 }
 
-
-
 int main()
 {
     Year year = first;
