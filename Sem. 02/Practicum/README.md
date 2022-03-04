@@ -2,7 +2,7 @@
 **Задача**Да се създаде структура WeatherCast, която бива дефинирана спрямо           
 температурата(TemperatureData) или вятъра(WeatherData).            
 
-*Характеристики:*             
+**Характеристики:**                  
 TemperatureData             
 - StationID (естествено число)          
 - DayOfWeek               
