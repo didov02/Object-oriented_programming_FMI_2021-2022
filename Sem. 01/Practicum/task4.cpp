@@ -96,7 +96,6 @@ void peopleGettingScholarship(const Group& arg, double lowerBound) {
     delete[] buff;
 }
 
-
 int main()
 {
     Group group = initGroup();

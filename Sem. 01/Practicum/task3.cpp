@@ -69,8 +69,6 @@ int gettingScholarship(const Group& arg, double lowerBound) {
     return res;
 }
 
-
-
 int main()
 {
     Group group = initGroup();
