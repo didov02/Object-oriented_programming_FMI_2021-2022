@@ -12,7 +12,6 @@ int lengthOfFile(const char* fileName) {
     return ctr;
 }
 
-
 int main()
 {
     std::cout << lengthOfFile("result.txt"); // from task 1
