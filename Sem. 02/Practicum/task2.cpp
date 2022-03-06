@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
 
-bool getDiff(const char* fileName) {
+bool getDiff(const char* fileName)
+{
     std::ifstream inFile(fileName);
 
     if (!inFile.is_open()) {
@@ -18,8 +19,8 @@ bool getDiff(const char* fileName) {
 
 int main()
 {
-    int a, b, c;
-    std::cin >> a >> b >> c;
+    int num1, num2, num3;
+    std::cin >> num1 >> num2 >> num3;
     std::ofstream outFile("result.txt");
 
     if (!outFile.is_open()) {
@@ -27,7 +28,7 @@ int main()
         return -1;
     }
 
-    outFile << a + b + c << " " << a * b * c;
+    outFile << num1 + num2 + num3 << " " << num1 * num2 * num3;
     outFile.close();
     getDiff("result.txt");
 }
