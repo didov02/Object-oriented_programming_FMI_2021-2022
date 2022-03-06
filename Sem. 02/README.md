@@ -137,7 +137,7 @@ int main()
  ```c++
 	ostream file("file.txt", ios::out | ios::app).
  ```
-
+### [Допълнителна информация](https://www.cplusplus.com/reference/fstream/fstream/)
 
  ##  Задачи
  
