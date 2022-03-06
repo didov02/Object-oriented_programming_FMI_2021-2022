@@ -14,5 +14,5 @@ int lengthOfFile(const char* fileName) {
 
 int main()
 {
-    std::cout << lengthOfFile("result.txt"); // from task 1
+    std::cout << lengthOfFile("result.txt"); // from task 2
 }
