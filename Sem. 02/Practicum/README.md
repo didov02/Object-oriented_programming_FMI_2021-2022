@@ -4,6 +4,7 @@
 температурата(TemperatureData) или вятъра(WeatherData).            
 
 **Характеристики:**                  
+```
 TemperatureData             
 - StationID (естествено число)          
 - DayOfWeek               
@@ -16,7 +17,8 @@ WeatherData
 - DayOfWeek                
 - Speed (реално число)             
 - Direction(North/South/West/East etc)                   
-               
+```
+
 Да се напише програма, която проверява дали дадения WeatherCast е благоприятен,             
 като ще го считаме за благоприятен ако:            
 - Температурата е поне 15 градуса, като минималната не е под 10, а максималната над 27              
@@ -35,7 +37,7 @@ WeatherData
 
 В практиката често се налага да се направи копие на текстов файл, като определени шаблони в текста са заменени с конкретни стойности. 
 
-Да се напише програма за работа с шаблони (placeholders) в текстов файл.
+Да се напише програма за работа с шаблони (*placeholders*) в текстов файл.
 
 Програмата трябва да прочете даден файл и да направи копие, в което
 шаблоните са заменени с конкретни стойности.
@@ -48,8 +50,6 @@ message Iskam da se oplacha!!!
 sender_name FMI-student
 ```
 
-Пр.
-Изчита се:
 ```
 Dear, {title} {recipient_name}.
 
@@ -82,12 +82,12 @@ FMI-student
 - addPairToRelation()                                  
                    
 Помислете какво трябва да приемат и връщат горните функции.                 
-Напишете проста рограма, която демонстрира работата на написаната от вас програма.              
+Напишете проста програма, която демонстрира работата на написаната от вас програма.              
 Ако решите максималният брой наредени двойки да стане 35, какво бихте направили?                       
                          
 **Какво е сериализация и десериализация:**                                     
 Сериализацията е процес на преобразуване на някаква структура от данни в поток от байтове.             
-Потока може да бъде двоичен или текстов. Когато байтовете биват прочетени отново, чрез процеса на десериализацията, се създаваидентичнокопие на тази структура.              
+Потока може да бъде двоичен или текстов. Когато байтовете биват прочетени отново, чрез процеса на десериализацията, се създава идентично копие на тази структура.              
 
 # Файлове (част 2). Текстови файлове.
 **Задача 6:**<br />
@@ -102,30 +102,31 @@ FMI-student
 
 След спиране на програмата и повторно пускане, трябва да се запази възможността вече регистрирани потребители да влизат в системата с имейла и паролата си. 
 
-Примерен вход/изход:<br />
+**Примерен вход/изход:**    
+```
+Enter command:
+\>registe
+Enter name:
+\>userName
+Enter email:
+\>userEmail
+Enter password:
+\>userPass
+Registration successful
+Enter command:
+\>login
+Enter email:
+\>userEmail
+Enter password:
+\>userPass
+Login successful
 
-Enter command: <br />
-\>register<br />
-Enter name:<br />
-\>userName<br />
-Enter email:<br />
-\>userEmail<br />
-Enter password:<br />
-\>userPass<br />
-Registration successful<br />
-Enter command:<br />
-\>login<br />
-Enter email:<br />
-\>userEmail<br />
-Enter password:<br />
-\>userPass<br />
-Login successful<br />
-
-След повторно пускане:<br />
-Enter command:<br />
-\>login<br />
-Enter email:<br />
-\>userEmail<br />
-Enter password:<br />
-\>userPass<br />
-Login successful<br />
+След повторно пускане:
+Enter command:<
+\>login<
+Enter email:
+\>userEmail
+Enter password:
+\>userPass
+Login successful
+```
