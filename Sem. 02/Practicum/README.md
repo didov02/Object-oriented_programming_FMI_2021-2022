@@ -75,7 +75,7 @@ FMI-student
 Да се създаде функция writeRelationToFile(...), която записва релацията във файл с име "relation.txt"и readRelationFromFile(...), която чете релацията от файла.                 
 Следните функции ще ви бъдат полезни:                   
 
-- reatePair()             
+- CreatePair()             
 - initPair()        
 - readPairFromFile()                   
 - writePairToFile()                       
@@ -105,7 +105,7 @@ FMI-student
 **Примерен вход/изход:**    
 ```
 Enter command:
-\>registe
+\>register
 Enter name:
 \>userName
 Enter email:
