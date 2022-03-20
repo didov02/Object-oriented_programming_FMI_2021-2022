@@ -11,7 +11,8 @@ Pair createPair(int a, int b)
 {
 	return { a, b };
 }
-void initPair(Pair& pair, int a, int b) {
+void initPair(Pair& pair, int a, int b)
+{
 	pair.x = a;
 	pair.y = b;
 }
