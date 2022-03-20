@@ -4,8 +4,10 @@
 
 #pragma warning (disable: 4996)
 
+const int MAX_BUFFER_SIZE = 1024;
 const int MAX_SIZE = 128;
 const int MAX_USERS_SIZE = 100;
+const int MAX_COMMAND_SIZE = 32;
 
 struct User {
     char name[MAX_SIZE];
@@ -28,7 +30,7 @@ User readUser(const char* line) {
     int size = strlen(line);
     char buff[MAX_SIZE];
     int field = 1;
-    for (int i = 0, j = 0; i <= size; i++) {
+    for (size_t i = 0, j = 0; i <= size; i++) {
         if (line[i] == ',' || line[i] == '\n') {
             buff[j] = '\0';
             switch (field)
@@ -50,7 +52,7 @@ User readUser(const char* line) {
 
 struct System {
     User users[MAX_USERS_SIZE];
-    int size = 0;
+    size_t size = 0;
 };
 
 void addUserToSystem(System& sys, const User& user) {
@@ -60,9 +62,9 @@ void addUserToSystem(System& sys, const User& user) {
 int countLinesInFile(const char* filePath) {
     std::ifstream is(filePath);
     int ctr = 0;
-    char buff[1024];
+    char buff[MAX_BUFFER_SIZE];
     while (!is.eof()) {
-        is.getline(buff, 1024);
+        is.getline(buff, MAX_BUFFER_SIZE);
         ctr++;
     }
     return ctr - 1;
@@ -72,7 +74,7 @@ void loadSystemFromFile(System& sys, const char* filePath) {
     int size = countLinesInFile(filePath);
     std::ifstream inFile(filePath);
     char line[MAX_SIZE];
-    for (int i = 0; i<size;i++) {
+    for (size_t i = 0; i < size;i++) {
         inFile.getline(line, 1024);
         sys.users[sys.size++] = readUser(line);
     }
@@ -80,12 +82,12 @@ void loadSystemFromFile(System& sys, const char* filePath) {
 
 void saveSystemToFile(const System& sys, const char* filePath) {
     std::ofstream os(filePath);
-    for (int i = 0; i < sys.size; i++) {
+    for (size_t i = 0; i < sys.size; i++) {
         writeUserToFile(os, sys.users[i]);
     }
 }
 bool login(const System& sys, const char* email, const char* pass) { 
-    for (int i = 0; i < sys.size; i++) {
+    for (size_t i = 0; i < sys.size; i++) {
         if (strcmp(sys.users[i].email, email) == 0) {
             if (strcmp(sys.users[i].password, pass) == 0) {
                 return 1;
@@ -108,8 +110,8 @@ void start() {
     System s;
     loadSystemFromFile(s, "database.txt");
     std::cout << "Enter command:\n";
-    char command[32];
-    std::cin.getline(command, 32);
+    char command[MAX_COMMAND_SIZE];
+    std::cin.getline(command, MAX_COMMAND_SIZE);
     while (true) {
         if (strcmp(command, "login") == 0) {
             std::cout << "Enter email:\n";
@@ -150,7 +152,6 @@ void start() {
     }
     saveSystemToFile(s, "database.txt");
 }
-
 
 int main()
 {
