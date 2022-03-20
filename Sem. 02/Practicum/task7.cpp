@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
+
 #pragma warning (disable: 4996)
+
 const int MAX_SIZE = 128;
 const int MAX_USERS_SIZE = 100;
 
