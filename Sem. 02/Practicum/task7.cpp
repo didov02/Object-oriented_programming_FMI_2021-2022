@@ -89,15 +89,10 @@ void saveSystemToFile(const System& sys, const char* filePath) {
 bool login(const System& sys, const char* email, const char* pass) { 
     for (size_t i = 0; i < sys.size; i++) {
         if (strcmp(sys.users[i].email, email) == 0) {
-            if (strcmp(sys.users[i].password, pass) == 0) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
+            return (strcmp(sys.users[i].password, pass) == 0);
         } 
     }
-    return 0;
+    return false;
 }
 
 void registerUser(System& sys, const char* name, const char* email, const char* pass) {
