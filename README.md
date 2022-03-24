@@ -3,5 +3,5 @@
 
 - [Тема 1](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2001) : Преговор на указатели, референции и динамична памет. Увод в Обектно-ориентираното програмиране.Структури и обединения.Представяне в паметта. 
 - [Тема 2](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2002) : Потоци и текстови файлове. Писане и четене в текстов файл.
-- [Тема 3](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2003) : Двоични файлове.Състояние на поток.)етене и писане в двоичен файл.Подравняване.Позициониране във файл.
+- [Тема 3](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2003) : Двоични файлове.Състояние на поток.Четене и писане в двоичен файл.Подравняване.Позициониране във файл.
 - Тема 4 : TBA
