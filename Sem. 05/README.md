@@ -49,7 +49,7 @@ struct Triangle
 	Point p3;
 };
 
-int getPer(const Triangle& t)
+int getPer(Triangle& t)
 {
 	return t.p1.getDistTo(t.p2) + t.p2.getDistTo(t.p3) + t.p3.getDistTo(t.p1);
 }
