@@ -77,11 +77,8 @@ int main()
  - Има същото име като класа със символа '~' в началото.
 
  ```c++
-
 #include <iostream>
-
 using namespace std;
-
 
 struct Test 
 {
@@ -111,7 +108,6 @@ int main()
 
 	}//Object is destroyed (t)
 }
-
  ```
  ## Капсулация (encapsulation).
 Понякога искаме потребителите да **нямат достъп до всички член-данни и методи на даден клас**.
@@ -128,11 +124,8 @@ int main()
 **Пример за get-ъри и set-ъри**
 
  ```c++
-
 #include <iostream>
-
 using namespace std;
-
 
 struct Student 
 {
@@ -181,7 +174,6 @@ int main()
 
  ```
 
-
 ## Задачи
 
 **Задача 1:**
@@ -214,5 +206,3 @@ int main()
      result.calcPrimeNumbersInTheInterval() // 2 (only 5 and 7)
 }
  ```
-
-
