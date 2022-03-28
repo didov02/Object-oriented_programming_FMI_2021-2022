@@ -1,4 +1,3 @@
-
 # Разделна компилация. Абстракция. Копиращ конструктор и оператор=
 
 ## Разделна компилация.
@@ -37,8 +36,7 @@ int getPer(const Triangle& t)
  ```c++
 struct Point
 {
-	int x;
-	int y
+	int x, y;
 	double getDistTo(const Point& other)
 	{
 		return sqrt((x-other.x)*(x-other.x)+(y-other.y)*(y-other.y));
@@ -65,14 +63,11 @@ int getPer(const Triangle& t)
 **Забележка:** Копиращият конструктор създава нов обект, а оператор= модифицира вече съществуващ такъв!
 
  ```c++
-
 #include <iostream>
-
 using namespace std;
 
 struct Test 
 {
-
 	Test()
 	{
 	cout << "Default constructor" <<endl;
@@ -99,11 +94,11 @@ void f(Test object)
 	//do Stuff
 }
 
-
 void g(Test& object)
 {
 	//do Stuff
 }
+
 int main()
 {
     Test t; //Default constructor;
@@ -123,7 +118,6 @@ int main()
     delete ptr; // Destructor	
 	 
 } //Destructor Destructor Destructor Destructor
-
  ```
  
 ## Задачи
