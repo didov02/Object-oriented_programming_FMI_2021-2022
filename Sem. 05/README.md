@@ -37,7 +37,7 @@ int getPer(const Triangle& t)
 struct Point
 {
 	int x, y;
-	double getDistTo(const Point& other)
+	double getDistTo(const Point& other) const
 	{
 		return sqrt((x-other.x)*(x-other.x)+(y-other.y)*(y-other.y));
 	}
@@ -49,7 +49,7 @@ struct Triangle
 	Point p3;
 };
 
-int getPer(Triangle& t)
+int getPer(const Triangle& t)
 {
 	return t.p1.getDistTo(t.p2) + t.p2.getDistTo(t.p3) + t.p3.getDistTo(t.p1);
 }
