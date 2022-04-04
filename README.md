@@ -7,3 +7,8 @@
 - [Тема 4](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2004) : Член-функции. Жизнен цикъл на обект. Конструктори и деструктор. **Капсулация**. Модификатори за достъп. Член-функции **get** и **set**.
 - [Тема 5](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2005) : Разделна компилация. **Абстракция**. Копиращ конструктор и оператор=
 - [Тема 6](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2006) : Динамична памет в класовете. Голямата четворка (**Rule of four**).
+
+## Допълнителни материали
+- [Домашни](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Additional/Homeworks)
+- [Контролни](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Additional/Tests)
+- [Консултации](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Additional/Consultations)
