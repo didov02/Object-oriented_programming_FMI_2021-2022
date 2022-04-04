@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.suo
+*.db
+*.json
+*.sqlite
+*.db-wal
+*.db-shm
+*.opendb
