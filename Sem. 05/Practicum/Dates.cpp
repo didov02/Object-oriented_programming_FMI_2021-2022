@@ -1,148 +1,154 @@
-#include "Dates.h"
 #include <iostream>
+#include "Dates.h"
 
-int Date::getDaysInMonth(int Month, int Year) const 
+const short DEFAULT = 1;
+const short DEFAULT_YEAR = 2000;
+
+//Constructors
+Date::Date()
 {
-        (Month < 1) ? Month = Months::December : Month;
-    switch (Month) 
-    {
-        case Months::January:
-            return 31;
-        case Months::February:
-            if (isLeapYear())
-            {
-                return 29;
-            }
-            return 28;
-        case Months::March:
-            return 31;
-        case Months::April:
-            return 30;
-        case Months::May: 
-            return 31;
-        case Months::Jun: 
-            return 30;
-        case Months::July: 
-            return 31;
-        case Months::August: 
-            return 31;
-        case Months::September: 
-            return 30;
-        case Months::October: 
-            return 31;
-        case Months::November: 
-            return 30;
-        case Months::December: 
-            return 31;
-        default: 
-            return -1;
-    }
+	days = month = DEFAULT;
+	year = DEFAULT_YEAR;
 }
-Date::Date() : Day(1), Month(1), Year(2000) {};
-Date::Date(int Day, int Month, int Year) 
+
+Date::Date(const int _days, const int _month, const int _year)
 {
-    this->Day = Day;
-    this->Month = Month;
-    this->Year = Year;
+	days = _days;
+	month = _month;
+	year = _year;
 }
-bool Date::isLeapYear() const 
+
+//Methods to Add/Remove days
+void Date::addDays(const int _days)
 {
-    if ((Year % 4 == 0))
-    {
-        if ((Year % 100 == 0) && (Year % 400 != 0))
-        {
-            return false;
-        }
-        return true;
-    }
-    return false;
+	int dd = days + _days;
+	int DaysInMonth = NumDaysInMonth(month,year);
+	while (dd > DaysInMonth)
+	{
+		dd -= DaysInMonth;
+		month++;
+		if (month > 12)
+		{
+			year++;
+			month = 1;
+		}
+	DaysInMonth = NumDaysInMonth(month, year);
+	}
+	days = dd;
 }
-void Date::addDays(int DaysCount) 
+
+void Date::substractDays(const int _days)
 {
-    int DaysInMonth = getDaysInMonth(Month, Year);
-    while ((DaysCount - (DaysInMonth - Day)) > 0) 
-    {
-        DaysCount -= (DaysInMonth - Day);
-        (Month > 11) ? Month = Months::January, Year++ : Month++;
-        DaysInMonth = getDaysInMonth(Month, Year); 
-        (Day != 0) ? Day = 0 : Day;
-    }
-        Day += DaysCount;
+	if (_days < days)
+		days -= _days;
+	else
+	{
+		int dd = abs(days - _days);
+		month--;
+		if (month < 1)
+		{
+			year--;
+			month = 12;
+		}
+
+		int DaysInMonth = NumDaysInMonth(month, year);
+		while (dd >= DaysInMonth)
+		{
+			dd -= DaysInMonth;
+			month--;
+			if (month < 1)
+			{
+				year--;
+				month = 12;
+			}
+			DaysInMonth = NumDaysInMonth(month, year);
+		}
+		days = DaysInMonth - dd;
+	}
 }
-void Date::printDate() const 
+
+//Methods calculating days - Date to Date
+long long Date::daysBetweenDates(const Date& _other) const
 {
-    (Day < 10) ? std::cout << '0' << Day << '.' : std::cout << Day << '.';
-    (Month < 10) ? std::cout << '0' << Month << '.' : std::cout << Month << '.';
-    std::cout << Year << std::endl;
+	return abs(sumOfDays(*this) - sumOfDays(_other));
 }
-bool Date::isEarlierThan(const Date& date) const 
+long long Date::daysToXmas() const
 {
-    if(Year < date.getYear() || (Year == date.getYear() && Month < date.getMonth()) || 
-    (Year == date.getYear() && Month == date.getMonth() && Day < date.getDays())) 
-    {
-        return true;
-    }
-    return false;
+	int temp_year = (month == 12 && days > 25) ? year + 1 : year;
+	const Date Xmas(25, 12,year);
+	return(daysBetweenDates(Xmas));
 }
-void Date::removeDays(int DaysCount) 
+long long Date::daysToNewYear() const
 {
-    while ((DaysCount - Day) > 0) 
-    {
-        DaysCount -= Day;
-        (Month < 2) ? Month = Months::December, Year-- : Month--;
-        Day = getDaysInMonth(Month, Year);   
-    }
-        ((DaysCount - Day) == 0) ? Day = getDaysInMonth(Month - 1, Year), (Month--) : Day -= DaysCount;
-        (Month < 1) ? Month = Months::December, (Year--) : Month;
-        (Year < 1) ? Day = 0, Month = 0, Year = 0 : Year;
+	const Date NewYear(1, 1, year + 1);
+	return(daysBetweenDates(NewYear));
 }
-long long Date::daysBetweenDates(const Date& other)  
+
+//Flags
+bool Date::isLeapYear() const
 {
-    int DaysInMonth;
-    int DaysCount = 0;
-        int otherDays = other.getDays();
-        int otherMonths = other.getMonth();
-        int otherYear = other.getYear();
-    if((Year > otherYear) || (Year == otherYear && otherMonths < Month) || (Year == otherYear && otherMonths == Month && otherDays < Day)) 
-    {
-        return -1;
-    }
-        int thisDays = Day;
-        int thisMonths = Month;
-        int thisYear = Year;
-    while ((Year != otherYear) || (Month != otherMonths) || (Day != otherDays))
-    {
-        DaysInMonth = getDaysInMonth(Month, Year);
-        if ((otherMonths == Month) && (otherYear == Year))
-        {
-            if (Day == 0) 
-            {
-                Day = thisDays;
-                Month = thisMonths;
-                Year = thisYear;
-                return (DaysCount + otherDays);   
-            }
-            return (DaysCount + (otherDays - Day));
-        }
-        (otherMonths > Month || otherYear > Year) ? DaysCount += (DaysInMonth - Day), Day = 0, Month++ : DaysCount;
-        (Month > 12) ? Month = Months::January, Year++ : Month;
-    }
+	return isLeap(year);
 }
-long long Date::daysToXmas() 
+
+bool Date::isLaterThan(const Date& _other) const
 {
-    if (Month == December && Day > 25)
-    {
-        Date temp(25, Months::December, Year + 1);
-        return daysBetweenDates(temp);
-    }
-    else 
-    {
-        Date temp(25, Months::December, Year);
-        return daysBetweenDates(temp);
-    }
+	if (sumOfDays(*this) - sumOfDays(_other) < 0)
+		return true;
+
+	return false;
 }
-long long Date::daysToNewYear()  
+
+//Accessors
+int Date::getDays() const
 {
-    Date temp(1, Months::January, Year + 1);
-    return daysBetweenDates(temp);  
+	return days;
+}
+int Date::getMonth() const
+{
+	return month;
+}
+int Date::getYear() const
+{
+	return year;
+}
+
+void Date::Display() const
+{
+	if (days < 10)
+		std::cout << "Current Date is: 0" << days;
+	else
+		std::cout << "Current Date is: " << days;
+
+	if (month < 10)
+		std::cout << "/0" << month << "/" << year;
+	else
+		std::cout << month << "/" << year;
+}
+
+//Private functions
+long long Date::sumOfDays(const Date& _other) const
+{
+	long long sum = 0;
+	sum += _other.days;
+	for (size_t i = 0; i < _other.month - 1; i++)
+		sum += NumDaysInMonth(_other.month, _other.year);
+	sum += _other.year * 365;
+	
+	return sum;
+}
+int Date::isLeap(int year) const
+{
+	return (year % 100 == 0) ? ((year % 400) == 0) : (year % 4 == 0);
+}
+int Date::NumDaysInMonth(int month, int year) const
+{
+	if (month <= 7)
+	{
+		if(month != 2)
+				return 30 + (month % 2);
+			else
+				return (isLeap(year)) ? 29 : 28;
+	}
+	else
+		return 30 + ((month + 1) % 2);
 }
