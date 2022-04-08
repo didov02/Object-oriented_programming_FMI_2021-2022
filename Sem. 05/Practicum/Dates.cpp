@@ -1,23 +1,19 @@
 #include "Dates.h"
 #include <iostream>
 
-#pragma region Dates::methods 
 int Date::getDaysInMonth(int Month, int Year) const 
 {
-    (Month < 1) ? Month = 12 : Month;
+        (Month < 1) ? Month = Months::December : Month;
     switch (Month) 
     {
         case Months::January:
             return 31;
         case Months::February:
-            if (isLeapYear(Year))
+            if (isLeapYear())
             {
                 return 29;
             }
-            else 
-            {
-                return 28;
-            }
+            return 28;
         case Months::March:
             return 31;
         case Months::April:
@@ -38,53 +34,40 @@ int Date::getDaysInMonth(int Month, int Year) const
             return 30;
         case Months::December: 
             return 31;
+        default: 
+            return -1;
     }
 }
 Date::Date() : Day(1), Month(1), Year(2000) {};
-Date::Date(int Day, Months Month, int Year) 
+Date::Date(int Day, int Month, int Year) 
 {
     this->Day = Day;
     this->Month = Month;
     this->Year = Year;
 }
-bool Date::isLeapYear(int Year) const 
+bool Date::isLeapYear() const 
 {
-    (Year == 0) ? Year = this->Year : Year;
-    if (Year % 4 == 0)
+    if ((Year % 4 == 0))
     {
-        if (Year % 400 == 0)
-        {
-            return true;
-        }
-        else if (Year % 100 == 0)
+        if ((Year % 100 == 0) && (Year % 400 != 0))
         {
             return false;
         }
         return true;
     }
-    else
-    {
-        return false;
-    }
+    return false;
 }
 void Date::addDays(int DaysCount) 
 {
-    int DaysInMonth;
-    while (true) 
-    { 
-        DaysInMonth = getDaysInMonth(Month, Year);  
-        if ((DaysCount - (DaysInMonth - Day)) <= 0)
-        {
-            Day += DaysCount;
-            break;
-        }
-        else 
-        {
-            DaysCount -= (getDaysInMonth(Month, Year) - Day);
-            (Month > 11) ? Month = Months::January, Year++ : Month++;
-            (Day != 0) ? Day = 0 : Day;
-        }
+    int DaysInMonth = getDaysInMonth(Month, Year);
+    while ((DaysCount - (DaysInMonth - Day)) > 0) 
+    {
+        DaysCount -= (DaysInMonth - Day);
+        (Month > 11) ? Month = Months::January, Year++ : Month++;
+        DaysInMonth = getDaysInMonth(Month, Year); 
+        (Day != 0) ? Day = 0 : Day;
     }
+        Day += DaysCount;
 }
 void Date::printDate() const 
 {
@@ -94,7 +77,8 @@ void Date::printDate() const
 }
 bool Date::isEarlierThan(const Date& date) const 
 {
-    if(Year < date.getYear() || Month < date.getMonth() || Day < date.getDays()) 
+    if(Year < date.getYear() || (Year == date.getYear() && Month < date.getMonth()) || 
+    (Year == date.getYear() && Month == date.getMonth() && Day < date.getDays())) 
     {
         return true;
     }
@@ -102,66 +86,63 @@ bool Date::isEarlierThan(const Date& date) const
 }
 void Date::removeDays(int DaysCount) 
 {
-    while (true) 
-    {   
-        int DaysInMonth = getDaysInMonth(Month - 1, Year);
-        if ((DaysCount - Day) <= 0)
-        {
-            ((DaysCount - Day) == 0) ? Day = DaysInMonth, (Month--) : Day -= DaysCount;
-            (Month < 1) ? Month = Months::December, (Year--) : Month;
-            (Year < 1) ? Day = 0, Month = 0, Year = 0 : Year;
-            break;
-        }
-        else 
-        {
-            DaysCount -= Day;
-            (Month < 2) ? Month = Months::December, Year-- : Month--;
-            (Year < 1) ? Day = 0, Month = 0, Year = 0 : Year;
-            Day = DaysInMonth;
-        }
+    while ((DaysCount - Day) > 0) 
+    {
+        DaysCount -= Day;
+        (Month < 2) ? Month = Months::December, Year-- : Month--;
+        Day = getDaysInMonth(Month, Year);   
     }
+        ((DaysCount - Day) == 0) ? Day = getDaysInMonth(Month - 1, Year), (Month--) : Day -= DaysCount;
+        (Month < 1) ? Month = Months::December, (Year--) : Month;
+        (Year < 1) ? Day = 0, Month = 0, Year = 0 : Year;
 }
-int Date::daysUntilCurrentDate(const Date& other)  
+long long Date::daysBetweenDates(const Date& other)  
 {
     int DaysInMonth;
     int DaysCount = 0;
         int otherDays = other.getDays();
         int otherMonths = other.getMonth();
         int otherYear = other.getYear();
-    if(Year > otherYear || (Year == otherYear && otherMonths < Month) || (Year == otherYear && otherMonths == Month && otherDays < Day)) 
+    if((Year > otherYear) || (Year == otherYear && otherMonths < Month) || (Year == otherYear && otherMonths == Month && otherDays < Day)) 
     {
         return -1;
     }
         int thisDays = Day;
         int thisMonths = Month;
         int thisYear = Year;
-    while ((thisYear != otherYear) || (thisMonths != otherMonths) || (thisDays != otherDays))
+    while ((Year != otherYear) || (Month != otherMonths) || (Day != otherDays))
     {
-        DaysInMonth = getDaysInMonth(thisMonths, thisYear);
-        if ((otherMonths == thisMonths) && (otherYear == thisYear))
+        DaysInMonth = getDaysInMonth(Month, Year);
+        if ((otherMonths == Month) && (otherYear == Year))
         {
-            return (DaysCount + (otherDays - thisDays));
+            if (Day == 0) 
+            {
+                Day = thisDays;
+                Month = thisMonths;
+                Year = thisYear;
+                return (DaysCount + otherDays);   
+            }
+            return (DaysCount + (otherDays - Day));
         }
-        (otherMonths > thisMonths || otherYear > thisYear) ? DaysCount += (DaysInMonth - thisDays), thisDays = 0, thisMonths++ : DaysCount;
-        (thisMonths > 12) ? thisMonths = Months::January, thisYear++ : thisMonths;
+        (otherMonths > Month || otherYear > Year) ? DaysCount += (DaysInMonth - Day), Day = 0, Month++ : DaysCount;
+        (Month > 12) ? Month = Months::January, Year++ : Month;
     }
 }
-int Date::daysToXmas() 
+long long Date::daysToXmas() 
 {
     if (Month == December && Day > 25)
     {
         Date temp(25, Months::December, Year + 1);
-        return daysUntilCurrentDate(temp);
+        return daysBetweenDates(temp);
     }
     else 
     {
         Date temp(25, Months::December, Year);
-        return daysUntilCurrentDate(temp);
+        return daysBetweenDates(temp);
     }
 }
-int Date::daysToEndOfTheYear() 
+long long Date::daysToNewYear()  
 {
     Date temp(1, Months::January, Year + 1);
-    return daysUntilCurrentDate(temp);  
+    return daysBetweenDates(temp);  
 }
-#pragma endregion
