@@ -19,18 +19,18 @@ class Date
 {
     public: 
         Date();
-        Date(int Day, Months Month, int Year); 
+        Date(int Day, int Month, int Year); 
         void addDays(int DaysCount); 
         int getDays() const { return Day; };
         int getMonth() const { return Month; };
         int getYear() const { return Year; };
         void removeDays(int DaysCount); 
-        int daysToXmas();
-        bool isLeapYear(int Year = 0) const;
+        long long daysToXmas();
+        bool isLeapYear() const;
         bool isEarlierThan(const Date& date) const;
-        int daysToEndOfTheYear();
+        long long daysToNewYear();
         void printDate() const;
-        int daysUntilCurrentDate(const Date& date);
+        long long daysBetweenDates(const Date& date);
     private: 
         int Day;
         int Month;
