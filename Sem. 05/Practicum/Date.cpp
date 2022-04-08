@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Dates.h"
+#include "Date.h"
 
 const short DEFAULT = 1;
 const short DEFAULT_YEAR = 2000;
