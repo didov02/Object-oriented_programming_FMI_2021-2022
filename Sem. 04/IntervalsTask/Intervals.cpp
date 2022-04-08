@@ -1,141 +1,134 @@
 #include <iostream>
+#include <algorithm>
 #include "Interval.h"
-using namespace std;
 
-IntervalComponents::IntervalComponents() : a(0), b(0) {}
-
-IntervalComponents::IntervalComponents(int a, int b)
+bool isPrime(int n)
 {
-	if (a <= b) {
-		this->a = a;
-		this->b = b;
+	double temp = sqrt(n);
+	for (size_t i = 2; i <= temp; i++)
+	{
+		if (n % i == 0)
+			return false;
 	}
-	else {
-		this->a = 0;
-		this->b = 0;
+	return true;
+}
+
+bool isPalindorme(int n)
+{
+	int reversed = 0;
+
+	while (n != 0)
+	{
+		int lastDigit = n % 10;
+		(reversed *= 10) += lastDigit;
+		n /= 10;
 	}
+	return n == reversed;
 }
 
-int IntervalComponents::getLength() const
+bool containsOnlyDistinctNumbers(int n)
 {
-	return b - a;
+	bool digits[10];
+	for (size_t i = 0; i < 10; i++)
+		digits[i] = false;
+
+	while (n != 0)
+	{
+		int lastDigit = n % 10;
+		if (digits[lastDigit])
+			return false;
+		digits[n % 10] = true;
+		n /= 10;
+	}
+	return true;
 }
 
-bool IntervalComponents::isInInterval(const int number) const
+size_t Interval::countNumbersInIntervalCondition(bool(*pred)(int)) const
 {
-	if ((number > this->a || number < this->b) || number == this->a || number == this->b)
-		return true;
-	return false;
+	size_t count = 0;
+	for (int i = a; i <= b; i++)
+	{
+		if (pred(i))
+			count++;
+	}
+	return count;
 }
 
-unsigned int IntervalComponents::calcPrimeNumbersInTheInterval() const
+Interval::Interval() : Interval(0, 0) {}
+
+Interval::Interval(int a, int b)
 {
-	int counter = 0;
-    bool isPrime = 0;
-    for (int i = a; i <= b; i++) {
+	if (a > b)
+		a = b = 0;
 
-        if (i == 1 || i == 0)
-            continue;
-
-        isPrime = 1;
-
-        for (int j = 2; j <= i / 2; ++j) {
-            if (i % j == 0) {
-                isPrime = 0;
-                break;
-            }
-        }
-
-        if (isPrime)
-            counter++;
-    }
-	return counter;
+	this->a = a;
+	this->b = b;
 }
 
-int IntervalComponents::numberOfPalindroms() const
-{ 
-    int counter = 0;
-
-    for (int j = a; j <= b; j++) {
-        int rev = 0;
-        for (int i = j; i > 0; i /= 10) {
-            rev = rev * 10 + i % 10;
-        }
-        if (j == rev) {
-            counter++; 
-        }
-    }
-    return counter;
-}
-
-int IntervalComponents::noRepeatingDigits() const
+int Interval::getA() const
 {
-    int x = a;
-    int y = b;
-    int counter = 0;
-    for (int i = x; i <= y; i++) {
-        int res = 0;
-
-        int counterr[10] = {0};
-        int number = i; 
-
-        while (number > 0) {
-
-            int lastDigit = number % 10;
-
-            counterr[lastDigit]++;
-
-            number = number / 10;
-        }
-
-        for (int j = 0; j < 10; j++) {
-            if (counterr[j] > 1) {
-                res++;
-            }
-        }
-
-        if (res == 0) {
-            counter++;
-        }
-    }
-    int length = getLength()+1; 
-    return length-counter;
+	return a;
 }
 
-bool IntervalComponents::isPowerOfTwo()
+int Interval::getB() const
 {
-    if (a == 0)
-        return false;
-    while (a != 1)
-    {
-        if (a % 2 != 0)
-            return false;
-        a = a / 2;
-    }
-    if (b == 0)
-        return false;
-    while (b != 1)
-    {
-        if (b % 2 != 0)
-            return false;
-        b = b / 2;
-    }
-    return true;
+	return b;
 }
-
-IntervalComponents IntervalComponents::section(IntervalComponents& inter)
+void Interval::setA(int a)
 {
-    if (this->a > inter.a)
-        inter.a = this->a;
-    if (this->b < inter.b)
-        inter.b = this->b;
-    return inter;
+	if (a > b)
+		return;
+	this->a = a;
 }
 
-bool IntervalComponents::uInterval(const IntervalComponents& intr) const
+void Interval::setB(int b)
 {
-    if (intr.a >= a && intr.b <= b)
-        return true;
-    return false;
+	if (b < a)
+		return;
+	this->b = b;
 }
 
+size_t Interval::getLength() const
+{
+	return b - a + 1;
+}
+
+bool Interval::isMemberOfInterval(int x) const
+{
+	return (a <= x && x <= b);
+}
+
+size_t Interval::calcPrimeNumbersInTheInterval() const
+{
+	return countNumbersInIntervalCondition(isPrime);
+}
+
+size_t Interval::calcPalindromicNumbersInTheInterval() const
+{
+	return countNumbersInIntervalCondition(isPalindorme);
+}
+
+size_t Interval::calcDiffrentDigitNumbersInTheInverval() const
+{
+	return countNumbersInIntervalCondition(containsOnlyDistinctNumbers);
+}
+
+bool Interval::areStartAndEndPowersOfTwo() const
+{
+	return (a == 0 || (a & a - 1) == 0) && (b == 0 || (b & b - 1) == 0);
+}
+
+Interval Interval::intersect(const Interval& other) const
+{
+	if (b < other.getA() || a > other.getB())
+		return Interval(0, 0);
+
+	int newA = std::max(a, other.getA());
+	int newB = std::min(b, other.getB());
+
+	return Interval(newA, newB);
+}
+bool Interval::isSuperInterval(const Interval& other) const
+{
+	return a <= other.getA() && b >= other.getB();
+}
