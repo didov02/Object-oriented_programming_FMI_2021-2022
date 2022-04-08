@@ -1,19 +1,31 @@
-#pragma once
-
-class IntervalComponents {
-public:
+class Interval
+{
 	int a;
 	int b;
+public:
+	Interval();
+	Interval(int, int);
+	
+	//Accessors
+	int getA() const;
+	int getB() const;
+        
+	//Mutators
+	void setA(int);
+	void setB(int);
 
-	IntervalComponents();
-	IntervalComponents(int, int);
+	size_t getLength() const;
+	bool isMemberOfInterval(int) const;
 
-	int getLength() const;
-	bool isInInterval(const int) const;
-	unsigned int calcPrimeNumbersInTheInterval()const;
-	int numberOfPalindroms() const;
-	int noRepeatingDigits()const;
-	bool isPowerOfTwo();
-	IntervalComponents section(IntervalComponents&);
-	bool uInterval(const IntervalComponents&) const;
+	size_t calcPrimeNumbersInTheInterval() const;
+	size_t calcPalindromicNumbersInTheInterval() const;
+	size_t calcDiffrentDigitNumbersInTheInverval() const;
+	
+	bool areStartAndEndPowersOfTwo() const;
+	
+	Interval intersect(const Interval&) const;
+	
+	bool isSuperInterval(const Interval&) const;
+private:
+	size_t countNumbersInIntervalCondition(bool(*pred)(int)) const;
 };
