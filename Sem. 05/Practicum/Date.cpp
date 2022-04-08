@@ -11,17 +11,17 @@ Date::Date()
 	year = DEFAULT_YEAR;
 }
 
-Date::Date(const int _days, const int _month, const int _year)
+Date::Date(const int days, const int month, const int year)
 {
-	days = _days;
-	month = _month;
-	year = _year;
+	this->days = days;
+	this->month = month;
+	this->year = year;
 }
 
 //Methods to Add/Remove days
-void Date::addDays(const int _days)
+void Date::addDays(const int days)
 {
-	int dd = days + _days;
+	int dd = this->days + days;
 	int DaysInMonth = NumDaysInMonth(month,year);
 	while (dd > DaysInMonth)
 	{
@@ -34,16 +34,16 @@ void Date::addDays(const int _days)
 		}
 	DaysInMonth = NumDaysInMonth(month, year);
 	}
-	days = dd;
+	this->days = dd;
 }
 
-void Date::substractDays(const int _days)
+void Date::substractDays(const int days)
 {
-	if (_days < days)
-		days -= _days;
+	if (days < this->days)
+		this->days -= days;
 	else
 	{
-		int dd = abs(days - _days);
+		int dd = abs(this->days - days);
 		month--;
 		if (month < 1)
 		{
@@ -63,14 +63,14 @@ void Date::substractDays(const int _days)
 			}
 			DaysInMonth = NumDaysInMonth(month, year);
 		}
-		days = DaysInMonth - dd;
+		this->days = DaysInMonth - dd;
 	}
 }
 
 //Methods calculating days - Date to Date
-long long Date::daysBetweenDates(const Date& _other) const
+long long Date::daysBetweenDates(const Date& other) const
 {
-	return abs(sumOfDays(*this) - sumOfDays(_other));
+	return abs(sumOfDays(*this) - sumOfDays(other));
 }
 long long Date::daysToXmas() const
 {
@@ -90,9 +90,9 @@ bool Date::isLeapYear() const
 	return isLeap(year);
 }
 
-bool Date::isLaterThan(const Date& _other) const
+bool Date::isLaterThan(const Date& other) const
 {
-	if (sumOfDays(*this) - sumOfDays(_other) < 0)
+	if (sumOfDays(*this) - sumOfDays(other) < 0)
 		return true;
 
 	return false;
@@ -126,13 +126,13 @@ void Date::Display() const
 }
 
 //Private functions
-long long Date::sumOfDays(const Date& _other) const
+long long Date::sumOfDays(const Date& other) const
 {
 	long long sum = 0;
-	sum += _other.days;
-	for (size_t i = 0; i < _other.month - 1; i++)
-		sum += NumDaysInMonth(_other.month, _other.year);
-	sum += _other.year * 365;
+	sum += other.days;
+	for (size_t i = 0; i < other.month - 1; i++)
+		sum += NumDaysInMonth(other.month, other.year);
+	sum += other.year * 365;
 	
 	return sum;
 }
