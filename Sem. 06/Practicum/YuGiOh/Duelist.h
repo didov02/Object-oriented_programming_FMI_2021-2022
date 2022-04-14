@@ -4,8 +4,6 @@
 class Duelist {
 	char* name;
 	Deck deck;
-	void copy(const Duelist& duelist);
-	void free();
 public:
 	Duelist();
 	Duelist(const char*, const Deck&);
@@ -21,4 +19,7 @@ public:
 
 	bool changeMonsterCardAtIndex(const MonsterCard& monsterCard, const int index);
 	bool changeMagicCardAtIndex(const MagicCard& magicCard, const int index);
+private:
+	void copy(const Duelist& duelist);
+	void free();
 };
