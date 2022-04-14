@@ -16,7 +16,6 @@ public:
 	
 	Complex getConjugated() const;
 
-
 	ComplexNum& operator+=(const ComplexNum&);
 	ComplexNum& operator-=(const ComplexNum&);
 	ComplexNum& operator*=(const ComplexNum&);
