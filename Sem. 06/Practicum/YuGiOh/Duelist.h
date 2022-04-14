@@ -19,6 +19,8 @@ public:
 
 	bool changeMonsterCardAtIndex(const MonsterCard& monsterCard, const int index);
 	bool changeMagicCardAtIndex(const MagicCard& magicCard, const int index);
+	
+	void display() const;
 private:
 	void copy(const Duelist& duelist);
 	void free();
