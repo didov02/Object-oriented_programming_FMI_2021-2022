@@ -31,7 +31,7 @@ bool Deck::addMagicCardToDeck(const MagicCard& magicCard) {
 }
 
 bool Deck::addMonsterCardToDeck(const MonsterCard& monsterCard) {
-	for (size_t i = 0; i < MAX; i++)
+	for (size_t i = 0; i < MAX_DECK_SIZE / 2; i++)
 	{
 		if (!MonsterCardUsedPositions[i])
 		{
@@ -45,17 +45,30 @@ bool Deck::addMonsterCardToDeck(const MonsterCard& monsterCard) {
 }
 
 bool Deck::addMagicCardToDeckAtIndex(const MagicCard& magicCard, const int index) {
-	if(index < 0 || index >= magicCardsSize)
+	if (index >=  MAX_DECK_SIZE / 2)
 		return false;
+
+	if (!MagicCardUsedPositions[index])
+		magicCardsSize++;
 
 	magicCards[index] = magicCard;
-	return true;
+	MagicCardUsedPositions[index] = true;
 }
 
-bool Deck::addMonsterCardToDeckAtIndex(const MonsterCard& monsterdrCard, const int index) {
-	if(index < 0 || index >= monsterCardsSize)
+bool Deck::addMonsterCardToDeckAtIndex(const MonsterCard& monsterCard, const int index) {
+	if (index >= MAX_DECK_SIZE / 2)
 		return false;
 
-	monsterCards[index] = monsterdrCard;
-	return true;
+	if (!MonsterCardUsedPositions[index])
+		monsterCardsSize++;
+
+	monsterCards[index] = monsterCard;
+	MonsterCardUsedPositions[index] = true;
+}
+
+void Deck::info() const
+{
+	std::cout << "Monster Cards: " << monsterCardsSize << std::endl;
+	std::cout << "Magic Cards: " << magicCardsSize << std::endl;
+	std::cout << "Deck size: " << monsterCardsSize + magicCardsSize << std::endl;
 }
