@@ -10,6 +10,9 @@ public:
 	Duelist(const Duelist&);
 	Duelist& operator=(const Duelist&);
 	~Duelist();
+	
+	void setName(const char*);
+	void setDeck(const Deck&);
 
 	const char* getName() const;
 	Deck getDeck() const;
