@@ -1,7 +1,12 @@
 #include<cstring>
 #include "Deck.h"
 
-Deck::Deck() : magicCardsSize(0), monsterCardsSize(0) {}
+Deck::Deck() : magicCardsSize(0), monsterCardsSize(0) {
+	for (size_t i = 0; i <  MAX_DECK_SIZE / 2; i++)
+	{
+		MonsterCardUsedPositions[i] = MagicCardUsedPositions[i] = false;
+	}
+}
 
 size_t Deck::getMagicCardsSize() const{
 	return magicCardsSize;
