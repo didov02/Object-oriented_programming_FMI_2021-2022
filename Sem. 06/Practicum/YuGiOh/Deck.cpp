@@ -17,19 +17,31 @@ size_t Deck::getMonsterCardsSize() const{
 }
 
 bool Deck::addMagicCardToDeck(const MagicCard& magicCard) {
-	if(magicCardsSize >= MAX_DECK_SIZE / 2)
-		return false;
-
-	magicCards[magicCardsSize++] = magicCard;
-	return true;
+	for (size_t i = 0; i < MAX_DECK_SIZE / 2; i++)
+	{
+		if (!MagicCardUsedPositions[i])
+		{
+			magicCards[i] = magicCard;
+			MagicCardUsedPositions[i] = true;
+			magicCardsSize++;
+			return true;
+		}
+	}
+	return false;
 }
 
-bool Deck::addMonsterCardToDeck(const MonsterCard& monsterdrCard) {
-	if(monsterCardsSize >= MAX_DECK_SIZE / 2)
-		return false;
-
-	monsterCards[monsterCardsSize++] = monsterdrCard;
-	return true;
+bool Deck::addMonsterCardToDeck(const MonsterCard& monsterCard) {
+	for (size_t i = 0; i < MAX; i++)
+	{
+		if (!MonsterCardUsedPositions[i])
+		{
+			monsterCards[i] = monsterCard;
+			MonsterCardUsedPositions[i] = true;
+			monsterCardsSize++;
+			return true;
+		}
+	}
+	return false;
 }
 
 bool Deck::addMagicCardToDeckAtIndex(const MagicCard& magicCard, const int index) {
