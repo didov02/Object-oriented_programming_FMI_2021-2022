@@ -1,6 +1,6 @@
 #pragma once
 
-const int MAX_SIZE = 26;
+const short MAX_SIZE = 26;
 
 class MonsterCard {
 private:

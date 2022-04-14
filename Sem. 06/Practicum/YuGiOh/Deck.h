@@ -10,8 +10,8 @@ private:
 	MagicCard magicCards[MAX_DECK_SIZE / 2];
 	MonsterCard monsterCards[MAX_DECK_SIZE / 2];
 	
-	bool MonsterCardUsedPositions[MAX_DECK_SIZE / 2];
-	bool MagicCardUsedPositions[MAX_DECK_SIZE / 2];
+	bool monsterCardUsedPositions[MAX_DECK_SIZE / 2];
+	bool magicCardUsedPositions[MAX_DECK_SIZE / 2];
 
 	size_t magicCardsSize;
 	size_t monsterCardsSize;

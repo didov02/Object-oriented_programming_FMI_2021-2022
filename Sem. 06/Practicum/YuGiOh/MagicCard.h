@@ -1,7 +1,7 @@
 #pragma once
 
-const int NAME_MAX_SIZE = 26;
-const int EFFECT_MAX_SIZE = 101;
+const short NAME_MAX_SIZE = 26;
+const short EFFECT_MAX_SIZE = 101;
 
 enum class MagicCardType {
 	trap,

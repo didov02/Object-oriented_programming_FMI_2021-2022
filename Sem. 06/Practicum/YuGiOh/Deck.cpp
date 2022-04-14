@@ -4,7 +4,7 @@
 Deck::Deck() : magicCardsSize(0), monsterCardsSize(0) {
 	for (size_t i = 0; i <  MAX_DECK_SIZE / 2; i++)
 	{
-		MonsterCardUsedPositions[i] = MagicCardUsedPositions[i] = false;
+		monsterCardUsedPositions[i] = magicCardUsedPositions[i] = false;
 	}
 }
 
@@ -19,10 +19,10 @@ size_t Deck::getMonsterCardsSize() const{
 bool Deck::addMagicCardToDeck(const MagicCard& magicCard) {
 	for (size_t i = 0; i < MAX_DECK_SIZE / 2; i++)
 	{
-		if (!MagicCardUsedPositions[i])
+		if (!magicCardUsedPositions[i])
 		{
 			magicCards[i] = magicCard;
-			MagicCardUsedPositions[i] = true;
+			magicCardUsedPositions[i] = true;
 			magicCardsSize++;
 			return true;
 		}
@@ -33,10 +33,10 @@ bool Deck::addMagicCardToDeck(const MagicCard& magicCard) {
 bool Deck::addMonsterCardToDeck(const MonsterCard& monsterCard) {
 	for (size_t i = 0; i < MAX_DECK_SIZE / 2; i++)
 	{
-		if (!MonsterCardUsedPositions[i])
+		if (!monsterCardUsedPositions[i])
 		{
 			monsterCards[i] = monsterCard;
-			MonsterCardUsedPositions[i] = true;
+			monsterCardUsedPositions[i] = true;
 			monsterCardsSize++;
 			return true;
 		}
@@ -48,22 +48,26 @@ bool Deck::addMagicCardToDeckAtIndex(const MagicCard& magicCard, const int index
 	if (index >=  MAX_DECK_SIZE / 2)
 		return false;
 
-	if (!MagicCardUsedPositions[index])
+	if (!magicCardUsedPositions[index])
 		magicCardsSize++;
 
 	magicCards[index] = magicCard;
-	MagicCardUsedPositions[index] = true;
+	magicCardUsedPositions[index] = true;
+
+	return true;
 }
 
 bool Deck::addMonsterCardToDeckAtIndex(const MonsterCard& monsterCard, const int index) {
 	if (index >= MAX_DECK_SIZE / 2)
 		return false;
 
-	if (!MonsterCardUsedPositions[index])
+	if (!monsterCardUsedPositions[index])
 		monsterCardsSize++;
 
 	monsterCards[index] = monsterCard;
-	MonsterCardUsedPositions[index] = true;
+	monsterCardUsedPositions[index] = true;
+
+	return true;
 }
 
 void Deck::info() const
