@@ -64,3 +64,10 @@ bool Duelist::changeMonsterCardAtIndex(const MonsterCard& monsterCard,const int 
 bool Duelist::changeMagicCardAtIndex(const MagicCard& magicCard, const int index){
 	return deck.addMagicCardToDeckAtIndex(magicCard,index);
 }
+
+void Duelist::display() const
+{
+	std::cout << "Name: " << name << std::endl;
+	std::cout << "Deck info: " << std::endl;
+	this->deck.info();
+}
