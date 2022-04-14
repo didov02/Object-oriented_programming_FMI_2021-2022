@@ -3,12 +3,15 @@
 #include "MagicCard.h"
 #include "MonsterCard.h"
 
-const int MAX_DECK_SIZE = 40;
+const short MAX_DECK_SIZE = 40;
 
 class Deck {
 private:
 	MagicCard magicCards[MAX_DECK_SIZE / 2];
 	MonsterCard monsterCards[MAX_DECK_SIZE / 2];
+	
+	bool MonsterCardUsedPositions[MAX_DECK_SIZE / 2];
+	bool MagicCardUsedPositions[MAX_DECK_SIZE / 2];
 
 	size_t magicCardsSize;
 	size_t monsterCardsSize;
@@ -27,4 +30,6 @@ public:
 
 	bool addMagicCardToDeckAtIndex(const MagicCard& magicCard, const int index);
 	bool addMonsterCardToDeckAtIndex(const MonsterCard& monsterdrCard, const int index);
+	
+	void info() const;
 };
