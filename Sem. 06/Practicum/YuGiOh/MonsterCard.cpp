@@ -25,9 +25,3 @@ size_t MonsterCard::getAttPoints() const{
 size_t MonsterCard::getDefPoints() const{
 	return defPoints;
 }
-
-MonsterCard::MonsterCard(const MonsterCard& monsterCard)
-{
-	//trololo
-	strcpy(name, "gosho");
-}
