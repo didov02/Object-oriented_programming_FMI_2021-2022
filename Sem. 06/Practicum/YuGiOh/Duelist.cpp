@@ -41,6 +41,17 @@ void Duelist::free(){
 	delete[] name; 
 }
 
+void Duelist::setName(const char* name)
+{
+	delete[] this->name;
+	this->name = new char[strlen(name) + 1];
+	strcpy(this->name, name);
+}
+void Duelist::setDeck(const Deck& deck)
+{
+	this->deck = deck;
+}
+
 const char* Duelist::getName() const{
 	return name;
 }
