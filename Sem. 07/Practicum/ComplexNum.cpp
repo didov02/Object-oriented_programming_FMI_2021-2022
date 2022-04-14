@@ -37,10 +37,19 @@ ComplexNum& ComplexNum::operator*=(const ComplexNum& other)
 
 ComplexNum& ComplexNum::operator/=(const ComplexNum& other)
 {
-	ComplexNum temp(real, imaginary);
+	Complex Conjugated = other.getConjugated(); //взимаме комплексно спрегнатата на другата дроб (b)
 
-	real = (temp.real * other.real + temp.imaginary * other.imaginary) / (other.real * other.real + other.imaginary * other.imaginary);
-	imaginary = (temp.imaginary * other.real - temp.real * other.imaginary) / (other.real * other.real + other.imaginary * other.imaginary);
+	Complex otherCopy(other);// копираме другата (b), за да не я промяняме.
+
+	//Умножаваме двете по комплексно спрегнатата.
+	*this *= Conjugated;
+	otherCopy *= Conjugated; //Тук трябва да остане само реална част.
+
+	if (otherCopy.real != 0)
+	{
+		real /= otherCopy.real;
+		imaginary /= otherCopy.real;
+	}
 
 	return *this;
 }
@@ -119,4 +128,12 @@ std::istream& operator>>(std::istream& is, ComplexNum& complexNum)
 {
 	is >> complexNum.real >> complexNum.imaginary;
 	return is;
+}
+
+Complex Complex::getConjugated() const
+{
+	Complex result(*this);
+	result.imaginary *= -1;
+
+	return result;
 }
