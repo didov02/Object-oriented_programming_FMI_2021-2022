@@ -54,22 +54,6 @@ ComplexNum& ComplexNum::operator/=(const ComplexNum& other)
 	return *this;
 }
 
-ComplexNum& ComplexNum::operator*=(const double num)
-{
-	this->real *= num;
-	this->imaginary *= num;
-
-	return *this;
-}
-
-ComplexNum& ComplexNum::operator/=(const double num)
-{
-	this->real /= num;
-	this->imaginary /= num;
-
-	return *this;
-}
-
 ComplexNum operator+(ComplexNum& first, const ComplexNum& second)
 {
 	ComplexNum temp(first);
@@ -96,20 +80,6 @@ ComplexNum operator/(ComplexNum& first, const ComplexNum& second)
 {
 	ComplexNum temp(first);
 	temp /= second;
-	return temp;
-}
-
-ComplexNum operator*(ComplexNum& first, const double num)
-{
-	ComplexNum temp(first);
-	temp *= num;
-	return temp;
-}
-
-ComplexNum operator/(ComplexNum& first, const double num)
-{
-	ComplexNum temp(first);
-	temp /= num;
 	return temp;
 }
 
