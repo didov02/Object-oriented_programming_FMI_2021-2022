@@ -14,7 +14,6 @@ public:
 	~String();
 
 	void setName(const char*);
-	const char* c_str() const;
 	size_t getSize() const;
 
 	const char* c_str() const;
