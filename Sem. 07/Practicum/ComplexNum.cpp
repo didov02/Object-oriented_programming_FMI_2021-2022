@@ -29,11 +29,9 @@ ComplexNum& ComplexNum::operator-=(const ComplexNum& other)
 
 ComplexNum& ComplexNum::operator*=(const ComplexNum& other)
 {
-	ComplexNum temp(real, imaginary);
-
-	real = temp.real * other.real - temp.imaginary * other.imaginary;
-	imaginary = temp.real * other.imaginary + temp.imaginary * other.real;
-
+	double oldReal = real;
+	real = real * other.real - imaginary * other.imaginary;
+	imaginary = oldReal * other.imaginary + imaginary * other.real;
 	return *this;
 }
 
