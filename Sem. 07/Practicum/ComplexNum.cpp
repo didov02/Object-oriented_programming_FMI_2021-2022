@@ -2,14 +2,13 @@
 
 ComplexNum::ComplexNum()
 {
-	real = 0;
-	imaginary = 0;
+	real = imaginary = 0;
 }
 
-ComplexNum::ComplexNum(double _real, double _imaginary)
+ComplexNum::ComplexNum(double real, double imaginary)
 {
-	real = _real;
-	imaginary = _imaginary;
+	this->real = real;
+	this->imaginary = imaginary;
 }
 
 ComplexNum& ComplexNum::operator+=(const ComplexNum& other)
