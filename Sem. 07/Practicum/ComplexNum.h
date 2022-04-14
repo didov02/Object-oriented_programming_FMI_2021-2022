@@ -20,8 +20,6 @@ public:
 	ComplexNum& operator-=(const ComplexNum&);
 	ComplexNum& operator*=(const ComplexNum&);
 	ComplexNum& operator/=(const ComplexNum&);
-	ComplexNum& operator*=(const double);
-	ComplexNum& operator/=(const double);
 
 	friend ComplexNum operator+(const ComplexNum&, const ComplexNum&);
 	friend ComplexNum operator-(const ComplexNum&, const ComplexNum&);
