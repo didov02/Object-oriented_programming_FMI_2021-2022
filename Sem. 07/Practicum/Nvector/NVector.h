@@ -18,8 +18,8 @@ public:
 	Nvector& operator-=(const Nvector&);
 	Nvector& operator*=(const double);
 
-	bool isCollinear(const Nvector&);
-	bool isPerpendicular(const Nvector&);
+	bool isCollinear(const Nvector&) const;
+	bool isPerpendicular(const Nvector&) const;
 	
 	size_t getSize() const;
 	void print() const;
@@ -32,7 +32,7 @@ public:
 private:
 	void copy(const Nvector&);
 	void free();
-	double dotProduct(const Nvector&);
+	double dotProduct(const Nvector&) const;
 };
 
 const Nvector operator+(const Nvector&, const Nvector&);
