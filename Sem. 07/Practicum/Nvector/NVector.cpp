@@ -175,11 +175,8 @@ std::istream& operator>>(std::istream& in, Nvector& vector)
 
 	vector.free();
 	vector.size = size;
-	vector.coordinates = new double[vector.size];
-	for (int i = 0; i < vector.size;i++) {
-		vector.coordinates[i] = buffer[i];
-	}
-	delete[] buffer;
+	vector.coordinates = buffer;
+	buffer=nullptr;
 	return in;
 }
 
