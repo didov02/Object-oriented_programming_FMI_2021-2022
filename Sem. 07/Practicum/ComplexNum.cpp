@@ -37,13 +37,13 @@ ComplexNum& ComplexNum::operator*=(const ComplexNum& other)
 
 ComplexNum& ComplexNum::operator/=(const ComplexNum& other)
 {
-	Complex Conjugated = other.getConjugated(); //взимаме комплексно спрегнатата на другата дроб (b)
+	Complex conjugated = other.getConjugated(); //взимаме комплексно спрегнатата на другата дроб (b)
 
 	Complex otherCopy(other);// копираме другата (b), за да не я промяняме.
 
 	//Умножаваме двете по комплексно спрегнатата.
-	*this *= Conjugated;
-	otherCopy *= Conjugated; //Тук трябва да остане само реална част.
+	*this *= conjugated;
+	otherCopy *= conjugated; //Тук трябва да остане само реална част.
 
 	if (otherCopy.real != 0)
 	{
