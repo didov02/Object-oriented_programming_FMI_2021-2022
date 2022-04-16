@@ -37,36 +37,26 @@ Nvector::~Nvector()
 
 Nvector& Nvector::operator+=(const Nvector& other)
 {
-	try {
-		if (size != other.size) {
-			throw - 1;
-		}
-		for (int i=0; i < size; i++) {
-			coordinates[i] += other.coordinates[i];
-		}
+	if (size != other.size) {
+		std::cout<<"Different sizes!"<<std::endl;
 		return *this;
 	}
-	catch (int) {
-		std::cout << "Different sizes"<<std::endl;
-		return *this;
+	for (int i=0; i < size; i++) {
+		coordinates[i] += other.coordinates[i];
 	}
+	return *this;
 }
 
 Nvector& Nvector::operator-=(const Nvector& other)
 {
-	try {
-		if (size != other.size) {
-			throw - 1;
-		}
-		for (int i=0; i < size; i++) {
-			coordinates[i] -= other.coordinates[i];
-		}
+	if (size != other.size) {
+		std::cout<<"Different sizes!"<<std::endl;
 		return *this;
 	}
-	catch (int) {
-		std::cout << "Different sizes" << std::endl;
-		return *this;
+	for (int i=0; i < size; i++) {
+		coordinates[i] -= other.coordinates[i];
 	}
+	return *this;
 }
 
 Nvector& Nvector::operator*=(const double num)
@@ -102,42 +92,29 @@ double& Nvector::operator[](size_t index)
 
 bool Nvector::isCollinear(const Nvector& other) const
 {
-	try {
-		if (size != other.size) {
-			throw - 1;
-		}
-		if (size != other.size) {
+	if (size != other.size) {
+		return false;
+	}
+	double ratio = coordinates[0] / other.coordinates[0];
+	double currRatio;
+	for (int i = 1; i < size; i++) {
+		currRatio = coordinates[i] / other.coordinates[i];
+		if (currRatio - ratio<0 || currRatio - ratio>EPSILON) {
 			return false;
 		}
-		double ratio = coordinates[0] / other.coordinates[0];
-		double currRatio;
-		for (int i = 1; i < size; i++) {
-			currRatio = coordinates[i] / other.coordinates[i];
-			if (currRatio - ratio<0 || currRatio - ratio>EPSILON) {
-				return false;
-			}
-		}
-		return true;
 	}
-	catch(int) {
-		return false; // Different sizes
-	}
+	return true;
 }
 
 bool Nvector::isPerpendicular(const Nvector& other) const
 {
-	try {
-		if (size != other.size) {
-			throw - 1;
-		}
-		if (dotProduct(other) == 0) {
-			return true;
-		}
-		else return false; 
+	if (size != other.size) {
+		return false;
 	}
-	catch (int) {
-		return false; //Different sizes
+	if (dotProduct(other) == 0) {
+		return true;
 	}
+	else return false; 
 }
 
 size_t Nvector::getSize() const
