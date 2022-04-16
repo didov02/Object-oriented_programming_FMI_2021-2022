@@ -9,6 +9,6 @@ private:
 public:
 	Cartesian2D(const Nvector&, const Nvector&);
 
-	Nvector getVectorByCoordinates(const Nvector&);
-	Nvector getCoordinatesByVector(const Nvector&);
+	Nvector getVectorByCoordinates(const Nvector&) const;
+	Nvector getCoordinatesByVector(const Nvector&) const;
 };
