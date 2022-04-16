@@ -84,22 +84,20 @@ void Nvector::print() const
 	}
 }
 
-double Nvector::getCoordinate(size_t index) const
+double Nvector::operator[](size_t index) const
 {
+	if (index > size - 1) {
+		throw "Invalid index";
+	}
 	return coordinates[index];
 }
 
-void Nvector::setCoordinate(double num, size_t index)
+double& Nvector::operator[](size_t index)
 {
-	try {
-		if (index > size - 1) {
-			throw - 1;
-		}
-		coordinates[index] = num;
+	if (index > size - 1) {
+		throw "Invalid index";
 	}
-	catch(int) {
-		std::cout << "Invalid index"<<std::endl;
-	}
+	return coordinates[index];
 }
 
 bool Nvector::isCollinear(const Nvector& other) const
