@@ -57,7 +57,7 @@ ComplexNum& ComplexNum::operator/=(const ComplexNum& other)
 ComplexNum operator+(ComplexNum& first, const ComplexNum& second)
 {
 	ComplexNum temp(first);
-	first += second;
+	temp += second;
 	return temp;
 }
 
