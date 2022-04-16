@@ -35,7 +35,7 @@ private:
 	double dotProduct(const Nvector&) const;
 };
 
-const Nvector operator+(const Nvector&, const Nvector&);
-const Nvector operator-(const Nvector&, const Nvector&);
-const Nvector operator*(const Nvector&, const double);
-const Nvector operator*(const double, const Nvector&);
+Nvector operator+(const Nvector&, const Nvector&);
+Nvector operator-(const Nvector&, const Nvector&);
+Nvector operator*(const Nvector&, const double);
+Nvector operator*(const double, const Nvector&);
