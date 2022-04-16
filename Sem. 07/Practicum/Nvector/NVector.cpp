@@ -102,7 +102,7 @@ void Nvector::setCoordinate(double num, size_t index)
 	}
 }
 
-bool Nvector::isCollinear(const Nvector& other)
+bool Nvector::isCollinear(const Nvector& other) const
 {
 	try {
 		if (size != other.size) {
@@ -126,7 +126,7 @@ bool Nvector::isCollinear(const Nvector& other)
 	}
 }
 
-bool Nvector::isPerpendicular(const Nvector& other)
+bool Nvector::isPerpendicular(const Nvector& other) const
 {
 	try {
 		if (size != other.size) {
@@ -147,7 +147,7 @@ size_t Nvector::getSize() const
 	return size;
 }
 
-double Nvector::dotProduct(const Nvector& other)
+double Nvector::dotProduct(const Nvector& other) const
 {
 	double product = 0;
 	for (int i = 0; i < size; i++) {
@@ -183,28 +183,28 @@ std::istream& operator>>(std::istream& in, Nvector& vector)
 	return in;
 }
 
-const Nvector operator+(const Nvector& first, const Nvector& second)
+Nvector operator+(const Nvector& first, const Nvector& second)
 {
 	Nvector temp(first);
 	temp += second;
 	return temp;
 }
 
-const Nvector operator-(const Nvector& first, const Nvector& second)
+Nvector operator-(const Nvector& first, const Nvector& second)
 {
 	Nvector temp(first);
 	temp -= second;
 	return temp;
 }
 
-const Nvector operator*(const Nvector& vector, const double num)
+Nvector operator*(const Nvector& vector, const double num)
 {
 	Nvector temp(vector);
 	temp *= num;
 	return temp;
 }
 
-const Nvector operator*(const double num, const Nvector& vector)
+Nvector operator*(const double num, const Nvector& vector)
 {
 	Nvector temp(vector);
 	temp *= num;
