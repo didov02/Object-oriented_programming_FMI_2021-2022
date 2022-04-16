@@ -11,7 +11,7 @@ Cartesian2D::Cartesian2D()
 	second=E2;
 }
 
-Cartesian2D::Cartesian2D(const Nvector first, const Nvector second)
+Cartesian2D::Cartesian2D(const Nvector& first, const Nvector& second)
 {
 	this->first = first;
 	this->second = second;
