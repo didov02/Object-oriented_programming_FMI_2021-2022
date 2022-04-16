@@ -88,7 +88,7 @@ std::ostream& operator<<(std::ostream& os, const ComplexNum& complexNum)
 	if (complexNum.imaginary > 0)
 		os << complexNum.real << "+" << complexNum.imaginary << "*i";
 	else if (complexNum.imaginary < 0)
-		os << complexNum.real << complexNum.imaginary << "*i";
+		os << complexNum.real << "-" << complexNum.imaginary << "*i";
 	else
 		os << complexNum.real;
 	return os;
