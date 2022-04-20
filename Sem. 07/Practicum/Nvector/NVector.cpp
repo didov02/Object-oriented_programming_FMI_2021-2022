@@ -3,8 +3,7 @@
 Nvector::Nvector()
 {
 	size = 1;
-	coordinates = new double[size];
-	coordinates[0] = 0;
+	coordinates = new double[size]();
 }
 
 Nvector::Nvector(const double* coordinates, const size_t size)
