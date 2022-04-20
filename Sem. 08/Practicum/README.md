@@ -22,8 +22,8 @@ int main()
 	p.getAverage("HW1"); // 4.5;
 	
 	p.removeStudent(45123);
-      
-        p.getAverageGradePerTask("HW1"); // 5;
+	
+	p.getAverageGradePerTask("HW1"); // 5;
 	
 	p.getAverageFromTeacher("Lecturer1"); //6
 	
