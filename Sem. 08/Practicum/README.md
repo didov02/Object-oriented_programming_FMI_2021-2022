@@ -15,9 +15,9 @@ int main()
 	p.addStudent("Yavor Alexandrov", 69420);
 	p.addStudent("Angel Dimitriev", 00666);
 	
-	p.addGrade(45123, "HW1", 4, "Assistant1");
-	p.addGrade(45222, "HW1", 6, "Lecturer1");
-	p.addGrade(45222, "K1", 5, "Assistant1");
+	p.addGrade(42069, "HW1", 4, "Assistant1");
+	p.addGrade(00666, "HW1", 6, "Lecturer1");
+	p.addGrade(42069, "K1", 5, "Assistant1");
 	
 	p.getAverageForCourse(); // 5
 	
