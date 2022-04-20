@@ -11,9 +11,9 @@ int main()
 {
 	OOPcourse p("Lecturer1", "Assistant1");
 	
-	p.addStudent("Ivan Petrov", 45123);
-	p.addStudent("Aleksandur Mironov", 45123);
-	p.addStudent("Stefan Popov", 45123);
+	p.addStudent("Stoycho Kyosev", 42069);
+	p.addStudent("Yavor Alexandrov", 69420);
+	p.addStudent("Angel Dimitriev", 00666);
 	
 	p.addGrade(45123, "HW1", 4, "Assistant1");
 	p.addGrade(45222, "HW1", 6, "Lecturer1");
