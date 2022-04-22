@@ -116,7 +116,7 @@ bool Nvector::isCollinear(const Nvector& other) const
 	
 	for (int i = 1; i < size; i++) {
 		currRatio = coordinates[i] / other.coordinates[i];
-		if (currRatio - ratio<0 || currRatio - ratio>EPSILON) {
+		if (currRatio - ratio != 0) {
 			return false;
 		}
 	}
