@@ -25,7 +25,7 @@ public:
 	void print() const;
 
 	double operator[](size_t) const; //index
-	double& setCoordinate(size_t); //value, index
+	double& operator[](size_t); //value, index
 
 	friend std::ostream& operator<<(std::ostream&, const Nvector&);
 	friend std::istream& operator>>(std::istream&, Nvector&);
