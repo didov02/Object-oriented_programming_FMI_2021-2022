@@ -37,7 +37,7 @@ Nvector::~Nvector()
 Nvector& Nvector::operator+=(const Nvector& other)
 {
 	if (size != other.size) {
-		std::cout<<"Different sizes!"<<std::endl;
+		throw "Different sizes!";
 		return *this;
 	}
 	for (int i=0; i < size; i++) {
@@ -49,7 +49,7 @@ Nvector& Nvector::operator+=(const Nvector& other)
 Nvector& Nvector::operator-=(const Nvector& other)
 {
 	if (size != other.size) {
-		std::cout<<"Different sizes!"<<std::endl;
+		throw "Different sizes!";
 		return *this;
 	}
 	for (int i=0; i < size; i++) {
@@ -94,8 +94,26 @@ bool Nvector::isCollinear(const Nvector& other) const
 	if (size != other.size) {
 		return false;
 	}
+	
+	int counterOther=0, counter=0;
+	for (int i = 1; i < size; i++) {
+		if(other.coordinates[i] == 0) {
+			counterOther++; //counter to check if it is the 0 vector, 0 vector is collinerr with every other
+		}
+		if(coordinates[i] == 0) {
+			counter++;
+		}
+	}
+	if(counterOther == other.size || counter == size) {
+		return true;
+	}
+	else if(counterOther > 0) {
+		throw "Couldn't divide by 0!";
+	}
+	
 	double ratio = coordinates[0] / other.coordinates[0];
 	double currRatio;
+	
 	for (int i = 1; i < size; i++) {
 		currRatio = coordinates[i] / other.coordinates[i];
 		if (currRatio - ratio<0 || currRatio - ratio>EPSILON) {
@@ -110,10 +128,7 @@ bool Nvector::isPerpendicular(const Nvector& other) const
 	if (size != other.size) {
 		return false;
 	}
-	if (dotProduct(other) == 0) {
-		return true;
-	}
-	else return false; 
+	return (dotProduct(other) == 0); 
 }
 
 size_t Nvector::getSize() const
