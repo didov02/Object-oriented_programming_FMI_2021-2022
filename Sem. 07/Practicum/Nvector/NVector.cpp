@@ -1,5 +1,6 @@
 #include "NVector.h"
 
+//Constructors&Destructor
 Nvector::Nvector()
 {
 	size = 1;
@@ -34,6 +35,71 @@ Nvector::~Nvector()
 	free();
 }
 
+//Methods
+
+void Nvector::print() const
+{
+	for (size_t i = 0; i < size; i++) {
+		std::cout << "[" << i << "]=" << coordinates[i] << " ";
+	}
+}
+
+bool Nvector::isCollinear(const Nvector& other) const
+{
+	if (size != other.size)
+		return false;
+	
+	int counterOther=0, counter=0;
+	for (size_t i = 1; i < size; i++)
+	{
+		if(other.coordinates[i] == 0)
+			counterOther++; //counter to check if it is the 0 vector, 0 vector is collinerr with every other
+		
+		if(coordinates[i] == 0) 
+			counter++;
+	}
+	
+	if(counterOther == other.size || counter == size)
+		return true;
+	else if(counterOther > 0)
+		throw "Couldn't divide by 0!";
+	
+	double ratio = coordinates[0] / other.coordinates[0];
+	double currRatio;
+	
+	for (size_t i = 1; i < size; i++)
+	{
+		currRatio = coordinates[i] / other.coordinates[i];
+		
+		if (currRatio - ratio != 0)
+			return false;
+	}
+	return true;
+}
+
+bool Nvector::isPerpendicular(const Nvector& other) const
+{
+	if (size != other.size)
+		return false;
+	
+	return (dotProduct(other) == 0); 
+}
+
+size_t Nvector::getSize() const
+{
+	return size;
+}
+
+double Nvector::dotProduct(const Nvector& other) const
+{
+	double product = 0;
+	for (int i = 0; i < size; i++) {
+		product += coordinates[i] * other.coordinates[i];
+	}
+	return product;
+}
+
+//Operators
 Nvector& Nvector::operator+=(const Nvector& other)
 {
 	if (size != other.size)
@@ -64,90 +130,27 @@ Nvector& Nvector::operator*=(const double num)
 	return *this;
 }
 
-void Nvector::print() const
-{
-	for (int i = 0; i < size; i++) {
-		std::cout << "[" << i << "]=" << coordinates[i] << " ";
-	}
-}
-
 double Nvector::operator[](size_t index) const
 {
-	if (index > size - 1) {
+	if (index > size - 1)
 		throw "Invalid index";
-	}
+	
 	return coordinates[index];
 }
 
 double& Nvector::operator[](size_t index)
 {
-	if (index > size - 1) {
+	if (index > size - 1)
 		throw "Invalid index";
-	}
+	
 	return coordinates[index];
-}
-
-bool Nvector::isCollinear(const Nvector& other) const
-{
-	if (size != other.size) {
-		return false;
-	}
-	
-	int counterOther=0, counter=0;
-	for (int i = 1; i < size; i++) {
-		if(other.coordinates[i] == 0) {
-			counterOther++; //counter to check if it is the 0 vector, 0 vector is collinerr with every other
-		}
-		if(coordinates[i] == 0) {
-			counter++;
-		}
-	}
-	if(counterOther == other.size || counter == size) {
-		return true;
-	}
-	else if(counterOther > 0) {
-		throw "Couldn't divide by 0!";
-	}
-	
-	double ratio = coordinates[0] / other.coordinates[0];
-	double currRatio;
-	
-	for (int i = 1; i < size; i++) {
-		currRatio = coordinates[i] / other.coordinates[i];
-		if (currRatio - ratio != 0) {
-			return false;
-		}
-	}
-	return true;
-}
-
-bool Nvector::isPerpendicular(const Nvector& other) const
-{
-	if (size != other.size) {
-		return false;
-	}
-	return (dotProduct(other) == 0); 
-}
-
-size_t Nvector::getSize() const
-{
-	return size;
-}
-
-double Nvector::dotProduct(const Nvector& other) const
-{
-	double product = 0;
-	for (int i = 0; i < size; i++) {
-		product += coordinates[i] * other.coordinates[i];
-	}
-	return product;
 }
 
 std::ostream& operator<<(std::ostream& out, const Nvector& vector)
 {
-	for (int i = 0; i < vector.size; i++) {
+	for (int i = 0; i < vector.size; i++)
 		out << vector.coordinates[i] << " ";
-	}
+	
 	return out;
 }
 
@@ -156,14 +159,14 @@ std::istream& operator>>(std::istream& in, Nvector& vector)
 	int size;
 	in >> size;
 	double* buffer = new double[size];
-	for (int i = 0; i < size; i++) {
+	
+	for (int i = 0; i < size; i++)
 		in >> buffer[i];
-	}
 
 	vector.free();
 	vector.size = size;
 	vector.coordinates = buffer;
-	buffer=nullptr;
+	buffer = nullptr;
 	return in;
 }
 
@@ -195,13 +198,14 @@ Nvector operator*(const double num, const Nvector& vector)
 	return temp;
 }
 
+//Private methods
 void Nvector::copy(const Nvector& other)
 {
 	size = other.size;
 	coordinates = new double[size];
-	for (int i = 0; i < size; i++) {
+	
+	for (int i = 0; i < size; i++)
 		coordinates[i] = other.coordinates[i];
-	}
 }
 
 void Nvector::free()
