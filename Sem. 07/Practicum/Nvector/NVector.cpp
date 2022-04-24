@@ -8,7 +8,7 @@ Nvector::Nvector()
 
 Nvector::Nvector(const double* coordinates, const size_t size)
 {
-	this->size= size;
+	this->size = size;
 	this->coordinates = new double[size];
 	for (int i = 0; i < size; i++) {
 		this->coordinates[i] = coordinates[i];
@@ -36,13 +36,12 @@ Nvector::~Nvector()
 
 Nvector& Nvector::operator+=(const Nvector& other)
 {
-	if (size != other.size) {
-		throw "Different sizes!";
-		return *this;
-	}
-	for (int i=0; i < size; i++) {
+	if (size != other.size)
+		throw "The vectors should have the same size!";
+	
+	for (size_t i = 0; i < size; i++)
 		coordinates[i] += other.coordinates[i];
-	}
+	
 	return *this;
 }
 
