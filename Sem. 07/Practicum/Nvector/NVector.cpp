@@ -58,9 +58,9 @@ Nvector& Nvector::operator-=(const Nvector& other)
 
 Nvector& Nvector::operator*=(const double num)
 {
-	for (int i=0; i < size; i++) {
+	for (size_t i = 0; i < size; i++)
 		coordinates[i] *= num;
-	}
+
 	return *this;
 }
 
