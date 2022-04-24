@@ -35,11 +35,11 @@ int main()
  ```c++
 int main()
 {
-	Nvector v(4);
+	Nvector v(2);
 	v[0] = 2;
 	v[1] = 1;
 	
-	Nvector v2(4);
+	Nvector v2(2);
 	v2[0] = 3;
 	v2[1] = 1;
 	
