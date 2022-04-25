@@ -11,7 +11,8 @@ Nvector::Nvector(const double* coordinates, const size_t size)
 {
 	this->size = size;
 	this->coordinates = new double[size];
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++)
+	{
 		this->coordinates[i] = coordinates[i];
 	}
 }
@@ -23,7 +24,8 @@ Nvector::Nvector(const Nvector& other)
 
 Nvector& Nvector::operator=(const Nvector& other)
 {
-	if (this != &other) {
+	if (this != &other)
+	{
 		free();
 		copy(other);
 	}
@@ -39,7 +41,8 @@ Nvector::~Nvector()
 
 void Nvector::print() const
 {
-	for (size_t i = 0; i < size; i++) {
+	for (size_t i = 0; i < size; i++)
+	{
 		std::cout << "[" << i << "]=" << coordinates[i] << " ";
 	}
 }
@@ -48,29 +51,44 @@ bool Nvector::isCollinear(const Nvector& other) const
 {
 	if (size != other.size)
 		return false;
-	
-	int counterOther=0, counter=0;
-	for (size_t i = 1; i < size; i++)
+
+	int counterOther = 0, counter = 0;
+	for (size_t i = 0; i < size; i++)
 	{
-		if(other.coordinates[i] == 0)
-			counterOther++; //counter to check if it is the 0 vector, 0 vector is collinerr with every other
-		
-		if(coordinates[i] == 0) 
+		if (other.coordinates[i] == 0)
+			counterOther++; //counter to check if it is the 0 vector, 0 vector is collinear with every other
+
+		if (coordinates[i] == 0)
 			counter++;
 	}
-	
-	if(counterOther == other.size || counter == size)
+
+	if (counterOther == other.size || counter == size)
 		return true;
-	else if(counterOther > 0)
-		throw "Couldn't divide by 0!";
-	
-	double ratio = coordinates[0] / other.coordinates[0];
-	double currRatio;
-	
-	for (size_t i = 1; i < size; i++)
+
+	double ratio = 0;
+
+	for (size_t i = 0; i < size; i++)
 	{
-		currRatio = coordinates[i] / other.coordinates[i];
+		// if both a zeros
+		if (coordinates[i] == 0 && other.coordinates[i] == 0)
+			continue;
 		
+		// if at current index one of the coordinates is zero and the other is != 0 => not collinear
+		if ((coordinates[i] != 0 && other.coordinates[i] == 0)
+			|| (coordinates[i] == 0 && other.coordinates[i] != 0))
+		{
+			return false;
+		}
+
+		// ratio is impossible to be 0 when dividing two != 0 numbers
+		// so we are using 0 as default case
+		if (ratio == 0)
+		{
+			ratio = coordinates[i] / other.coordinates[i];
+		}
+
+		double currRatio = coordinates[i] / other.coordinates[i];
+
 		if (currRatio - ratio != 0)
 			return false;
 	}
@@ -81,8 +99,8 @@ bool Nvector::isPerpendicular(const Nvector& other) const
 {
 	if (size != other.size)
 		return false;
-	
-	return (dotProduct(other) == 0); 
+
+	return (dotProduct(other) == 0);
 }
 
 size_t Nvector::getSize() const
@@ -93,7 +111,8 @@ size_t Nvector::getSize() const
 double Nvector::dotProduct(const Nvector& other) const
 {
 	double product = 0;
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++)
+	{
 		product += coordinates[i] * other.coordinates[i];
 	}
 	return product;
@@ -104,10 +123,10 @@ Nvector& Nvector::operator+=(const Nvector& other)
 {
 	if (size != other.size)
 		throw "The vectors should have the same size!";
-	
+
 	for (size_t i = 0; i < size; i++)
 		coordinates[i] += other.coordinates[i];
-	
+
 	return *this;
 }
 
@@ -115,10 +134,10 @@ Nvector& Nvector::operator-=(const Nvector& other)
 {
 	if (size != other.size)
 		throw "The vectors should have the same size!";
-	
+
 	for (size_t i = 0; i < size; i++)
 		coordinates[i] -= other.coordinates[i];
-	
+
 	return *this;
 }
 
@@ -134,7 +153,7 @@ double Nvector::operator[](size_t index) const
 {
 	if (index > size - 1)
 		throw "Invalid index";
-	
+
 	return coordinates[index];
 }
 
@@ -142,7 +161,7 @@ double& Nvector::operator[](size_t index)
 {
 	if (index > size - 1)
 		throw "Invalid index";
-	
+
 	return coordinates[index];
 }
 
@@ -150,7 +169,7 @@ std::ostream& operator<<(std::ostream& out, const Nvector& vector)
 {
 	for (int i = 0; i < vector.size; i++)
 		out << vector.coordinates[i] << " ";
-	
+
 	return out;
 }
 
@@ -159,7 +178,7 @@ std::istream& operator>>(std::istream& in, Nvector& vector)
 	int size;
 	in >> size;
 	double* buffer = new double[size];
-	
+
 	for (int i = 0; i < size; i++)
 		in >> buffer[i];
 
@@ -203,7 +222,7 @@ void Nvector::copy(const Nvector& other)
 {
 	size = other.size;
 	coordinates = new double[size];
-	
+
 	for (int i = 0; i < size; i++)
 		coordinates[i] = other.coordinates[i];
 }
