@@ -1,5 +1,4 @@
 #include "Cartesian.h"
-#include "NVector.h"
 
 Cartesian2D::Cartesian2D(const Nvector& first, const Nvector& second)
 {
