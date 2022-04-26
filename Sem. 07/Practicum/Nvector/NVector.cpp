@@ -11,10 +11,9 @@ Nvector::Nvector(const double* coordinates, const size_t size)
 {
 	this->size = size;
 	this->coordinates = new double[size];
-	for (int i = 0; i < size; i++)
-	{
+	
+	for (size_t i = 0; i < size; i++)
 		this->coordinates[i] = coordinates[i];
-	}
 }
 
 Nvector::Nvector(const Nvector& other)
@@ -42,9 +41,7 @@ Nvector::~Nvector()
 void Nvector::print() const
 {
 	for (size_t i = 0; i < size; i++)
-	{
 		std::cout << "[" << i << "]=" << coordinates[i] << " ";
-	}
 }
 
 bool Nvector::isCollinear(const Nvector& other) const
@@ -74,18 +71,13 @@ bool Nvector::isCollinear(const Nvector& other) const
 			continue;
 		
 		// if at current index one of the coordinates is zero and the other is != 0 => not collinear
-		if ((coordinates[i] != 0 && other.coordinates[i] == 0)
-			|| (coordinates[i] == 0 && other.coordinates[i] != 0))
-		{
+		if ((coordinates[i] != 0 && other.coordinates[i] == 0) || (coordinates[i] == 0 && other.coordinates[i] != 0))
 			return false;
-		}
 
 		// ratio is impossible to be 0 when dividing two != 0 numbers
 		// so we are using 0 as default case
 		if (ratio == 0)
-		{
 			ratio = coordinates[i] / other.coordinates[i];
-		}
 
 		double currRatio = coordinates[i] / other.coordinates[i];
 
@@ -111,10 +103,8 @@ size_t Nvector::getSize() const
 double Nvector::dotProduct(const Nvector& other) const
 {
 	double product = 0;
-	for (int i = 0; i < size; i++)
-	{
+	for (size_t i = 0; i < size; i++)
 		product += coordinates[i] * other.coordinates[i];
-	}
 	return product;
 }
 
