@@ -9,6 +9,8 @@
 - [Тема 6](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2006) : Динамична памет в класовете. Голямата четворка (**Rule of four**).
 - [Тема 7](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2007) : Предефиниране на оператори. Приятелски класове и функции.
 - [Тема 8](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2008) :  Композиция и агрегация в ООП. Масиви от обекти. has-a взаимоотношения.
+- [Teма 9](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2009) : Move семантики
+- [Teма 10](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2010) : Шаблони. Реализация на шаблонен клас.
 
 ## Допълнителни материали
 - [Домашни](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Additional/Homeworks)
