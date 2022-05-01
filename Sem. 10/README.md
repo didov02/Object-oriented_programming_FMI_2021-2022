@@ -35,22 +35,15 @@ int main()
 {
    Stack st;
 
+   for(size_t i = 0; i < 1000; i++)
+        st.push(i);
+   Stack st1 = st;
+   Stack st2;
+   st2 = st1;
 
-   for(int i = 0; i <  1000; i++)	{
-		st.push(i);
-	}
-
-	Stack st1 = st;
-	Stack st2;
-	st2 = st1;
-
-	while (!st2.empty())
-	{
-		cout << st2.pop() << ' ';
-	}
-	cout << endl;
-
+   while (!st2.empty())
+         std::cout << st2.pop() << ' ';
+   std::cout << std::endl;
    return 0;
 }
  ```
-
