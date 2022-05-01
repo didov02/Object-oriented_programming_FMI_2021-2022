@@ -26,7 +26,7 @@ int main()
 Компилаторът генерира т. нар. шаблонна функция, като замества параметрите на шаблона с типовете на съответните фактически параметри.
 
 **Задача:**
-Релизирайте структурата от данни стек(Stack). <br />
+Релизирайте структурата от данни [стек(Stack)](https://www.guru99.com/stack-in-cpp-stl.html). <br />
 ![enter image description here](https://www.softwaretestinghelp.com/wp-content/qa/uploads/2019/06/pictorial-representation-of-stack.png)
 <br />
 **Пример**:
