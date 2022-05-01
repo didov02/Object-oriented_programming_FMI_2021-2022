@@ -88,7 +88,7 @@ int main()
 {
    int a = 10;
    int *p = &a;
-   f(a);
+   f(p);
    std::cout << a << std::endl; //11
 }
 ```
