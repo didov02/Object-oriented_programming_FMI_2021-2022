@@ -53,11 +53,7 @@ Vector<T>::Vector(const Vector<T>& other) {
 
 template <typename T>
 Vector<T>::Vector(Vector<T>&& other) {
-	data = other.data;
-	size = other.size;
-	capacity = other.capacity;
-
-	other.data = nullptr;
+	move(other);
 }
 
 template <typename T>
@@ -76,11 +72,7 @@ Vector<T>& Vector<T>::operator=(Vector<T>&& other) {
 	if (this != &other)
 	{
 		free();
-		data = other.data;
-		size = other.size;
-		capacity = other.capacity;
-
-		other.data = nullptr;
+		move(other);
 	}
 
 	return *this;
