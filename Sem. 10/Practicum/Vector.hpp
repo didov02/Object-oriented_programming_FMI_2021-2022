@@ -149,7 +149,8 @@ T& Vector<T>::popAt(size_t index) {
 	T temp = data[index];
 	for (size_t i = index; i < size - 1; i++)
 		data[i] = data[i + 1];
-
+	
+	size--;
 	return temp;
 }
 
