@@ -20,23 +20,23 @@ public:
 	size_t getSize() const;
 	size_t getCapacity() const;
 
-	void pushBack(const T& n);
+	void pushBack(const T&);
 	void pushBack(T&& n);
-	void pushAt(const T& n, const size_t index);
-	void pushAt(T&& n, const size_t index);
+	void pushAt(const T&, const size_t);
+	void pushAt(T&&, const size_t);
 	T& popBack();
-	T& popAt(const size_t index);
-	T& operator[](const size_t index);
-	const T& operator[](const size_t index) const;
+	T& popAt(const size_t);
+	T& operator[](const size_t);
+	const T& operator[](const size_t) const;
 	bool empty() const;
 	void clear(); 
-	void swap(const Vector<T>& other);
+	void swap(const Vector<T>&);
 private:
 	void copy(const Vector&);
 	void free();
 
-	size_t calculateCapacity(const size_t number) const;
-	void resize(const size_t expectedCapacityToFit);
+	size_t calculateCapacity(const size_t) const;
+	void resize(const size_t);
 };
 
 template <typename T>
