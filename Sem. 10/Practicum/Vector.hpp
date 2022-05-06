@@ -34,6 +34,7 @@ public:
 private:
 	void copy(const Vector&);
 	void free();
+	void move(Vector&&);
 
 	size_t calculateCapacity(const size_t) const;
 	void resize(const size_t);
@@ -219,6 +220,15 @@ void Vector<T>::free() {
 	capacity = 0;
 }
 
+void Vector<T>::move(Vector&& other)
+{
+	data = other.data;
+	size = other.size;
+	capacity = other.capacity;
+
+	other.data = nullptr;
+	capacity = size = 0;
+}
 template <typename T>
 size_t Vector<T>::calculateCapacity(const size_t number) const {
 	size_t result = DEFAULT_CAPACITY;
