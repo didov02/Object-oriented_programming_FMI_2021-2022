@@ -185,7 +185,7 @@ void Vector<T>::clear() {
 
 template <typename T>
 void Vector<T>::swap(const Vector<T>& other) {
-	Vector<T> tempVector(*this);
+	Vector<T> tempVector(std::move(*this));
 	*this = std::move(other);
 	other = std::move(tempVector);
 }
