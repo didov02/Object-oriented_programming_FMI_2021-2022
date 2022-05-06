@@ -185,17 +185,9 @@ void Vector<T>::clear() {
 
 template <typename T>
 void Vector<T>::swap(const Vector<T>& other) {
-	T* tempData = this->data;
-	size_t tempSize = this->size;
-	size_t tempCapacity = this->capacity;
-
-	this->data = other.data;
-	this->size = other.size;
-	this->capacity = other.capacity;
-
-	other.data = tempData;
-	other.size = tempSize;
-	other.capacity = tempCapacity;
+	Vector<T> tempVector(*this);
+	*this = std::move(other);
+	other = std::move(tempVector);
 }
 
 template <typename T>
