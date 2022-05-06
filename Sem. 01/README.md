@@ -35,7 +35,7 @@ int main()
 
 void f(int a)
 {
-   a++;
+   a++; //increments copy
 }
 
 int main()
@@ -52,7 +52,7 @@ int main()
 
 void f(int& a)
 {
-   a++; //a++ will increment the pointer
+   a++; //increments actual data on the given address
 }
 
 int main()
@@ -73,8 +73,8 @@ void f(int* a)
 int main()
 {
    int a = 10;
-   f(a);
-   std::cout << a << std::endl; //Compilation Error
+   f(a); //Compilation Error
+   std::cout << a << std::endl;
 }
 ```
 
