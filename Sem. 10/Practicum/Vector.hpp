@@ -42,8 +42,7 @@ private:
 template <typename T>
 Vector<T>::Vector() {
 	data = nullptr;
-	size = 0;
-	capacity = 0;
+	capacity = size = 0;
 }
 
 template <typename T>
