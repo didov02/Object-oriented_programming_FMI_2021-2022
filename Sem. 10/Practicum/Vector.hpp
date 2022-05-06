@@ -52,7 +52,7 @@ Vector<T>::Vector(const Vector<T>& other) {
 
 template <typename T>
 Vector<T>::Vector(Vector<T>&& other) {
-	move(other);
+	move(std::move(other));
 }
 
 template <typename T>
@@ -71,7 +71,7 @@ Vector<T>& Vector<T>::operator=(Vector<T>&& other) {
 	if (this != &other)
 	{
 		free();
-		move(other);
+		move(std::move(other));
 	}
 
 	return *this;
@@ -222,7 +222,7 @@ void Vector<T>::move(Vector&& other)
 	capacity = other.capacity;
 
 	other.data = nullptr;
-	capacity = size = 0;
+	other.capacity = other.size = 0;
 }
 template <typename T>
 size_t Vector<T>::calculateCapacity(const size_t number) const {
