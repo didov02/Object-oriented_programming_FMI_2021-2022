@@ -212,8 +212,7 @@ template <typename T>
 void Vector<T>::free() {
 	delete[] data;
 	data = nullptr;
-	size = 0;
-	capacity = 0;
+	capacity = size = 0;
 }
 
 void Vector<T>::move(Vector&& other)
