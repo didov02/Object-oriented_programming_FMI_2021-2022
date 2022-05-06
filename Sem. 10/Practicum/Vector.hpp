@@ -202,7 +202,7 @@ template <typename T>
 void Vector<T>::copy(const Vector<T>& other) {
 	size = other.size;
 	capacity = other.capacity;
-	data = new T[size];
+	data = new T[capacity];
 
 	for (size_t i = 0; i < size; i++)
 		data[i] = other[i];
