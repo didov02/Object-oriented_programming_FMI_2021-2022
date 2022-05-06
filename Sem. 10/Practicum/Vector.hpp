@@ -207,6 +207,7 @@ void Vector<T>::free() {
 	capacity = size = 0;
 }
 
+template <typename T>
 void Vector<T>::move(Vector&& other)
 {
 	data = other.data;
