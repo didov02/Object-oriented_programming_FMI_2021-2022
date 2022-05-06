@@ -8,7 +8,6 @@ private:
 	T* data;
 	size_t size;
 	size_t capacity;
-
 public:
 	Vector();
 	Vector(const Vector<T>&);
