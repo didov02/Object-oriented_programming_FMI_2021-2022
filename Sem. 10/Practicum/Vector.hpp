@@ -94,42 +94,43 @@ size_t Vector<T>::getCapacity() const {
 }
 
 template <typename T>
-void Vector<T>::pushBack(const T& n) {
+void Vector<T>::pushBack(const T& element) {
 	if (size + 1 > capacity)
 		resize(size + 1);
 
-	data[size++] = n;
+	data[size++] = element;
 }
 
 
 template <typename T>
-void Vector<T>::pushBack(T&& n) {
+void Vector<T>::pushBack(T&& element) {
 	if (size + 1 > capacity)
 		resize(size + 1);
 
-	data[size++] = n;
+	data[size++] = element;
 }
 
 template <typename T>
-void Vector<T>::pushAt(const T& n, const size_t index) {
+void Vector<T>::pushAt(const T& element, const size_t index) {
 	if (size + 1 > capacity)
 		resize(size + 1);
 
 	for (size_t i = size; i > index; i--)
 		data[i] = data[i - 1];
 
-	data[index] = n;
+	data[index] = element;
 	size++;
-}
+} 
 
 template <typename T>
-void Vector<T>::pushAt(T&& n, const size_t index) {
-	if (size + 1 > capacity) resize(size + 1);
+void Vector<T>::pushAt(T&& element, const size_t index) {
+	if (size + 1 > capacity)
+		resize(size + 1);
 
 	for (size_t i = size; i > index; i--)
 		data[i] = data[i - 1];
 
-	data[index] = n;
+	data[index] = element;
 	size++;
 }
 
