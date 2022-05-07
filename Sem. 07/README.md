@@ -68,10 +68,10 @@ public:
 	.
 	.
 }
- ```
-  ```c++
+```
+```c++
 
 double getModulos(const Complex& other)
 {
-	return sqrt((other.real – other.real) * (other.real – other.real) + (other.im – other.im ) * (other.im – other.im));
+	return sqrt((other.real * other.real) + (other.im *other.im));
 }
