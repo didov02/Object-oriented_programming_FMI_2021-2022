@@ -93,6 +93,8 @@ Person& Person::operator=(Person&& rhs)
 		free();
 
 		name = rhs.name;
+		age = rhs.age;
+		
 		rhs.name = nullptr;
 	}
 	return *this;
