@@ -13,7 +13,7 @@ public:
 	Queue<T>& operator=(const Queue<T>&);
 	~Queue();
 
-	T peek() const; // returns the element at the begining of the queue
+	T& peek() const; // used to access or modify the next element
 	void enqueue(const T&); // add item to the queue
 	T dequeue(); //remove item from the queue (first/front/head element)
 
@@ -61,7 +61,7 @@ Queue<T>::~Queue()
 }
 
 template <typename T>
-T Queue<T>::peek() const {
+T& Queue<T>::peek() const {
 	if (isEmpty())
 		throw std::exception("The collection is empty!");
 
