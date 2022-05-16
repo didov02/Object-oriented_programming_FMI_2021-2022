@@ -94,7 +94,7 @@ size_t Queue<T>::getCount() const
 }
 
 template <typename T>
-size_t Queue<T>::isEmpty() const
+bool Queue<T>::isEmpty() const
 {
 	return count == 0;
 }
