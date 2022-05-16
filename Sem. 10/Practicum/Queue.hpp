@@ -63,12 +63,9 @@ void Queue<T>::enqueue(const T& obj)
 {
 	if (count == capacity)
 		resize(capacity * 2);
-	if (count != 0)
-		tail++;
 
+	data[tail++] = obj;
 	tail %= capacity;
-
-	data[tail] = obj;
 
 	count++;
 }
@@ -112,7 +109,7 @@ void Queue<T>::resize(const size_t newCapacity)
 	data = newData;
 
 	head = 0;
-	tail = count - 1;
+	tail = count;
 }
 
 template <typename T>
