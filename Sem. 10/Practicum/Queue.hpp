@@ -5,11 +5,8 @@ template <typename T>
 class Queue
 {
 	T* data;
-	size_t capacity;
-	size_t count;
-
-	size_t head;
-	size_t tail;
+	size_t capacity, count;
+	size_t head, tail;
 public:
 	Queue();
 	Queue(const Queue<T>&);
@@ -20,9 +17,9 @@ public:
 	T dequeue();
 
 	size_t getCount() const;
-	size_t isEmpty() const;
+	bool isEmpty() const;
 private:
-	void resize(size_t);
+	void resize(const size_t);
 
 	void copyFrom(const Queue<T>&);
 	void free();
@@ -79,7 +76,7 @@ void Queue<T>::enqueue(const T& obj)
 template <typename T>
 T Queue<T>::dequeue()
 {
-	if (count == 0)
+	if (isEmpty())
 		throw std::exception("The collection is empty!");
 
 	T toReturn = data[head];
@@ -103,14 +100,14 @@ size_t Queue<T>::isEmpty() const
 }
 
 template <typename T>
-void Queue<T>::resize(size_t newCapacity)
+void Queue<T>::resize(const size_t newCapacity)
 {
 	T* newData = new T[newCapacity];
 
-	for (int i = 0, ind = head; i < count; i++, (++ind) %= capacity)
+	for (size_t i = 0, ind = head; i < count; i++, (++ind) %= capacity)
 		newData[i] = data[ind];
 
-	delete[] data;
+	free();
 	capacity = newCapacity;
 	data = newData;
 
@@ -123,7 +120,7 @@ void Queue<T>::copyFrom(const Queue<T>& other)
 {
 	data = new T[other.capacity];
 
-	for (int i = 0; i < other.capacity; i++)
+	for (size_t i = 0; i < other.capacity; i++)
 		data[i] = other.data[i];
 
 	head = other.head;
