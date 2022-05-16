@@ -4,15 +4,16 @@ class Queue
 {
 	T* data; // array to store queue elements
 	size_t capacity, //maximum capacity 
-	       count; //size of the queue
+		count; //size of the queue
 	size_t head, //first element of the queue
-	       tail; //last element of the queue
+		tail; //last element of the queue
 public:
 	Queue();
 	Queue(const Queue<T>&);
 	Queue<T>& operator=(const Queue<T>&);
 	~Queue();
 
+	T peek() const; // returns the element at the begining of the queue
 	void enqueue(const T&); // add item to the queue
 	T dequeue(); //remove item from the queue (first/front/head element)
 
@@ -57,6 +58,14 @@ template <typename T>
 Queue<T>::~Queue()
 {
 	free();
+}
+
+template <typename T>
+T Queue<T>::peek() const {
+	if (isEmpty())
+		throw std::exception("The collection is empty!");
+
+	return data[head];
 }
 
 template <typename T>
