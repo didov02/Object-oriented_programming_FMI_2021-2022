@@ -1,23 +1,24 @@
 #pragma once
-#include <iostream>
-
 template <typename T>
 class Queue
 {
-	T* data;
-	size_t capacity, count;
-	size_t head, tail;
+	T* data; // array to store queue elements
+	size_t capacity, //maximum capacity 
+	       count; //size of the queue
+	size_t head, //first element of the queue
+	       tail; //last element of the queue
 public:
 	Queue();
 	Queue(const Queue<T>&);
 	Queue<T>& operator=(const Queue<T>&);
 	~Queue();
 
-	void enqueue(const T&);
-	T dequeue();
+	void enqueue(const T&); // add item to the queue
+	T dequeue(); //remove item from the queue (first/front/head element)
 
 	size_t getCount() const;
 	bool isEmpty() const;
+	bool isFull() const;
 private:
 	void resize(const size_t);
 
@@ -61,7 +62,7 @@ Queue<T>::~Queue()
 template <typename T>
 void Queue<T>::enqueue(const T& obj)
 {
-	if (count == capacity)
+	if (isFull())
 		resize(capacity * 2);
 
 	data[tail++] = obj;
@@ -78,7 +79,6 @@ T Queue<T>::dequeue()
 
 	T toReturn = data[head];
 	(++head) %= capacity;
-
 	count--;
 
 	return toReturn;
@@ -94,6 +94,12 @@ template <typename T>
 bool Queue<T>::isEmpty() const
 {
 	return count == 0;
+}
+
+template <typename T>
+bool Queue<T>::isFull() const
+{
+	return count == capacity;
 }
 
 template <typename T>
