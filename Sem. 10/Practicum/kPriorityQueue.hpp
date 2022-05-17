@@ -64,7 +64,7 @@ void kPriorityQueue<T>::copyFrom(const kPriorityQueue<T>& other) {
 template<typename T>
 void kPriorityQueue<T>::free() {
 	delete[] queues;
-	maxPriority = 0;
+	maxPriority = size = 0;
 }
 
 template<typename T>
