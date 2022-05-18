@@ -41,7 +41,7 @@ int main()
 
 В нашия пример класът **В е наследник на класа А.** Обекти от класовете изглеждат така:
 
-![enter image description here](https://i.ibb.co/Fshm2LJ/Untitled-Diagram.png)
+![alt text](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/blob/main/Sem.%2011/img/inher-img1.PNG)
 
 
 След като  В е наследник на класа А, то при създаване на обект от тип В се създава обект от тип А, **който е част от обекта** от тип В.
