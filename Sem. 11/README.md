@@ -144,20 +144,69 @@ int main()
  ```
 
 ### Конструктури и деструктори при наследяване.
+
+```c++
+Q: How can we control exactly which Base class constructor is used during initialization?
+A: We can invoke whichever Base class constructor we wish in the initialization list of the Derived class.
+```
 Във всеки контструктор на класът-наследник, трябва да се оказва кой конструктор да се извика за базовия клас. <br />
 Ако не оказано, ще се извика конструктора по подразбиране.
 
 ```c++
-class B : public A
+class Derived : public Base
 {
-	//some code
+.
+.
+.
 public:
-	B(...) : A(...) //some constructor of A.
+Derived(...) : Base(...)
 	{
-		//some code
+		.
+		.
+		.
 	}
 }
- ```
+```
+ 
+```c++
+class Base
+{
+private:
+	int value;
+public:
+	Base() : value(0)
+	{
+		std::cout << "Base default constructor called\n"  << std::endl;
+	}
+	Base(int x) : value(x)
+	{
+		std::cout << "Base (int) constructor called\n"  << std::endl;
+	}
+	~Base()
+	{
+		std::cout << "Base destructor called\n" << std::endl;
+	}
+};
+
+class Derived : public Base
+{
+private:
+	int doubledValue;
+public:
+	Derived() : Base(0), doubledValue(0)
+	{
+		std::cout << "Derived default constructor called\n" << std::endl;
+	}
+	Derived(int x) : Base(x), doubledValue(2*x)
+	{
+		std::cout << "Derived (int) constructor called\n" << std::endl;
+	}
+	~Derived()
+	{
+		std::cout << "Derived destructor called\n" << std::endl;
+	}
+};
+```
 Деструкторът на наследния клас извиква деструктора на базовия клас.
 
 
