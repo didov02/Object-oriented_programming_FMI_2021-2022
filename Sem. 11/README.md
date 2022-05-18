@@ -54,6 +54,8 @@ int main()
  - protected
  - public
 
+![alt text](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/blob/main/Sem.%2011/img/visibility.png)
+
 Примери:
 ```c++
 class A 
