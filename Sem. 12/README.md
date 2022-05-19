@@ -355,16 +355,15 @@ int main()
 ```
 
 ### Interface vs Abstract Classes:
-Интерфейсът няма реализация на нито един от своите методи.Tой може да се разглежда като колекция от декларации на методи.
-В C++ интерфейсът може да бъде симулиран, като всички методи се правят като чисто виртуални.
-
+Интерфейсът няма реализация на нито един от своите методи.Tой може да се разглежда като колекция от декларации на методи. <br />
+В C++ интерфейсът може да бъде симулиран, като всички методи се правят като чисто виртуални. <br />
+                               
 Допълнително информация:
 В Java има отделна ключова дума за интерфейс.
 - keyword interface за интерфейс
 - keyword abstract за aбстракция (function can be made pure virtual or abstract with keyword abstract)
 
 ## Diamond problem
-
 ```c++
 //indicate problem
 
@@ -410,9 +409,8 @@ SuperClass default constructor is called //<------------
 B default constructor is called
 C default constructor is called
 ```
-Конструктора на SuperClass бива извикан 2 пъти, а ако имахме и деструктор - той също щеше да бъде извикан 2 пъти.
+Конструктора на SuperClass бива извикан 2 пъти, а ако имахме и деструктор - той също щеше да бъде извикан 2 пъти. <br />
 Тоест, обектът obj има 2 копия на всички данни на базовия клас SuperClass, което предизвиква двусмислия/неяснотии(ambiguous behaviour)
-
 ```c++
 #include <iostream>
 
@@ -455,8 +453,8 @@ A default constructor is called
 B default constructor is called
 C default constructor is called
 ```
-Solution - virtual.
-Класовете А и В трябва да бъдат виртуални базови класове(virtual inheritance), за да избегнем 2-те копия на SuperClass.
+Solution - virtual. <br />
+Класовете А и В трябва да бъдат виртуални базови класове(virtual inheritance), за да избегнем 2-те копия на SuperClass. <br />
 
 Важно:
 Когато използваме keyword: virtual, **конструкторът по подразбиране на прародителя се извиква по подразбиране**, дори ако родителските класове извикват изрично конструктор с параметри.
