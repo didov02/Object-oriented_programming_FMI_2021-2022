@@ -19,14 +19,19 @@ struct B : A
     }	
 };
 
+void func(A& obj) const 
+{
+     obj.f();
+}	
+
 int main()
 {
 	B* bPtr = new B();
 
 	A* aPtr = bPtr;
 	
-	bPtr->f(); // A::f()
-	aPtr->f(); // A::f()
+	func(*aPtr); // A::f()
+	func(*bPtr); // A::f()
 }
  ```
 
@@ -291,7 +296,7 @@ int main()
 	//from base-class pointer
 	animals[0]->sayHello(); // Hello, I am a dog!
 	animals[1]->sayHello(); // Hello, I am a cat!
-	animals[2]->sayHello(); // Hello, I am a random animal!
+	animals[2]->sayHello(); // Hello, I am a mouse!
 
 	delete animals[0], animals[1], animals[2];
 	delete[] animals;
