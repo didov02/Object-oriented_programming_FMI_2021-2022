@@ -1,6 +1,4 @@
-## Статично и динамично свързване. Виртуални функции. Полиморфизъм. Абстрактни класове.
-
-### Статично и динамично свързване.
+## Статично и динамично свързване.
 
 ```c++
 #include <iostream>
@@ -66,14 +64,14 @@ int main()
 	ptrs[1]->f(); // B::f()
 }
  ```
- 
-### Virtual functions(Виртуални функции)
+
+## Virtual functions(Виртуални функции)
 
 Член-функция, която е декларирана в основен клас(Base class) и е предефинирана от производен клас(Derived class). <br />
 Гарантират, че правилната функция ще се извика за даден обект, независимо от типа reference/pointer(типа препратка), <br />
 използван за извикване на функцията. Те се използват главно за постигане на Runtime polymorphism. <br />
 
-#### Правила за виртуални функции
+### Правила за виртуални функции
   - **не могат** да бъдат static.
   - може да бъде приятелска функция на друг клас.
   - Прототипът на виртуалните функции трябва да бъде един и същ както в базовия, така и в производния клас.ю
@@ -81,11 +79,59 @@ int main()
   - Достъпът до виртуалните функции трябва да се осъществява използвайки reference/pointer към базовия клас, за да се осъществи Runtime polymorphism.
   - **Класът може да има виртуален деструктор, но не може да има виртуален конструктор.**
 
-#### Virtual pointer(vPtr) | Virtual table(vTable)
+### Virtual pointer(vPtr) | Virtual table(vTable)
 
 ![alt text](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/blob/main/Sem.%2012/img/vtable-1.png)
 
-### Полиморфизъм
+```c++
+class base {
+public:
+    virtual void print() const
+    {
+        std::cout << "print base class\n";
+    }
+
+    void show() const
+    {
+        std::cout << "show base class\n";
+    }
+};
+
+class derived : public base {
+public:
+    void print() const override
+    {
+        std::cout << "print derived class\n";
+    }
+
+    void show() const
+    {
+        std::cout << "show derived class\n";
+    }
+};
+
+int main()
+{
+    base* bptr;
+    derived d;
+    bptr = &d;
+
+    // Virtual function, binded at runtime
+    bptr->print();
+
+    // Non-virtual function, binded at compile time
+    bptr->show();
+
+    return 0;
+}
+```
+Output:
+```
+print derived class
+show base class
+```
+
+## Полиморфизъм
 Едни и същи действия се реализират по различен начин, в зависимост от обектите, върху които се прилагат. <br />
 An entity(object or function) behaves differently in different scenarios. <br />
  - Действията се наричат **полиморфни**.
@@ -95,11 +141,46 @@ An entity(object or function) behaves differently in different scenarios. <br />
  - Всеки клас предефинира или не виртуалния метод.
  - "Активирането" става чрез указател към базов клас, на който може да се присвоят адресите на обекти на който и да е от базовите класове от йерархията.
 
-#### Compile time polymorphism vs Runtime polymorphism
+### Compile time polymorphism vs Runtime polymorphism
 - Compile time - дадена функция се извиква по време на компилация на програмата(function overload/operator overload).
 - Runtime - функциите се извикват в момента на изпълнение на програмата (Dynamic binding/Late binding).
 
 **Важно!** При полиморфна йерархия ще изтриваме обектите чрез указатели от базовия клас. За да се извикват правилните деструкори задължително **деструкторът на базовият клас** трябва е деклариран като виртуален!
+```c++
+#include <iostream>
+
+class Base {
+public:
+    Base()
+    {
+        std::cout << "Constructing base\n";
+    }
+    virtual ~Base()
+    {
+        std::cout << "Destructing base\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    Derived()
+    {
+        std::cout << "Constructing derived\n";
+    }
+    ~Derived()
+    {
+        std::cout << "Destructing derived\n";
+    }
+};
+
+int main()
+{
+    Derived* d = new Derived();
+    Base* b = d;
+    delete b;
+}
+```
+
 ```c++
 #include<iostream>
 
@@ -110,8 +191,9 @@ struct Animal
 		std::cout << "Hello, I am a random animal" << std::endl;
 	}
 
-	virtual ~Animal(){} //!!!
+	virtual ~Animal(){} //virtual destructor
 };
+
 struct Dog : public Animal
 {
 	void sayHello() const override
@@ -128,9 +210,7 @@ struct Cat : public Animal
 	}
 };
 
-struct Mouse : public Animal
-{
-};
+struct Mouse : public Animal {};
 
 int main()
 {
@@ -149,11 +229,10 @@ int main()
 	delete animals[0], animals[1], animals[2];
 	delete[] animals;
 }
+```
 
- ```
- #### Абстрактен клас
+## Абстрактен клас
  
-
  - Чисто виртуална функция (**pure virtual function**) - виртуална функция без тяло.
  - Клас е **абстрактен**, ако в него има поне една **чисто виртуална функция**.
 
@@ -166,9 +245,8 @@ int main()
 struct Animal
 {
 	virtual void sayHello() const = 0;
-
-
-	virtual ~Animal(){} //!!!
+	
+	virtual ~Animal(){} 
 };
 struct Dog : public Animal
 {
@@ -217,5 +295,9 @@ int main()
 	delete animals[0], animals[1], animals[2];
 	delete[] animals;
 }
+```
 
- ```
+### Pure virtual destructor
+
+###Interface vs Abstract Classes: 
+
