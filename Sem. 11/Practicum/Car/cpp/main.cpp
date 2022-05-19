@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "Battery.h"
-#include "Tire.h"
-#include "Engine.h"
-#include "FuelTank.h"
-#include "Car.h"
+#include "../h/Battery.h"
+#include "../h/Tire.h"
+#include "../h/Engine.h"
+#include "../h/FuelTank.h"
+#include "../h/Car.h"
 
 int main() {
     try {

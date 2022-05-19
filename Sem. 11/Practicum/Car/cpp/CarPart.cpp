@@ -1,4 +1,4 @@
-#include "CarPart.h"
+#include "../h/CarPart.h"
 
 std::ostream &operator<<(std::ostream &out, const CarPart &other) {
     out << "(" << other.id << ") by "

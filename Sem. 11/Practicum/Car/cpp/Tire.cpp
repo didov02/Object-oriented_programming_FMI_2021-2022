@@ -1,4 +1,4 @@
-#include "Tire.h"
+#include "../h/Tire.h"
 
 Tire::Tire() : CarPart() {
     width = -1;

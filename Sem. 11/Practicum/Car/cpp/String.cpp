@@ -1,4 +1,4 @@
-#include "String.h"
+#include "../h/String.h"
 
 void String::copy(const String &other) {
     size = other.size;
