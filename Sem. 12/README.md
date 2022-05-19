@@ -2,7 +2,6 @@
 
 ```c++
 #include <iostream>
-using namespace std;
 
 struct A
 { 
@@ -12,7 +11,7 @@ struct A
     }	
 };
 
-struct B : public A
+struct B : A
 {
     void f() const 
     {
@@ -301,5 +300,171 @@ int main()
 
 ### Pure virtual destructor
 
-###Interface vs Abstract Classes: 
+```c++
+// Initilization of base class
+class Base {
+public:
+    virtual ~Base() = 0; // Pure virtual destructor
+};
 
+// Initilization of derived class
+class Derived : public Base {
+public:
+    ~Derived() {
+        std::cout << "~Derived() is executed";
+    }
+};
+
+int main()
+{
+    // base class pointer which is
+    // allocating fresh storage
+    // for Derived function object's
+    Base* b = new Derived();
+    delete b;
+}
+```
+Output: **Compile error**
+
+Pure virtual destructor трябва **изрично** да бъде дефиниран.(explicitly defined)
+```c++
+// Initilization of base class
+class Base {
+public:
+    virtual ~Base() = 0; // Pure virtual destructor
+};
+Base::~Base() // Explicit destructor call
+{
+    std::cout << "Pure virtual destructor is called" << std::endl;
+}
+
+// Initilzation of derived class
+class Derived : public Base {
+public:
+    ~Derived() {
+        std::cout << "~Derived() is executed" << std::endl;
+    }
+};
+
+int main()
+{
+    // Calling of derived member function
+    Base* b = new Derived();
+    delete b;
+}
+```
+
+### Interface vs Abstract Classes:
+Интерфейсът няма реализация на нито един от своите методи.Tой може да се разглежда като колекция от декларации на методи.
+В C++ интерфейсът може да бъде симулиран, като всички методи се правят като чисто виртуални.
+
+Допълнително информация:
+В Java има отделна ключова дума за интерфейс.
+- keyword interface за интерфейс
+- keyword abstract за aбстракция (function can be made pure virtual or abstract with keyword abstract)
+
+## Diamond problem
+
+```c++
+//indicate problem
+
+#include <iostream>
+
+class SuperClass {
+public:
+    SuperClass() {
+        std::cout << "SuperClass default constructor is called" << std::endl;
+    }
+};
+
+class A : public SuperClass {
+public:
+    A() {
+        std::cout << "A default constructor is called" << std::endl;
+    }
+};
+
+class B : public SuperClass {
+public:
+    B(){
+        std::cout << "B default constructor is called" << std::endl;
+    }
+};
+
+class C : public A, public B {
+public:
+    C() {
+        std::cout << "C default constructor is called" << std::endl;
+    }
+};
+
+int main() {
+    C obj;
+}
+```
+Output:
+```
+SuperClass default constructor is called
+A default constructor is called
+SuperClass default constructor is called //<------------
+B default constructor is called
+C default constructor is called
+```
+Конструктора на SuperClass бива извикан 2 пъти, а ако имахме и деструктор - той също щеше да бъде извикан 2 пъти.
+Тоест, обектът obj има 2 копия на всички данни на базовия клас SuperClass, което предизвиква двусмислия/неяснотии(ambiguous behaviour)
+
+```c++
+#include <iostream>
+
+class SuperClass {
+public:
+    SuperClass() {
+        std::cout << "SuperClass default constructor is called" << std::endl;
+    }
+};
+
+class A : virtual public SuperClass {
+public:
+    A() {
+        std::cout << "A default constructor is called" << std::endl;
+    }
+};
+
+class B : virtual public SuperClass {
+public:
+    B(){
+        std::cout << "B default constructor is called" << std::endl;
+    }
+};
+
+class C : public A, public B {
+public:
+    C() {
+        std::cout << "C default constructor is called" << std::endl;
+    }
+};
+
+int main() {
+    C obj;
+}
+```
+Output:
+```
+SuperClass default constructor is called
+A default constructor is called
+B default constructor is called
+C default constructor is called
+```
+Solution - virtual.
+Класовете А и В трябва да бъдат виртуални базови класове(virtual inheritance), за да избегнем 2-те копия на SuperClass.
+
+Важно:
+Когато използваме keyword: virtual, **конструкторът по подразбиране на прародителя се извиква по подразбиране**, дори ако родителските класове извикват изрично конструктор с параметри.
+
+```
+Example to be added - TBA
+```
+
+```
+override+final - TBA
+```
