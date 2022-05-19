@@ -364,6 +364,7 @@ int main()
 - keyword abstract за aбстракция (function can be made pure virtual or abstract with keyword abstract)
 
 ## Diamond problem
+![alt text](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/blob/main/Sem.%2012/img/diamond-problem.png)
 ```c++
 //indicate problem
 
