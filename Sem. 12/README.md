@@ -84,7 +84,8 @@ int main()
 ![alt text](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/blob/main/Sem.%2012/img/vtable-1.png)
 
 ```c++
-class base {
+class Base
+{
 public:
     virtual void print() const
     {
@@ -97,7 +98,8 @@ public:
     }
 };
 
-class derived : public base {
+class Derived : public Base
+{
 public:
     void print() const override
     {
@@ -112,8 +114,8 @@ public:
 
 int main()
 {
-    base* bptr;
-    derived d;
+    Base* bptr;
+    Derived d;
     bptr = &d;
 
     // Virtual function, binded at runtime
