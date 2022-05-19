@@ -19,7 +19,7 @@ struct B : A
     }	
 };
 
-void func(A& obj) const 
+void func(const A& obj) 
 {
      obj.f();
 }	
