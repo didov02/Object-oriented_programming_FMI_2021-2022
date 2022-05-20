@@ -121,13 +121,16 @@ class D : private A    // 'private' is default for classes
 ```c++
 class A
 {
+public:
 	int a;
-}
+};
+
 class B : public A
 {
 public:
 	int b;
-}
+};
+
 void f(A& obj)
 {
 	obj.a++;
