@@ -16,13 +16,15 @@ class Tire : public CarPart {
     double diameter; //between 13 and 21 inches
 
 public:
-    Tire();
-
     Tire(double width, double profile, double diameter, unsigned long id, const String &producer, const String &description);
 
     friend std::ostream &operator<<(std::ostream &out, const Tire &other);
 
+    void setWidth(double width);
 
+    void setProfile(double profile);
+
+    void setDiameter(double diameter);
 };
 
 

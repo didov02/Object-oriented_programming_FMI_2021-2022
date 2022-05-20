@@ -5,12 +5,10 @@
 
 #include "CarPart.h"
 
-class Engine : public CarPart{
+class Engine : public CarPart {
     double hp;
 
 public:
-    Engine();
-
     Engine(double hp, unsigned long id, const String &producer, const String &description);
 
     friend std::ostream &operator<<(std::ostream &out, const Engine &other);

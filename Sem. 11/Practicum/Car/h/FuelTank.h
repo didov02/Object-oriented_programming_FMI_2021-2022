@@ -8,8 +8,6 @@ class FuelTank {
     double fuel; //in litres
 
 public:
-    FuelTank();
-
     FuelTank(double capacity);
 
     void fill(double litres);

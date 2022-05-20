@@ -3,7 +3,7 @@
 
 #include "CarPart.h"
 
-class Battery : public CarPart{
+class Battery : public CarPart {
     unsigned long batteryId;
     double capacity; //Ah
 

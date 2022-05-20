@@ -13,19 +13,17 @@ const double DRAG_DISTANCE = 0.4; //km
 
 class Car {
     FuelTank tank;
-    Engine engine;
+    const Engine *engine;
     int tiresCount;
-    Tire tires[TIRES_NUMBER];
-    Battery accumulator;
+    const Tire *tires[TIRES_NUMBER];
+    const Battery *accumulator;
     double kmTraveled;
     double weight; //kg
 
 public:
-    Car();
+    Car(const FuelTank &tank, const Engine *engine, const Battery *battery, double kmTraveled, double weight);
 
-    Car(const FuelTank &tank, const Engine &engine, const Battery &battery, double kmTraveled, double weight);
-
-    void addTire(const Tire &tire, int count = 1);
+    void addTire(const Tire *tire, int count = 1);
 
     void drive(double km);
 
@@ -36,9 +34,10 @@ public:
     double getWeight() const;
 
     const Engine &getEngine() const;
-};
 
-Car *dragRace(Car *car1, Car *car2);
+    friend Car *dragRace(Car *car1, Car *car2);
+
+};
 
 
 #endif //CARPART_CAR_H

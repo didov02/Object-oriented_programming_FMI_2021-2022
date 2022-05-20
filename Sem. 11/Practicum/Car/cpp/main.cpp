@@ -16,17 +16,17 @@ int main() {
 
         FuelTank tank(50);
 
-        Car peugeot(tank, e, b, 50000, 200);
+        Car peugeot(tank, &e, &b, 50000, 200);
 
-        peugeot.addTire(tire, 4);
+        peugeot.addTire(&tire, 4);
 
         peugeot.drive(40);
 
         std::cout << peugeot.getFuel() << std::endl;
 
-        Car golf(tank, e, b, 50000, 200);
+        Car golf(tank, &e, &b, 50000, 2000);
 
-        golf.addTire(tire, 4);
+        golf.addTire(&tire, 4);
 
         Car *winner = dragRace(&peugeot, &golf);
 
