@@ -5,10 +5,7 @@ Engine::Engine(double hp, unsigned long id, const String &producer, const String
 }
 
 std::ostream &operator<<(std::ostream &out, const Engine &other) {
-    out << (const CarPart &) other;
-
-    out << " - " << other.hp << "hp" << std::endl;
-
+    out << (const CarPart &) other << " - " << other.hp << "hp" << std::endl;
     return out;
 }
 

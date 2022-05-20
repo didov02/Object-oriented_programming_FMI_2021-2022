@@ -11,12 +11,7 @@ Tire::Tire(double width, double profile, double diameter, unsigned long id, cons
 }
 
 std::ostream &operator<<(std::ostream &out, const Tire &other) {
-    out << (const CarPart &) other;
-
-    out << other.width << "/"
-        << other.profile << "R"
-        << other.diameter << std::endl;
-
+    out << (const CarPart &) other << " - " << other.width << "/" << other.profile << "R" << other.diameter << std::endl;
     return out;
 }
 

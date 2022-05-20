@@ -12,9 +12,6 @@ Battery::Battery(unsigned long batteryId, double capacity, unsigned long id, con
 }
 
 std::ostream &operator<<(std::ostream &out, const Battery &other) {
-    out << (const CarPart &) other;
-
-    out << " - " << other.capacity << " Ah" << std::endl;
-
+    out << (const CarPart &) other << " - " << other.capacity << " Ah" << std::endl;
     return out;
 }

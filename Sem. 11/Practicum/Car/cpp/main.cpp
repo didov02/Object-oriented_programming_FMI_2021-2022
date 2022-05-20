@@ -10,9 +10,15 @@ int main() {
     try {
         Battery b(2, 15, 0, String("Sony"), String("Very good battery!"));
 
-        Engine e(115, 0, String("China"), String("Desc desc"));
+        std::cout << b << std::endl;
 
-        Tire tire(180, 80, 15, 0, String("Michelin"), String("For snow"));
+        Engine e(115, 1, String("China"), String("Desc desc"));
+
+        std::cout << e << std::endl;
+
+        Tire tire(180, 80, 15, 2, String("Michelin"), String("For snow"));
+
+        std::cout << tire << std::endl;
 
         FuelTank tank(50);
 
