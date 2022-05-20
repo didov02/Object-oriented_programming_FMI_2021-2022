@@ -8,8 +8,6 @@ class Battery : public CarPart {
     double capacity; //Ah
 
 public:
-    Battery();
-
     Battery(unsigned long batteryId, double capacity, unsigned long id, const String &producer, const String &description);
 
     friend std::ostream &operator<<(std::ostream &out, const Battery &other);

@@ -37,6 +37,8 @@ public:
 
     friend Car *dragRace(Car *car1, Car *car2);
 
+    double getRaceRatio() const;
+
 };
 
 

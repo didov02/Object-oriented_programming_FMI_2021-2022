@@ -39,7 +39,6 @@ const Engine &Car::getEngine() const {
 
 Car *dragRace(Car *car1, Car *car2) {
     bool canDrive1 = true;
-    bool canDrive2 = true;
 
     try {
         car1->drive(DRAG_DISTANCE);
@@ -50,23 +49,24 @@ Car *dragRace(Car *car1, Car *car2) {
     try {
         car2->drive(DRAG_DISTANCE);
     } catch (std::logic_error &e) {
-        canDrive2 = false;
-    }
-
-    if (canDrive1 && canDrive2) {
-        double ratio1 = car1->weight / car1->engine->getHp();
-        double ratio2 = car2->weight / car2->engine->getHp();
-
-        if (ratio1 < ratio2)
+        if (canDrive1)
             return car1;
-        if (ratio2 < ratio1)
-            return car2;
         return nullptr;
     }
 
-    if (canDrive1)
+    if (!canDrive1)
+        return car2;
+
+    double ratio1 = car1->getRaceRatio();
+    double ratio2 = car2->getRaceRatio();
+
+    if (ratio1 < ratio2)
         return car1;
-    if (canDrive2)
+    if (ratio2 < ratio1)
         return car2;
     return nullptr;
+}
+
+double Car::getRaceRatio() const {
+    return weight / engine->getHp();
 }
