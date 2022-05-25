@@ -14,7 +14,7 @@ struct Fruit
 
 struct Apple : public Fruit
 {
-	 void printColor() const override
+	void printColor() const override
 	{
 		std::cout << "Red or green! "<<std::endl;
 	}
@@ -34,6 +34,7 @@ struct Lemon : public Fruit
 	Lemon(size_t sourness) : sourness(sourness){}
 	
 	size_t sourness;
+	
 	void printColor() const override
 	{
 		std::cout << "Yellow! "<<std::endl;
@@ -46,19 +47,18 @@ private:
 	Fruit** fruits;
 	size_t capacity;
 	size_t count;
-          
-    void copyFrom(const FruitStore& other);
-    void free();
-    
 public:
 	FruitStore();
 	FruitStore(const FruitStore&);
 	FruitStore& operator=(const FruitStore&);
-        ~FruitStore();
+    ~FruitStore();
 	
 	void addApple();
-    	void addOrange();
-     	void addLemon(size_t sourness);
+    void addOrange();
+    void addLemon(size_t sourness);
+private:          
+    void copyFrom(const FruitStore& other);
+    void free();
 };
 
 void FruitStore::addApple()
@@ -70,6 +70,7 @@ void FruitStore::addOrange()
 {
 	fruits[count++] = new Orange();
 }
+
 void FruitStore::addLemon(size_t sourness)
 {
 	fruits[count++] = new Lemon(sourness);
@@ -83,6 +84,7 @@ void FruitStore::free()
 {
 	for(int i = 0; i < count; i++)
 		delete fruits[i];
+	
 	delete[] fruits;
 }
  ```
@@ -93,26 +95,24 @@ void FruitStore::free()
 За това дефинираме виртуална функция clone, която ще връща копие на обекта. Тази функция я разписваме във всеки от наследниците.
 
 ```c++
-
 struct Fruit
 {
 	virtual void printColor() const = 0;
 	virtual ~Fruit(){}
 
-      	virtual Fruit* clone() const = 0; //!
+    virtual Fruit* clone() const = 0; //!
 };
 
 struct Apple : public Fruit
 {
-	 void printColor() const override
+	void printColor() const override
 	{
 		std::cout << "Red or green! "<<std::endl;
 	}
 	Fruit* clone() const override
 	{
 		return new Apple(*this);
-    	}
-	
+    }
 };
 
 struct Orange : public Fruit
@@ -137,10 +137,11 @@ struct Lemon : public Fruit
 	{
 		std::cout << "Yellow! "<<std::endl;
 	}
+	
 	Fruit* clone() const override
 	{
 		return new Lemon(*this);
-    	}
+    }
 };
  ```
 От тук копирането става тривиално:
@@ -148,8 +149,10 @@ struct Lemon : public Fruit
 void FruitStore::copyFrom(const FruitStore& other)
 {
 	fruits = new Fruit*[other. capacity];
-	for(int i = 0; i < other.count; i++)
+	
+	for(size_t i = 0; i < other.count; i++)
 		fruits[i] = other.fruits[u]->clone();
+		
 	count = other.count;
 	capacity = other.capacity;
 }
