@@ -13,7 +13,7 @@
 - [Teма 10](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2010) : Шаблони. Реализация на шаблонен клас.
 - [Teма 11](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2011) : Наследяване. is-a взаимоотношения.
 - [Тема 12](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2012) : Статично и динамично свързване. Виртуални функции. Полиморфизъм. Абстрактни класове.
-
+- [Тема 13](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Sem.%2013) : Колекции от обекти в полиморфна йерархия(хетерогененконтейнер). Копиране и триене.
 
 ## Допълнителни материали
 - [Домашни](https://github.com/Justsvetoslavov/Object-oriented_programming_FMI_2021-2022/tree/main/Additional/Homeworks)
