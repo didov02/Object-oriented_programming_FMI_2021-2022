@@ -1,55 +1,9 @@
 
-# Виртуални таблици. Ключови думи override и final. Колекции от обекти в полиморфна йерархия. Копиране и триене.
-## Виртуални таблици.
+# Колекции от обекти в полиморфна йерархия. Копиране и триене.
 
-Виртуални таблици - таблица с указатели към функции. 
-
-```c++
-struct A
-{
-	virtual int f()
-	{
-		return 1;
-	}
-	virtual int g()
-	{
-		return 1;
-	}
-};
-
-struct B : public A
-{
-	int f() override
-	{
-		return 2;
-	}
-};
-
-struct C : public B
-{
-	int f() override
-	{
-		return 3;
-	} 
-	int g() override
-	{
-		return 3;
-	}
-};
-
-
- ```
-
-
-![enter image description here](https://i.ibb.co/dbzJTtm/vtable-2-1.png)
-
-## override и final
- - override указва, че дадена функция презаписва функция от базовия клас. Ако в базовия клас няма такава функция, то кодът няма да се компилира.
- - final указва, че дадена функция не може да се презависва надолу по йерархията или че даден клас не може да се наследява.
 ## Колекция.
 
 Можем да реализираме колекция от различни типове (но с общ базов клас), чрез масив от указатели. Указателите трябва да са от типа на базовия клас.
-
 ```c++
 struct Fruit
 {
@@ -100,7 +54,7 @@ public:
 	FruitStore();
 	FruitStore(const FruitStore&);
 	FruitStore& operator=(const FruitStore&);
-       ~FruitStore();
+        ~FruitStore();
 	
 	void addApple();
     	void addOrange();
@@ -200,4 +154,3 @@ void FruitStore::copyFrom(const FruitStore& other)
 	capacity = other.capacity;
 }
  ```
-
