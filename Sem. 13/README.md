@@ -97,50 +97,50 @@ void FruitStore::free()
 ```c++
 struct Fruit
 {
-	virtual void printColor() const = 0;
-	virtual ~Fruit(){}
+    virtual void printColor() const = 0;
+    virtual ~Fruit(){}
 
     virtual Fruit* clone() const = 0; //!
 };
 
 struct Apple : public Fruit
 {
-	void printColor() const override
-	{
-		std::cout << "Red or green! "<<std::endl;
-	}
-	Fruit* clone() const override
-	{
-		return new Apple(*this);
+    void printColor() const override
+    {
+	std::cout << "Red or green! "<<std::endl;
+    }
+    Fruit* clone() const override
+    {
+        return new Apple(*this);
     }
 };
 
 struct Orange : public Fruit
 {
-	void printColor() const override
-	{
-		std::cout << "Orange! "<<std::endl;
-	}
+     void printColor() const override
+     {
+	std::cout << "Orange! "<<std::endl;
+     }
 	
-	Fruit* clone() const override
-	{
-		return new Orange(*this);
-	}
+     Fruit* clone() const override
+     {
+	return new Orange(*this);
+     }
 };
 
 struct Lemon : public Fruit
 {
-	Lemon(size_t sourness) : sourness(sourness){}
+    Lemon(size_t sourness) : sourness(sourness){}
 	
-	size_t sourness;
-	void printColor() const override
-	{
-		std::cout << "Yellow! "<<std::endl;
-	}
+    size_t sourness;
+    void printColor() const override
+    {
+	std::cout << "Yellow! "<<std::endl;
+    }
 	
-	Fruit* clone() const override
-	{
-		return new Lemon(*this);
+    Fruit* clone() const override
+    {
+	return new Lemon(*this);
     }
 };
  ```
