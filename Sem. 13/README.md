@@ -48,17 +48,17 @@ private:
 	size_t capacity;
 	size_t count;
 public:
-	FruitStore();
-	FruitStore(const FruitStore&);
-	FruitStore& operator=(const FruitStore&);
-    ~FruitStore();
+        FruitStore();
+        FruitStore(const FruitStore&);
+        FruitStore& operator=(const FruitStore&);
+        ~FruitStore();
 	
-	void addApple();
-    void addOrange();
-    void addLemon(size_t sourness);
+        void addApple();
+        void addOrange();
+        void addLemon(size_t sourness);
 private:          
-    void copyFrom(const FruitStore& other);
-    void free();
+        void copyFrom(const FruitStore& other);
+        void free();
 };
 
 void FruitStore::addApple()
