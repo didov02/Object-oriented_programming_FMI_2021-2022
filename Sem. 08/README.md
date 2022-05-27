@@ -32,7 +32,7 @@ class A
 }
 class B
 {
-	B() : A(1, 2)
+	B() : obj(1, 2)
 	{}
 	
 	int n;
