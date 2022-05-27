@@ -12,7 +12,7 @@ public:
 	Shop& operator=(const Shop&);
 	~Shop();
 
-	bool addItem(const StoreItem*);
+	void addItem(const StoreItem&);
 	bool deleteItem(size_t);
 	bool changePrice(size_t, double);
 

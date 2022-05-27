@@ -18,18 +18,20 @@ Shop& Shop::operator=(const Shop& other)
 		free();
 		copy(other);
 	}
+
+	return *this;
 }
 Shop::~Shop()
 {
 	free();
 }
 
-bool Shop::addItem(const StoreItem* item)
+void Shop::addItem(const StoreItem& item)
 {
 	if (size >= capacity)
 		resize();
 
-	list[size++] = item->clone();
+	list[size++] = item.clone();
 }
 
 bool Shop::deleteItem(size_t index)
@@ -41,7 +43,15 @@ bool Shop::deleteItem(size_t index)
 	list[index] = nullptr;
 	return true;
 }
-//bool Shop::changePrice(size_t, double);
+
+bool Shop::changePrice(size_t index, double price)
+{
+	if (index >= size)
+		return false;
+
+	list[index]->setPrice(price);
+	return true;
+}
 
 void Shop::print() const
 {
