@@ -13,7 +13,7 @@ public:
 	~Board();
 
 	bool setAt(size_t, size_t, size_t, const T&);
-	T getAt(size_t,size_t,size_t) const;
+	const T& getAt(size_t,size_t,size_t) const;
 
 	void print() const;
 private:
@@ -81,7 +81,7 @@ bool Board<T>::setAt(size_t x, size_t y, size_t z, const T& el)
 }
 
 template <typename T>
-T Board<T>::getAt(size_t x, size_t y, size_t z) const
+const T& Board<T>::getAt(size_t x, size_t y, size_t z) const
 {
 	if (x >= this->x || y >= this->y || z >= this->z)
 		throw "Out of range";
