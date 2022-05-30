@@ -15,18 +15,18 @@ public:
 	Matrix(const Matrix<T>&); // copy constructor
 	Matrix<T>& operator=(const Matrix<T>&); // operator =
 	~Matrix(); // destructor
-
-	void setRows(const size_t);
-	void setCols(const size_t);
-
+	
 	const size_t getRows() const;
 	const size_t getCols() const;
 
 	bool setAt(const size_t, const size_t, const T&);
-	T getAt(const size_t, const size_t) const;
+	const T& getAt(const size_t, const size_t) const;
 	void transpose();
 
 	void print() const;
+protected:
+	void setRows(const size_t);
+	void setCols(const size_t);
 private:
 	void copy(const Matrix<T>&);
 	void free();
@@ -135,7 +135,7 @@ bool Matrix<T>::setAt(const size_t x, const size_t y, const T& element)
 	return true;
 }
 template<typename T>
-T Matrix<T>::getAt(const size_t x, const size_t y) const
+const T& Matrix<T>::getAt(const size_t x, const size_t y) const
 {
 	if (x >= rows || y >= cols)
 		throw std::out_of_range("Out of range");
