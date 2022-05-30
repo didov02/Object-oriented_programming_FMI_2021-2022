@@ -15,10 +15,7 @@ public:
 	Matrix(const Matrix<T>&); // copy constructor
 	Matrix<T>& operator=(const Matrix<T>&); // operator =
 	~Matrix(); // destructor
-
-	void setRows(const size_t);
-	void setCols(const size_t);
-
+	
 	const size_t getRows() const;
 	const size_t getCols() const;
 
@@ -27,9 +24,13 @@ public:
 	void transpose();
 
 	void print() const;
+protected:
+	void setRows(const size_t);
+	void setCols(const size_t);
 private:
 	void copy(const Matrix<T>&);
 	void free();
+	
 };
 
 //Private methods:
