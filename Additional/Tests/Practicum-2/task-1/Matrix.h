@@ -30,7 +30,6 @@ protected:
 private:
 	void copy(const Matrix<T>&);
 	void free();
-	
 };
 
 //Private methods:
