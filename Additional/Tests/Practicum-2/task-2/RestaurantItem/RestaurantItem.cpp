@@ -24,12 +24,12 @@ RestaurantItem::TypeOfItem RestaurantItem::getType() const
 
 size_t RestaurantItem::getQuantity() const
 {
-	return this->quantity;
+	return quantity;
 }
 
 double RestaurantItem::getPrice() const
 {
-	return this->price;
+	return price;
 }
 
 
