@@ -16,8 +16,8 @@ public:
 	Matrix<T>& operator=(const Matrix<T>&); // operator =
 	~Matrix(); // destructor
 	
-	const size_t getRows() const;
-	const size_t getCols() const;
+	size_t getRows() const;
+	size_t getCols() const;
 
 	bool setAt(const size_t, const size_t, const T&);
 	const T& getAt(const size_t, const size_t) const;
