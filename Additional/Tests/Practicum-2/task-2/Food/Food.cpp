@@ -42,12 +42,12 @@ Food::~Food()
 
 const char* Food::getName() const
 {
-	return this->name;
+	return name;
 }
 
 const double Food::getGrams() const
 {
-	return this->grams;
+	return grams;
 }
 
 void Food::setName(const char* name)
