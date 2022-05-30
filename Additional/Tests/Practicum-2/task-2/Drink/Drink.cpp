@@ -42,12 +42,12 @@ Drink::~Drink()
 
 const char* Drink::getName() const
 {
-	return this->name;
+	return name;
 }
 
 const double Drink::getAlc() const
 {
-	return this->alc;
+	return alc;
 }
 
 void Drink::setName(const char* name)
