@@ -114,12 +114,12 @@ void Matrix<T>::setCols(const size_t cols)
 
 //Accessors:
 template<typename T>
-const size_t Matrix<T>::getRows() const
+size_t Matrix<T>::getRows() const
 {
 	return rows;
 }
 template<typename T>
-const size_t Matrix<T>::getCols() const
+size_t Matrix<T>::getCols() const
 {
 	return cols;
 }
