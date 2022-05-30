@@ -41,6 +41,6 @@ const char* RestaurantItem::typeToStr() const
 void RestaurantItem::print() const
 {
 	std::cout << "Type: " << typeToStr() << std::endl
-		<< "Quantity: " << getQuantity() << std::endl
-		<< "Price: " << std::fixed << std::setprecision(2) << getPrice() << std::endl;
+		<< "Quantity: " << quantity << std::endl
+		<< "Price: " << std::fixed << std::setprecision(2) << price << std::endl;
 }
