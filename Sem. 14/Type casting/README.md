@@ -13,7 +13,7 @@
 
 ```c++
 float f = 3.5;
-int a = f; // implicit static_cast
+int a = f; // C-style casting /implicit
 int b = static_cast<int>(f); //explicit static_cast
 ```
 
