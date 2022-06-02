@@ -12,6 +12,8 @@ public:
 	Drink& operator=(const Drink&);
 	~Drink();
 
+	friend bool operator >(const Drink&, const Drink&);
+
 	const char* getName() const;
 	const double getAlc() const;
 

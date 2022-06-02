@@ -12,6 +12,8 @@ public:
 	Food& operator=(const Food&);
 	~Food();
 
+	friend bool operator >(const Food&, const Food&);
+
 	const char* getName() const;
 	const double getGrams() const;
 

@@ -40,6 +40,11 @@ Drink::~Drink()
 	free();
 }
 
+bool operator >(const Drink& lhs, const Drink& rhs)
+{
+	return lhs.alc > rhs.alc;
+}
+
 const char* Drink::getName() const
 {
 	return name;

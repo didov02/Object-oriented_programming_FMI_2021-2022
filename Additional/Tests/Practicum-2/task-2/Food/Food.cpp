@@ -40,6 +40,11 @@ Food::~Food()
 	free();
 }
 
+bool operator >(const Food& lhs, const Food& rhs)
+{
+	return lhs.grams > rhs.grams;
+}
+
 const char* Food::getName() const
 {
 	return name;
