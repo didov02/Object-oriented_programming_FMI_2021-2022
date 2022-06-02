@@ -375,6 +375,7 @@ char* c1 = const_cast <char *> (b1); // compiler error
    съхраняване на данни в ниските битове на подравнен указател.
 ```
 
+### Basic example:
 ```c++
 int* p = new int(65);
 char* ch = reinterpret_cast<char*>(p);
@@ -384,6 +385,7 @@ std::cout << p << endl; //0x1609c20 - address
 std::cout << ch << endl; //65
 ```
 
+### Struct/Class example:
 ```c++
 #include <iostream>
 using namespace std;
@@ -444,6 +446,7 @@ int main()
 }
 ```
 
+### Class/Inheritance example:
 ```c++
 #include <iostream>
  
