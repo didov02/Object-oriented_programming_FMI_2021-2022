@@ -38,15 +38,11 @@ bool Shop::deleteItem(size_t index)
 {
 	if (index >= size)
 		return false;
-
-	// swap with the last one
-	StoreItem* temp = list[index];
-	list[index] = list[size-1];
-	list[size-1] = temp;
 	
-	// free and decrement size
-	delete list[size-1];
-	size--;
+	delete list[index]; //delete element @index
+	list[index] = list[size-1]; //adjust pointer to last element <-> swap
+	list[size-1] = nullptr; //nulify pointer
+	size--; //decrement size
 	
 	return true;
 }
