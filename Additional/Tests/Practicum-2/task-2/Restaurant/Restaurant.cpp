@@ -42,7 +42,10 @@ bool Restaurant::eraseItem(const size_t index)
 		return false;
 
 	delete items[index];
-	items[index] = nullptr;
+	items[index] = items[size-1];
+	items[size-1] = nullptr;
+	size--;
+	
 	return true;
 }
 
