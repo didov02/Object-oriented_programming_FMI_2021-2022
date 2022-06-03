@@ -40,7 +40,7 @@ Food::~Food()
 	free();
 }
 
-bool operator >(const Food& lhs, const Food& rhs)
+bool operator>(const Food& lhs, const Food& rhs) const
 {
 	return lhs.grams > rhs.grams;
 }
