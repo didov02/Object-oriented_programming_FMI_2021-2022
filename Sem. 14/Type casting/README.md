@@ -147,8 +147,8 @@ int main()
     Base* bp = dynamic_cast<Base*>(&d1);
   
     // Dynamic_casting
-    Derived1* dp2 = dynamic_cast<Derived1*>(bp);
-    if (dp2 == nullptr)
+    Derived1* dp1 = dynamic_cast<Derived1*>(bp);
+    if (dp1 == nullptr)
         cout << "null" << endl;
     else
         cout << "not null" << endl;
@@ -239,8 +239,8 @@ int main()
     Base* bp = dynamic_cast<Base*>(&d1);
   
     // Type casting
-    Derived1* dp2 = dynamic_cast<Derived1*>(bp);
-    if (dp2 == nullptr)
+    Derived1* dp1 = dynamic_cast<Derived1*>(bp);
+    if (dp1 == nullptr)
         cout << "null" << endl;
     else
         cout << "not null" << endl;
@@ -304,9 +304,12 @@ int fun(int* ptr)
 
 int main(void)
 {
-	const int val = 10;
-	const int *ptr = &val;
+	const int VAL = 10;
+	
+	const int *ptr = &VAL;
+	
 	int *ptr1 = const_cast<int*>(ptr);
+	
 	std::cout << fun(ptr1);
 }
 ```
@@ -321,12 +324,15 @@ int fun(int* ptr)
   
 int main(void)
 {
-    const int val = 10;
-    const int *ptr = &val;
+    const int VAL = 10;
+    
+    const int *ptr = &VAL;
+    
     int *ptr1 = const_cast <int *>(ptr);
+    
     fun(ptr1);
-    std::cout << val;
-    return 0;
+    
+    std::cout << VAL;
 }
 ```
 
@@ -338,14 +344,17 @@ int fun(int* ptr)
     return (*ptr);
 }
   
-int main(void)
+int main()
 {
     int val = 10;
+    
     const int *ptr = &val;
+    
     int *ptr1 = const_cast <int *>(ptr);
+    
     fun(ptr1);
+    
     std::cout << val;
-    return 0;
 }
 ```
 
@@ -353,7 +362,7 @@ Type of cast is not the same as original object:
 ```
 int a1 = 40;
 const int* b1 = &a1;
-char* c1 = const_cast <char *> (b1); // compiler error
+char* c1 = const_cast <char*>(b1); // compiler error
 *c1 = 'A';
 ```
 
@@ -468,7 +477,6 @@ int main()
 {
     B* x = new B();
  
-    // Uppercasting
     A* new_a = reinterpret_cast<A*>(x);
  
     new_a->fun_a();
