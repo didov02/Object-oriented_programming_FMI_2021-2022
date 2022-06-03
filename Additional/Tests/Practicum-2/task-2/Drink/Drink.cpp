@@ -40,7 +40,7 @@ Drink::~Drink()
 	free();
 }
 
-bool operator >(const Drink& lhs, const Drink& rhs)
+bool operator>(const Drink& lhs, const Drink& rhs) const
 {
 	return lhs.alc > rhs.alc;
 }
