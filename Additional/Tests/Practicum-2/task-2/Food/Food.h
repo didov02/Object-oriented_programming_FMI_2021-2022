@@ -12,8 +12,6 @@ public:
 	Food& operator=(const Food&);
 	~Food();
 
-	friend bool operator >(const Food&, const Food&);
-
 	const char* getName() const;
 	const double getGrams() const;
 
@@ -24,6 +22,8 @@ public:
 	RestaurantItem* clone() const override;
 	const char* typeToStr() const override;
 	void print() const override;
+	
+	friend bool operator>(const Food&, const Food&);
 private:
 	void copy(const Food&);
 	void free();
