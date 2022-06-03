@@ -22,6 +22,8 @@ public:
 	RestaurantItem* clone() const override;
 	const char* typeToStr() const override;
 	void print() const override;
+	
+	friend bool operator>(const Drink&, const Drink&);
 private:
 	void copy(const Drink&);
 	void free();
