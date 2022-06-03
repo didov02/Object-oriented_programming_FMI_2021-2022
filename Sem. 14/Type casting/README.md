@@ -55,11 +55,9 @@ int* ip = static_cast<int*>(v);
 - при cast-ване към Derived(наследник) клас.
 - нужна е поне една виртуална функция.
 
-### Downcasting
-Casting a base class pointer (or reference) to a derived class pointer (or reference) is known as downcasting.
-
-### Upcasting
-Casting a derived class pointer (or reference) to a base class pointer (or reference) is known as upcasting.
+| Downcasting  | Upcasting |
+|  :---: |  :---: |
+| Casting a base class pointer (or reference) to a derived class pointer (or reference) is known as downcasting.| Casting a derived class pointer (or reference) to a base class pointer (or reference) is known as upcasting.  |
 
 ### Dynamic_cast - no virtual function example:
 ```c++
