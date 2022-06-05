@@ -58,7 +58,7 @@ const double Drink::getAlc() const
 void Drink::setName(const char* name)
 {
 	if (this->name != nullptr)
-		delete[] name;
+		delete[] this->name;
 
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
