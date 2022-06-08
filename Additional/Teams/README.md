@@ -12,3 +12,5 @@
 - ./Teams/Team№/images или ./Teams/Team№/img за включени изображения
 
 Note: условието и документацията да са в 1 .md file, намиращ се в ./Teams/Team№
+
+Note: Pull requests в PR-task-Teams branch.
