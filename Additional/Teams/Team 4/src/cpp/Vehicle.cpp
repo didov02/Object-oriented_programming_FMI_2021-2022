@@ -7,7 +7,7 @@ Vehicle::Vehicle()
 	year = 0;
 }
 
-Vehicle::Vehicle(int maxPassengers, int maxSpeed, const MyString& name, int year)
+Vehicle::Vehicle(int maxPassengers, int maxSpeed, const String& name, int year)
 {
 	this->maxPassengers = maxPassengers;
 	this->maxSpeed = maxSpeed;
@@ -45,12 +45,12 @@ void Vehicle::setMaxSpeed(int maxSpeed)
 	this->maxSpeed = maxSpeed;
 }
 
-const MyString& Vehicle::getName() const
+const String& Vehicle::getName() const
 {
 	return name;
 }
 
-void Vehicle::setName(const MyString& name)
+void Vehicle::setName(const String& name)
 {
 	this->name = name;
 }

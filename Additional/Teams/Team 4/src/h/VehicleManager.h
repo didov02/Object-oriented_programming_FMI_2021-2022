@@ -10,7 +10,7 @@
 #include "Vector.hpp"
 #include <fstream>
 
-const int BIG_NUMBER = 1000000;\
+const int BIG_NUMBER = 1000000;
 
 void ClearSyncIgnore();
 
@@ -18,35 +18,36 @@ class VehicleManager
 {
 private:
 	Vector<Vehicle*> list;
-	Vector<MyString> log;
+	Vector<String> log;
 public:
 	VehicleManager();
-	VehicleManager(Vector<Vehicle*>);
+	VehicleManager(const Vector<Vehicle*>&);
 	VehicleManager(const VehicleManager&);
 	VehicleManager& operator=(const VehicleManager&);
+	~VehicleManager();
 
 	void print() const;
 
-	void createCar(int maxPassengers, int maxSpeed, const MyString& name, int year, const MyString& color, size_t doorsCount,
-		const MyString& brand, const MyString& model, const MyString& fuelType);
+	void createCar(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+		const String& brand, const String& model, const String& fuelType);
 
-	void createTruck(int maxPassengers, int maxSpeed, const MyString& name, int year, const MyString& color, size_t doorsCount,
-		const MyString& brand, size_t capacity);
+	void createTruck(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+		const String& brand, size_t capacity);
 
-	void createMotorcycle(int maxPassengers, int maxSpeed, const MyString& name, int year, const MyString& color, size_t doorsCount,
-		const MyString& brand, const MyString& model, const MyString& frameType);
+	void createMotorcycle(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+		const String& brand, const String& model, const String& frameType);
 
-	void createPlane(int maxPassengers, int maxSpeed, const MyString& name, int year, double wingspan,
-		double maxAltitude, const MyString& color, const MyString& model, double maxStorage, double maxAirTime);
+	void createPlane(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan,
+		double maxAltitude, const String& color, const String& model, double maxStorage, double maxAirTime);
 
-	void createPrivateJet(int maxPassengers, int maxSpeed, const MyString& name, int year, double wingspan,
-		double maxAltitude, const MyString& color, const MyString& model, bool hasDrinkBar, bool hasSleepingRoom);
+	void createPrivateJet(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan,
+		double maxAltitude, const String& color, const String& model, bool hasDrinkBar, bool hasSleepingRoom);
 
-	void createJacht(int maxPassengers, int maxSpeed, const MyString& name, int year, double width, double length,
-		int crewSize, const MyString& color, const MyString& model, bool hasSwimmingPool, int roomCount);
+	void createJacht(int maxPassengers, int maxSpeed, const String& name, int year, double width, double length,
+		int crewSize, const String& color, const String& model, bool hasSwimmingPool, int roomCount);
 
-	void createSail(int maxPassengers, int maxSpeed, const MyString& name, int year, double width, double length,
-		int crewSize, const MyString& color, const MyString& model, bool hasEngine, int sailsCount);
+	void createSail(int maxPassengers, int maxSpeed, const String& name, int year, double width, double length,
+		int crewSize, const String& color, const String& model, bool hasEngine, int sailsCount);
 
 	void sellVehicle(size_t);
 	void showNewestVehicle() const;

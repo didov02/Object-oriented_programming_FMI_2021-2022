@@ -1,6 +1,6 @@
 #include "Motorcycle.h"
 
-Motorcycle::Motorcycle() : Ground()
+Motorcycle::Motorcycle() : GroundVehicle()
 {
 	t = MOTORCYCLE;
 	brand = nullptr;
@@ -8,8 +8,8 @@ Motorcycle::Motorcycle() : Ground()
 	frameType = nullptr;
 }
 
-Motorcycle::Motorcycle(int maxPassengers, int maxSpeed, const MyString& name, int year, MyString color, size_t doorsCount,
-	MyString brand, MyString model, MyString frameType) : Ground(maxPassengers, maxSpeed, name, year, color, doorsCount)
+Motorcycle::Motorcycle(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+	const String& brand, const String& model, const String& frameType) : GroundVehicle(maxPassengers, maxSpeed, name, year, color, doorsCount)
 {
 	t = GroundType::MOTORCYCLE;
 	this->brand = brand;
@@ -35,32 +35,32 @@ void Motorcycle::display() const
 	std::cout << "-Frame type: " << frameType << std::endl;
 }
 
-void Motorcycle::setBrand(const MyString& brand)
+void Motorcycle::setBrand(const String& brand)
 {
 	this->brand = brand;
 }
 
-void Motorcycle::setModel(const MyString& model)
+void Motorcycle::setModel(const String& model)
 {
 	this->model = model;
 }
 
-void Motorcycle::setFrameType(const MyString& frameType)
+void Motorcycle::setFrameType(const String& frameType)
 {
 	this->frameType = frameType;
 }
 
-const MyString& Motorcycle::getBrand() const
+const String& Motorcycle::getBrand() const
 {
 	return brand;
 }
 
-const MyString& Motorcycle::getModel() const
+const String& Motorcycle::getModel() const
 {
 	return model;
 }
 
-const MyString& Motorcycle::getFrameType() const
+const String& Motorcycle::getFrameType() const
 {
 	return frameType;
 }

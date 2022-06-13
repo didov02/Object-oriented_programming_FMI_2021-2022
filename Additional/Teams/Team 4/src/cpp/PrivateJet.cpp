@@ -1,7 +1,7 @@
 #include "PrivateJet.h"
 
-PrivateJet::PrivateJet(int maxPassengers, int maxSpeed, const MyString& name, int year,
-    double wingspan, double maxAltitude, const MyString& color, const MyString& model, bool hasDrinkBar, bool hasSleepingRoom) : AirVehicle(maxPassengers, maxSpeed, name, year, wingspan, maxAltitude, color, model)
+PrivateJet::PrivateJet(int maxPassengers, int maxSpeed, const String& name, int year,
+    double wingspan, double maxAltitude, const String& color, const String& model, bool hasDrinkBar, bool hasSleepingRoom) : AirVehicle(maxPassengers, maxSpeed, name, year, wingspan, maxAltitude, color, model)
 {
     this->hasDrinkBar = hasDrinkBar;
     this->hasSleepingRoom = hasSleepingRoom;

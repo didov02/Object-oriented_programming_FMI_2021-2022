@@ -9,8 +9,8 @@ private:
 
 public:
 
-	Jacht(int maxPassengers, int maxSpeed, const MyString& name, int year, double length, double width, int crewSize
-		, const MyString& color, const MyString& model, bool hasSwimmingPool, int roomsCount);
+	Jacht(int maxPassengers, int maxSpeed, const String& name, int year, double length, double width, int crewSize
+		, const String& color, const String& model, bool hasSwimmingPool, int roomsCount);
 
 	Vehicle* clone() const override;
 	WaterType getType() const override;

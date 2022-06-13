@@ -1,7 +1,7 @@
 #include "Sail.h"
 
-Sail::Sail(int maxPassengers, int maxSpeed, const MyString& name, int year
-    , double length, double width, int crewSize, const MyString& color, const MyString& model, bool hasEngine, int sailsCount) : WaterVehicle(maxPassengers, maxSpeed,
+Sail::Sail(int maxPassengers, int maxSpeed, const String& name, int year
+    , double length, double width, int crewSize, const String& color, const String& model, bool hasEngine, int sailsCount) : WaterVehicle(maxPassengers, maxSpeed,
         name, year, length, width, crewSize, color, model)
 {
     this->hasEngine = hasEngine;

@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-class MyString
+class String
 {
 
 private:
@@ -8,33 +8,33 @@ private:
 	size_t length;
 public:
 
-	MyString();
-	MyString(char*);
-	MyString(const char[]);
-	MyString(const MyString&);
-	~MyString();
-	MyString& operator=(const MyString&);
-	MyString& operator=(char*&);
-	MyString& operator=(const char[]);
+	String();
+	String(char*);
+	String(const char[]);
+	String(const String&);
+	~String();
+	String& operator=(const String&);
+	String& operator=(char*&);
+	String& operator=(const char[]);
 	
 	char* getContent() const;
 	void setContent(char*);
 	void setContent(const char[]);
 	int getLength() const;
 
-	MyString operator+=(const MyString&);
-	friend std::istream& operator>>(std::istream& is, MyString&);
-	friend std::ostream& operator<<(std::ostream& os,const MyString&);
-	friend MyString operator+(const MyString&, const MyString&);
-	friend bool operator==(const MyString&, const MyString&);
-	friend bool operator!=(const MyString&, const MyString&);
+	String operator+=(const String&);
+	friend std::istream& operator>>(std::istream& is, String&);
+	friend std::ostream& operator<<(std::ostream& os,const String&);
+	friend String operator+(const String&, const String&);
+	friend bool operator==(const String&, const String&);
+	friend bool operator!=(const String&, const String&);
 	char operator[](size_t index) const;
 
-	bool compare(const MyString&) const;
+	bool compare(const String&) const;
 	//bool substr(const MyString&) const; maybe if i need it in the future
 
 private:
 	void free();
-	void copy(const MyString&);
+	void copy(const String&);
 };
 

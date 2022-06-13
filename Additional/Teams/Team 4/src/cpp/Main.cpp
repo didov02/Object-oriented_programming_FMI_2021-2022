@@ -1,5 +1,5 @@
 #include <iostream>
-#include "MyString.h"
+#include "String.h"
 #include "VehicleManager.h"
 
 const int MAX_SIZE = 50;
@@ -34,7 +34,7 @@ int main()
 		{
 			std::cout << "What type of vehicle do you want to buy: Ground, Air, Water" << std::endl;
 
-			MyString typeOfVehicle;
+			String typeOfVehicle;
 			std::cin >> typeOfVehicle;
 			std::cin.ignore();
 
@@ -42,29 +42,29 @@ int main()
 			{
 				std::cout << "What ground vehicle do you want to buy: Car, Motorcycle, Truck" << std::endl;
 
-				MyString vehicle;
+				String vehicle;
 				std::cin >> vehicle;
 
 				if (vehicle == "Car")
 				{
 					std::cout << "Car's name: ";
-					MyString carsPersonalName;
+					String carsPersonalName;
 					std::cin >> carsPersonalName;
 
 					std::cout << "Brand: ";
-					MyString brand;
+					String brand;
 					std::cin >> brand;
 
 					std::cout << "Model: ";
-					MyString model;
+					String model;
 					std::cin >> model;
 
 					std::cout << "Fuel: ";
-					MyString fuel;
+					String fuel;
 					std::cin >> fuel;
 
 					std::cout << "Color: ";
-					MyString color;
+					String color;
 					std::cin >> color;
 
 					std::cout << "Max speed: ";
@@ -89,23 +89,23 @@ int main()
 				else if (vehicle == "Motorcycle")
 				{
 					std::cout << "Motorcycle's name: ";
-					MyString motorcyclePersonalName;
+					String motorcyclePersonalName;
 					std::cin >> motorcyclePersonalName;
 
 					std::cout << "Brand: ";
-					MyString brand;
+					String brand;
 					std::cin >> brand;
 
 					std::cout << "Model: ";
-					MyString model;;
+					String model;;
 					std::cin >> model;
 
 					std::cout << "Frame type: ";
-					MyString frameType;
+					String frameType;
 					std::cin >> frameType;
 
 					std::cout << "Color: ";
-					MyString color;
+					String color;
 					std::cin >> color;
 
 					std::cout << "Max speed: ";
@@ -126,15 +126,15 @@ int main()
 				else if (vehicle == "Truck")
 				{
 					std::cout << "Truck's name: ";
-					MyString truckPersonalName;
+					String truckPersonalName;
 					std::cin >> truckPersonalName;
 
 					std::cout << "Brand: ";
-					MyString brand;
+					String brand;
 					std::cin >> brand;
 
 					std::cout << "Color: ";
-					MyString color;
+					String color;
 					std::cin >> color;
 
 					std::cout << "Capacity: ";
@@ -168,13 +168,13 @@ int main()
 			else if (typeOfVehicle == "Air")
 			{
 				std::cout << "What air vehicle do you want to buy: Plane, PrivateJet" << std::endl;
-				MyString vehicle;
+				String vehicle;
 				std::cin >> vehicle;
 
 				if (vehicle == "Plane")
 				{
 					std::cout << "Plane's name: ";
-					MyString planeName;
+					String planeName;
 					std::cin >> planeName;
 
 					std::cout << "Plane's max passengers: ";
@@ -198,11 +198,11 @@ int main()
 					std::cin >> planeYear;
 
 					std::cout << "Plane's color: ";
-					MyString planeColor;
+					String planeColor;
 					std::cin >> planeColor;
 
 					std::cout << "Plane's model: ";
-					MyString planeModel;
+					String planeModel;
 					std::cin >> planeModel;
 
 					std::cout << "Plane's max storage: ";
@@ -219,7 +219,7 @@ int main()
 				else if (vehicle == "PrivateJet")
 				{
 					std::cout << "PrivateJet's name: ";
-					MyString PrivateJetName;
+					String PrivateJetName;
 					std::cin >> PrivateJetName;
 
 					std::cout << "PrivateJet's max passengers: ";
@@ -243,11 +243,11 @@ int main()
 					std::cin >> PrivateJetYear;
 
 					std::cout << "Privatejet's color: ";
-					MyString PrivateJetColor;
+					String PrivateJetColor;
 					std::cin >> PrivateJetColor;
 
 					std::cout << "Privatejet's model: ";
-					MyString PrivateJetModel;
+					String PrivateJetModel;
 					std::cin >> PrivateJetModel;
 
 					std::cout << "Privatejet's drinkbar: ";
@@ -270,13 +270,13 @@ int main()
 			{
 
 				std::cout << "What water vehicle do you want to buy: Jacht, Sail" << std::endl;
-				MyString vehicle;
+				String vehicle;
 				std::cin >> vehicle;
 
 				if (vehicle == "Jacht")
 				{
 					std::cout << "Jacht's name: ";
-					MyString jachtName;
+					String jachtName;
 					std::cin >> jachtName;
 
 					std::cout << "Jacht's max passengers: ";
@@ -292,11 +292,11 @@ int main()
 					std::cin >> jachtYear;
 
 					std::cout << "Jacht's color: ";
-					MyString jachtColor;
+					String jachtColor;
 					std::cin >> jachtColor;
 
 					std::cout << "Jacht's model: ";
-					MyString jachtModel;
+					String jachtModel;
 					std::cin >> jachtModel;
 
 					std::cout << "Jacht's length: ";
@@ -326,7 +326,7 @@ int main()
 				else if (vehicle == "Sail")
 				{
 					std::cout << "Sail's name: ";
-					MyString sailName;
+					String sailName;
 					std::cin >> sailName;
 
 					std::cout << "Sail's max passengers: ";
@@ -342,11 +342,11 @@ int main()
 					std::cin >> sailYear;
 
 					std::cout << "Sail's color: ";
-					MyString sailColor;
+					String sailColor;
 					std::cin >> sailColor;
 
 					std::cout << "Sail's model: ";
-					MyString sailModel;
+					String sailModel;
 					std::cin >> sailModel;
 
 					std::cout << "Sail's length: ";

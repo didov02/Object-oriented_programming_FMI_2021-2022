@@ -1,6 +1,6 @@
 #include "Car.h"
 
-Car::Car() : Ground()
+Car::Car() : GroundVehicle()
 {
 	t = CAR;
 	brand = nullptr;
@@ -8,8 +8,8 @@ Car::Car() : Ground()
 	fuelType = nullptr;
 }
 
-Car::Car(int maxPassengers, int maxSpeed, const MyString& name, int year, MyString color, size_t doorsCount,
-	MyString brand, MyString model, MyString fuelType) : Ground(maxPassengers, maxSpeed, name, year, color, doorsCount)
+Car::Car(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+	const String& brand, const String& model, const String& fuelType) : GroundVehicle(maxPassengers, maxSpeed, name, year, color, doorsCount)
 {
 	this->t = GroundType::CAR;
 	this->brand = brand;
@@ -36,32 +36,32 @@ void Car::display() const
 	std::cout << "-Color: " << this->getColor() << std::endl;
 }
 
-void Car::setBrand(const MyString& brand)
+void Car::setBrand(const String& brand)
 {
 	this->brand = brand;
 }
 
-void Car::setModel(const MyString& model)
+void Car::setModel(const String& model)
 {
 	this->model = model;
 }
 
-void Car::setFuelType(const MyString& fuelType)
+void Car::setFuelType(const String& fuelType)
 {
 	this->fuelType = fuelType;
 }
 
-const MyString& Car::getBrand() const
+const String& Car::getBrand() const
 {
 	return brand;
 }
 
-const MyString& Car::getModel() const
+const String& Car::getModel() const
 {
 	return model;
 }
 
-const MyString& Car::getFuelType() const
+const String& Car::getFuelType() const
 {
 	return fuelType;
 }

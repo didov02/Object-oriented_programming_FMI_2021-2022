@@ -10,16 +10,16 @@ class WaterVehicle : public Vehicle
 {
 protected:
 	WaterType t;	
-	MyString color;
-	MyString model;
+	String color;
+	String model;
 	double length;
 	double width;
 	double crewSize;
 
 public:
 	WaterVehicle();
-	WaterVehicle(int maxPassengers, int maxSpeed, const MyString& name, int year,
-		double length, double width, double crewSize, const MyString& color, const MyString& model);
+	WaterVehicle(int maxPassengers, int maxSpeed, const String& name, int year,
+		double length, double width, double crewSize, const String& color, const String& model);
 
 
 	void setLength(double);
@@ -31,14 +31,12 @@ public:
 	void setCrewSize(double);
 	double getCrewSize() const;
 
-	void setColor(const MyString&);
-	const MyString& getColor() const;
+	void setColor(const String&);
+	const String& getColor() const;
 
-	void setModel(const MyString&);
-	const MyString& getModel() const;
+	void setModel(const String&);
+	const String& getModel() const;
 
-	virtual Vehicle* clone() const = 0;
 	virtual WaterType getType() const = 0;
-	virtual void display() const = 0;
 };
 

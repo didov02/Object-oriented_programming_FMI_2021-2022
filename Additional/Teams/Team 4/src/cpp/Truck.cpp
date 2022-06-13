@@ -1,12 +1,12 @@
 #include "Truck.h"
 
-Truck::Truck() : Ground()
+Truck::Truck() : GroundVehicle()
 {
 
 }
 
-Truck::Truck(int maxPassengers, int maxSpeed, const MyString& name, int year, MyString color, size_t doorsCount,
-	MyString brand, size_t capacity) : Ground(maxPassengers, maxSpeed, name, year, color, doorsCount)
+Truck::Truck(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+	const String& brand, size_t capacity) : GroundVehicle(maxPassengers, maxSpeed, name, year, color, doorsCount)
 {
 	this->brand = brand;
 	this->capacity = capacity;
@@ -32,7 +32,7 @@ void Truck::display() const
 	std::cout << "-Doors count: " << this->getDoorsCount() << std::endl;
 }
 
-void Truck::setBrand(const MyString& brand)
+void Truck::setBrand(const String& brand)
 {
 	this->brand = brand;
 }
@@ -42,7 +42,7 @@ void Truck::setCapacity(size_t capacity)
 	this->capacity = capacity;
 }
 
-const MyString& Truck::getBrand() const
+const String& Truck::getBrand() const
 {
 	return brand;
 }

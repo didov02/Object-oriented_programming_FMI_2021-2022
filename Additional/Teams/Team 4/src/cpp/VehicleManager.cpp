@@ -6,15 +6,15 @@ void VehicleManager::copy(const VehicleManager& other)
 
 	for (int i = 0; i < size; i++)
 	{
-		list[i] = other.list[i]->clone();
+		list.pushBack(other.list[i]->clone());
 	}
-}
 
-void ClearSyncIgnore()
-{
-	std::cin.clear();
-	std::cin.sync();
-	std::cin.ignore();
+	size = other.log.getSize();
+
+	for (int i = 0; i < size; i++)
+	{
+		log.pushBack(other.log[i]);
+	}
 }
 
 void VehicleManager::free()
@@ -25,6 +25,8 @@ void VehicleManager::free()
 		delete[] list[i];
 
 	list.clear();
+
+	log.clear();
 }
 
 VehicleManager::VehicleManager()
@@ -32,9 +34,14 @@ VehicleManager::VehicleManager()
 	
 }
 
-VehicleManager::VehicleManager(Vector<Vehicle*> other)
+VehicleManager::VehicleManager(const Vector<Vehicle*>& other)
 {
-	this->list = other;
+	size_t size = other.getSize();
+
+	for (int i = 0; i < size; i++)
+	{
+		list[i] = other[i]->clone();
+	}
 }
 
 VehicleManager::VehicleManager(const VehicleManager& other)
@@ -53,6 +60,11 @@ VehicleManager& VehicleManager::operator=(const VehicleManager& other)
 	return *this;
 }
 
+VehicleManager::~VehicleManager()
+{
+	free();
+}
+
 void VehicleManager::print() const
 {
 	size_t size = list.getSize();
@@ -64,79 +76,79 @@ void VehicleManager::print() const
 	}
 }
 
-void VehicleManager::createCar(int maxPassengers, int maxSpeed, const MyString& name, int year, const MyString& color, size_t doorsCount,
-	const MyString& brand, const MyString& model, const MyString& fuelType)
+void VehicleManager::createCar(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+	const String& brand, const String& model, const String& fuelType)
 {
 	list.pushBack(new Car(maxPassengers, maxSpeed, name, year, color, doorsCount, brand, model, fuelType));
 
-	MyString newCar = "Car, ";
+	String newCar = "Car, ";
 	newCar += name;
 	newCar += " ,is added.\n";
 	log.pushBack(newCar);
 }
 
-void VehicleManager::createTruck(int maxPassengers, int maxSpeed, const MyString& name, int year, const MyString& color, size_t doorsCount,
-	const MyString& brand, size_t capacity)
+void VehicleManager::createTruck(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+	const String& brand, size_t capacity)
 {
 	list.pushBack(new Truck(maxPassengers, maxSpeed, name, year, color, doorsCount, brand, capacity));
 
-	MyString newTruck = "Truck, ";
+	String newTruck = "Truck, ";
 	newTruck += name;
 	newTruck += " ,is added.\n";
 	log.pushBack(newTruck);
 }
 
-void VehicleManager::createMotorcycle(int maxPassengers, int maxSpeed, const MyString& name, int year, const MyString& color, size_t doorsCount,
-	const MyString& brand, const MyString& model, const MyString& frameType)
+void VehicleManager::createMotorcycle(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+	const String& brand, const String& model, const String& frameType)
 {
 	list.pushBack(new Motorcycle(maxPassengers, maxSpeed, name, year, color, doorsCount,
 		brand, model, frameType));
 
-	MyString newMotorcycle = "Motorcycle, ";
+	String newMotorcycle = "Motorcycle, ";
 	newMotorcycle += name;
 	newMotorcycle += " ,is added.\n";
 	log.pushBack(newMotorcycle);
 }
 
-void VehicleManager::createPlane(int maxPassengers, int maxSpeed, const MyString& name, int year, double wingspan, double maxAltitude,
-	const MyString& color, const MyString& model, double maxStorage, double maxAirTime)
+void VehicleManager::createPlane(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan, double maxAltitude,
+	const String& color, const String& model, double maxStorage, double maxAirTime)
 {
 	list.pushBack(new Plane(maxPassengers, maxSpeed, name, year, wingspan, maxAltitude, color, model, maxStorage, maxAirTime));
 
-	MyString newPlane = "Plane, ";
+	String newPlane = "Plane, ";
 	newPlane += name;
 	newPlane += " ,is added.\n";
 	log.pushBack(newPlane);
 }
 
-void VehicleManager::createPrivateJet(int maxPassengers, int maxSpeed, const MyString& name, int year, double wingspan, double maxAltitude,
-	const MyString& color, const MyString& model, bool hasDrinkBar, bool hasSleepingRoom)
+void VehicleManager::createPrivateJet(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan, double maxAltitude,
+	const String& color, const String& model, bool hasDrinkBar, bool hasSleepingRoom)
 {
 	list.pushBack(new PrivateJet(maxPassengers, maxSpeed, name, year, wingspan, maxAltitude, color, model, hasDrinkBar, hasSleepingRoom));
 
-	MyString newPrivateJet = "Private jet, ";
+	String newPrivateJet = "Private jet, ";
 	newPrivateJet += name;
 	newPrivateJet += " ,is added.\n";
 	log.pushBack(newPrivateJet);
 }
 
-void VehicleManager::createJacht(int maxPassengers, int maxSpeed, const MyString& name, int year, double width, double length, int crewSize, const MyString& color,
-	const MyString& model, bool hasSwimmingPool, int roomCount)
+void VehicleManager::createJacht(int maxPassengers, int maxSpeed, const String& name, int year, double width, double length, int crewSize, const String& color,
+	const String& model, bool hasSwimmingPool, int roomCount)
 {
 	list.pushBack(new Jacht(maxPassengers, maxSpeed, name, year, length, width, crewSize, color, model, hasSwimmingPool, roomCount));
 
-	MyString newJacht = "Jacht, ";
+	String newJacht = "Jacht, ";
 	newJacht += name;
 	newJacht += " ,is added.\n";
 	log.pushBack(newJacht);
 }
 
-void VehicleManager::createSail(int maxPassengers, int maxSpeed, const MyString& name, int year, double width, double length, int crewSize, const MyString& color,
-	const MyString& model, bool hasEngine, int sailsCount)
+void VehicleManager::createSail(int maxPassengers, int maxSpeed, const String& name, int year, double width, double length, int crewSize, const String& color,
+	const String& model, bool hasEngine, int sailsCount)
 {
 	list.pushBack(new Jacht(maxPassengers, maxSpeed, name, year, length, width, crewSize, color, model, hasEngine, sailsCount));
 
-	MyString newSail = "Sail, ";
+	String newSail = "Sail, ";
 	newSail += name;
 	newSail += " ,is added.\n";
 	log.pushBack(newSail);
@@ -150,7 +162,7 @@ void VehicleManager::sellVehicle(size_t index)
 	delete list[index];
 	list.popAt(index);
 
-	log.pushBack(MyString("A vehicle was deleted.\n"));
+	log.pushBack(String("A vehicle was deleted.\n"));
 }
 
 void VehicleManager::showNewestVehicle() const

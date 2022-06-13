@@ -7,7 +7,7 @@ AirVehicle::AirVehicle()
 	type = VehicleType::Air;
 }
 
-AirVehicle::AirVehicle(int maxPassengers, int maxSpeed, const MyString& name, int year, double wingspan, double maxAltitude, const MyString& color, const MyString& model) : Vehicle(maxPassengers, maxSpeed, name, year)
+AirVehicle::AirVehicle(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan, double maxAltitude, const String& color, const String& model) : Vehicle(maxPassengers, maxSpeed, name, year)
 {
 	this->wingspan = wingspan;
 	this->maxAltitude = maxAltitude;
@@ -36,22 +36,22 @@ double AirVehicle::getMaxAltitude() const
 	return maxAltitude;
 }
 
-void AirVehicle::setColor(const MyString& color)
+void AirVehicle::setColor(const String& color)
 {
 	this->color = color;
 }
 
-const MyString& AirVehicle::getColor() const
+const String& AirVehicle::getColor() const
 {
 	return color;
 }
 
-void AirVehicle::setModel(const MyString& model)
+void AirVehicle::setModel(const String& model)
 {
 	this->model = model;
 }
 
-const MyString& AirVehicle::getModel() const
+const String& AirVehicle::getModel() const
 {
 	return model;
 }

@@ -1,27 +1,27 @@
 #pragma once
-#include "Ground.h"
+#include "GroundVehicle.h"
 
-class Car : public Ground
+class Car : public GroundVehicle
 {
 private:
-	MyString brand;
-	MyString model;
-	MyString fuelType;
+	String brand;
+	String model;
+	String fuelType;
 public:
 	Car();
-	Car(int maxPassengers, int maxSpeed, const MyString& name, int year, MyString color, size_t doorsCount,
-		MyString brand, MyString model, MyString fuelType);
+	Car(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+		const String& brand, const String& model, const String& fuelType);
 
 	Vehicle* clone() const override;
 	GroundType getType() const override;
 	void display() const override;
 
-	void setBrand(const MyString&);
-	void setModel(const MyString&);
-	void setFuelType(const MyString&);
+	void setBrand(const String&);
+	void setModel(const String&);
+	void setFuelType(const String&);
 
-	const MyString& getBrand() const;
-	const MyString& getModel() const;
-	const MyString& getFuelType() const;
+	const String& getBrand() const;
+	const String& getModel() const;
+	const String& getFuelType() const;
 };
 

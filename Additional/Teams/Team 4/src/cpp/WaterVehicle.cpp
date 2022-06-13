@@ -4,8 +4,8 @@ WaterVehicle::WaterVehicle()
 {
 }
 
-WaterVehicle::WaterVehicle(int maxPassengers, int maxSpeed, const MyString& name, int year,
-	double length, double width, double crewSize, const MyString& color, const MyString& model) : Vehicle(maxPassengers, maxSpeed, name, year)
+WaterVehicle::WaterVehicle(int maxPassengers, int maxSpeed, const String& name, int year,
+	double length, double width, double crewSize, const String& color, const String& model) : Vehicle(maxPassengers, maxSpeed, name, year)
 {
 	this->length = length;
 	this->width = width;
@@ -45,22 +45,22 @@ double WaterVehicle::getCrewSize() const
 	return crewSize;
 }
 
-void WaterVehicle::setColor(const MyString& color)
+void WaterVehicle::setColor(const String& color)
 {
 	this->color = color;
 }
 
-const MyString& WaterVehicle::getColor() const
+const String& WaterVehicle::getColor() const
 {
 	return color;
 }
 
-void WaterVehicle::setModel(const MyString& model)
+void WaterVehicle::setModel(const String& model)
 {
 	this->model = model;
 }
 
-const MyString& WaterVehicle::getModel() const
+const String& WaterVehicle::getModel() const
 {
 	return model;
 }

@@ -13,13 +13,13 @@ protected:
 	AirType t;
 	double wingspan;
 	double maxAltitude;
-	MyString color;
-	MyString model;
+	String color;
+	String model;
 
 public:
 	AirVehicle();
-	AirVehicle(int maxPassengers, int maxSpeed, const MyString& name, int year,
-		double wingspan, double maxAltitude, const MyString& color, const MyString& model);
+	AirVehicle(int maxPassengers, int maxSpeed, const String& name, int year,
+		double wingspan, double maxAltitude, const String& color, const String& model);
 
 	void setWingspan(double);
 	double getWingspan() const;
@@ -27,14 +27,12 @@ public:
 	void setMaxAltitude(double);
 	double getMaxAltitude() const;
 
-	void setColor(const MyString&);
-	const MyString& getColor() const;
+	void setColor(const String&);
+	const String& getColor() const;
 
-	void setModel(const MyString&);
-	const MyString& getModel() const;
+	void setModel(const String&);
+	const String& getModel() const;
 
-	virtual Vehicle* clone() const = 0;
 	virtual AirType getType() const = 0;
-	virtual void display() const = 0;
 };
 

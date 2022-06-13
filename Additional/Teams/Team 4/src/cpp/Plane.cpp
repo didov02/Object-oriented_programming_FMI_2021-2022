@@ -1,6 +1,6 @@
 #include "Plane.h"
 
-Plane::Plane(int maxPassengers, int maxSpeed, const MyString& name, int year, double wingspan, double maxAltitude, const MyString& color, const MyString& model
+Plane::Plane(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan, double maxAltitude, const String& color, const String& model
     , double maxStorage, double maxAirTime) : AirVehicle(maxPassengers, maxSpeed, name, year, wingspan, maxAltitude, color, model)
 {
     this->maxStorage = maxStorage;
