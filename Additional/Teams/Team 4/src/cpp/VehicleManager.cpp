@@ -40,7 +40,7 @@ VehicleManager::VehicleManager(const Vector<Vehicle*>& other)
 
 	for (int i = 0; i < size; i++)
 	{
-		list[i] = other[i]->clone();
+		list.pushBack(other[i]->clone());
 	}
 }
 
