@@ -7,7 +7,7 @@ Vehicle::Vehicle()
 	year = 0;
 }
 
-Vehicle::Vehicle(int maxPassengers, int maxSpeed, const String& name, int year)
+Vehicle::Vehicle(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year)
 {
 	this->maxPassengers = maxPassengers;
 	this->maxSpeed = maxSpeed;
@@ -25,22 +25,22 @@ void Vehicle::setType(VehicleType type)
 	this->type = type;
 }
 
-int Vehicle::getMaxPassengers() const
+size_t Vehicle::getMaxPassengers() const
 {
 	return maxPassengers;
 }
 
-void Vehicle::setMaxPassengers(int maxPassengers)
+void Vehicle::setMaxPassengers(size_t maxPassengers)
 {
 	this->maxPassengers = maxPassengers;
 }
 
-int Vehicle::getMaxSpeed() const
+size_t Vehicle::getMaxSpeed() const
 {
 	return maxSpeed;
 }
 
-void Vehicle::setMaxSpeed(int maxSpeed)
+void Vehicle::setMaxSpeed(size_t maxSpeed)
 {
 	this->maxSpeed = maxSpeed;
 }
@@ -55,12 +55,12 @@ void Vehicle::setName(const String& name)
 	this->name = name;
 }
 
-int Vehicle::getYear() const
+size_t Vehicle::getYear() const
 {
 	return year;
 }
 
-void Vehicle::setYear(int year)
+void Vehicle::setYear(size_t year)
 {
 	this->year = year;
 }

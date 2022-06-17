@@ -1,7 +1,7 @@
 #include "Sail.h"
 
-Sail::Sail(int maxPassengers, int maxSpeed, const String& name, int year
-    , double length, double width, int crewSize, const String& color, const String& model, bool hasEngine, int sailsCount) : WaterVehicle(maxPassengers, maxSpeed,
+Sail::Sail(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year
+    , double length, double width, size_t crewSize, const String& color, const String& model, bool hasEngine, size_t sailsCount) : WaterVehicle(maxPassengers, maxSpeed,
         name, year, length, width, crewSize, color, model)
 {
     this->hasEngine = hasEngine;
@@ -43,12 +43,12 @@ void Sail::setHasEngine(bool hasEngine)
     this->hasEngine = hasEngine;
 }
 
-int Sail::getSailsCount() const
+size_t Sail::getSailsCount() const
 {
     return sailsCount;
 }
 
-void Sail::setSailsCount(int sailsCount)
+void Sail::setSailsCount(size_t sailsCount)
 {
     this->sailsCount = sailsCount;
 }

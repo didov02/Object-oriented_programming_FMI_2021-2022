@@ -8,7 +8,7 @@ private:
 	bool hasSleepingRoom;
 
 public:
-	PrivateJet(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan, double maxAltitude, const String& color, const String& model
+	PrivateJet(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, double wingspan, double maxAltitude, const String& color, const String& model
 		, bool hasDrinkBar, bool hasSleepingRoom);
 
 	Vehicle* clone() const override;

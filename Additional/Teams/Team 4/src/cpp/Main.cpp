@@ -1,6 +1,9 @@
 #include <iostream>
 #include "String.h"
 #include "VehicleManager.h"
+#include <cstring>
+
+#pragma warning (disable:4996)
 
 const int MAX_SIZE = 50;
 
@@ -68,7 +71,7 @@ int main()
 					std::cin >> color;
 
 					std::cout << "Max speed: ";
-					int maxSpeed;
+					size_t maxSpeed;
 					std::cin >> maxSpeed;
 
 					std::cout << "Created in: ";
@@ -80,7 +83,7 @@ int main()
 					std::cin >> doors;
 
 					std::cout << "Max passengers: ";
-					int maxPassengers;
+					size_t maxPassengers;
 					std::cin >> maxPassengers;
 					std::cin.ignore();
 
@@ -178,11 +181,11 @@ int main()
 					std::cin >> planeName;
 
 					std::cout << "Plane's max passengers: ";
-					int planePassengers;
+					size_t planePassengers;
 					std::cin >> planePassengers;
 
 					std::cout << "Plane's max speed: ";
-					double planeSpeed;
+					size_t planeSpeed;
 					std::cin >> planeSpeed;
 
 					std::cout << "Plane's wingspan: ";
@@ -194,7 +197,7 @@ int main()
 					std::cin >> planeAltitude;
 
 					std::cout << "Plane's year of creation: ";
-					int planeYear;
+					size_t planeYear;
 					std::cin >> planeYear;
 
 					std::cout << "Plane's color: ";
@@ -223,11 +226,11 @@ int main()
 					std::cin >> PrivateJetName;
 
 					std::cout << "PrivateJet's max passengers: ";
-					int PrivateJetPassengers;
+					size_t PrivateJetPassengers;
 					std::cin >> PrivateJetPassengers;
 
 					std::cout << "Plane's max speed: ";
-					double PrivateJetSpeed;
+					size_t PrivateJetSpeed;
 					std::cin >> PrivateJetSpeed;
 
 					std::cout << "PrivateJet's wingspan: ";
@@ -239,7 +242,7 @@ int main()
 					std::cin >> PrivateJetAltitude;
 
 					std::cout << "Privatejet's year of creation: ";
-					int PrivateJetYear;
+					size_t PrivateJetYear;
 					std::cin >> PrivateJetYear;
 
 					std::cout << "Privatejet's color: ";
@@ -280,15 +283,15 @@ int main()
 					std::cin >> jachtName;
 
 					std::cout << "Jacht's max passengers: ";
-					int jachtPassengers;
+					size_t jachtPassengers;
 					std::cin >> jachtPassengers;
 
 					std::cout << "Jacht's max speed: ";
-					int jachtSpeed;
+					size_t jachtSpeed;
 					std::cin >> jachtSpeed;
 
 					std::cout << "Jacht's year of creation: ";
-					int jachtYear;
+					size_t jachtYear;
 					std::cin >> jachtYear;
 
 					std::cout << "Jacht's color: ";
@@ -300,15 +303,15 @@ int main()
 					std::cin >> jachtModel;
 
 					std::cout << "Jacht's length: ";
-					int jachtLength;
+					double jachtLength;
 					std::cin >> jachtLength;
 
 					std::cout << "Jacht's width: ";
-					int jachtWidth;
+					double jachtWidth;
 					std::cin >> jachtWidth;
 
 					std::cout << "Jacht's crew size: ";
-					int jachtCrew;
+					size_t jachtCrew;
 					std::cin >> jachtCrew;
 
 					std::cout << "Jacht's swimming pool?: ";
@@ -316,7 +319,7 @@ int main()
 					std::cin >> jachtSwimmingPool;
 
 					std::cout << "Jacht's rooms count: ";
-					int jachtRooms;
+					size_t jachtRooms;
 					std::cin >> jachtRooms;
 					std::cin.ignore();
 
@@ -330,15 +333,15 @@ int main()
 					std::cin >> sailName;
 
 					std::cout << "Sail's max passengers: ";
-					int sailPassengers;
+					size_t sailPassengers;
 					std::cin >> sailPassengers;
 
 					std::cout << "Sail's max speed: ";
-					int sailSpeed;
+					size_t sailSpeed;
 					std::cin >> sailSpeed;
 
 					std::cout << "Sail's year of creation: ";
-					int sailYear;
+					size_t sailYear;
 					std::cin >> sailYear;
 
 					std::cout << "Sail's color: ";
@@ -350,15 +353,15 @@ int main()
 					std::cin >> sailModel;
 
 					std::cout << "Sail's length: ";
-					int sailLength;
+					double sailLength;
 					std::cin >> sailLength;
 
 					std::cout << "Sail's width: ";
-					int sailWidth;
+					double sailWidth;
 					std::cin >> sailWidth;
 
 					std::cout << "Sail's crew size: ";
-					int sailCrew;
+					size_t sailCrew;
 					std::cin >> sailCrew;
 
 					std::cout << "Sail's has engine?: ";
@@ -366,7 +369,7 @@ int main()
 					std::cin >> sailEngine;
 
 					std::cout << "Sail's sail count: ";
-					int sailsCount;
+					size_t sailsCount;
 					std::cin >> sailsCount;
 					std::cin.ignore();
 

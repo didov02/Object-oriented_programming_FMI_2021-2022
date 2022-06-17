@@ -1,7 +1,7 @@
 #include "Jacht.h"
 
-Jacht::Jacht(int maxPassengers, int maxSpeed, const String& name, int year,
-	double length, double width, int crewSize, const String& color, const String& model, bool hasSwimmingPool, int roomsCount) : WaterVehicle(maxPassengers, maxSpeed,
+Jacht::Jacht(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year,
+	double length, double width, size_t crewSize, const String& color, const String& model, bool hasSwimmingPool, size_t roomsCount) : WaterVehicle(maxPassengers, maxSpeed,
 		name, year, length, width, crewSize, color, model)
 {
 	this->hasSwimmingPool = hasSwimmingPool;
@@ -43,12 +43,12 @@ void Jacht::setHasSwimmingPoll(bool swim)
 	this->hasSwimmingPool = swim;
 }
 
-int Jacht::getRoomsCount() const
+size_t Jacht::getRoomsCount() const
 {
 	return roomsCount;
 }
 
-void Jacht::setRoomsCount(int roomsCount)
+void Jacht::setRoomsCount(size_t roomsCount)
 {
 	this->roomsCount = roomsCount;
 }

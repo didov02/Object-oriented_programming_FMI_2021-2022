@@ -5,12 +5,12 @@ class Jacht : public WaterVehicle
 {
 private:
 	bool hasSwimmingPool;
-	int roomsCount;
+	size_t roomsCount;
 
 public:
 
-	Jacht(int maxPassengers, int maxSpeed, const String& name, int year, double length, double width, int crewSize
-		, const String& color, const String& model, bool hasSwimmingPool, int roomsCount);
+	Jacht(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, double length, double width, size_t crewSize
+		, const String& color, const String& model, bool hasSwimmingPool, size_t roomsCount);
 
 	Vehicle* clone() const override;
 	WaterType getType() const override;
@@ -19,8 +19,8 @@ public:
 	bool getHasSwimmingPool() const;
 	void setHasSwimmingPoll(bool);
 
-	int getRoomsCount() const;
-	void setRoomsCount(int);
+	size_t getRoomsCount() const;
+	void setRoomsCount(size_t);
 
 };
 

@@ -12,14 +12,14 @@ class Vehicle
 {
 protected:
 	VehicleType type;
-	int maxPassengers;
-	int maxSpeed;
+	size_t maxPassengers;
+	size_t maxSpeed;
 	String name;
-	int year;
+	size_t year;
 
 public:
 	Vehicle();
-	Vehicle(int maxPassengers, int maxSpeed, const String& name, int year);
+	Vehicle(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year);
 	virtual ~Vehicle() = default;
 
 	virtual void display() const = 0;
@@ -28,16 +28,16 @@ public:
 	VehicleType getType() const;
 	void setType(VehicleType);
 
-	int getMaxPassengers() const;
-	void setMaxPassengers(int);
+	size_t getMaxPassengers() const;
+	void setMaxPassengers(size_t);
 
-	int getMaxSpeed() const;
-	void setMaxSpeed(int);
+	size_t getMaxSpeed() const;
+	void setMaxSpeed(size_t);
 
 	const String& getName() const;
 	void setName(const String&);
 
-	int getYear() const;
-	void setYear(int);
+	size_t getYear() const;
+	void setYear(size_t);
 };
 

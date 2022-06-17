@@ -4,10 +4,11 @@
 
 GroundVehicle::GroundVehicle() : Vehicle()
 {
-
+	type = VehicleType::Ground;
+	doorsCount = 0;
 }
 
-GroundVehicle::GroundVehicle(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount) :
+GroundVehicle::GroundVehicle(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, const String& color, size_t doorsCount) :
 	Vehicle(maxPassengers,maxSpeed,name,year)
 {
 	this->color = color;

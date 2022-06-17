@@ -14,12 +14,12 @@ protected:
 	String model;
 	double length;
 	double width;
-	double crewSize;
+	size_t crewSize;
 
 public:
 	WaterVehicle();
-	WaterVehicle(int maxPassengers, int maxSpeed, const String& name, int year,
-		double length, double width, double crewSize, const String& color, const String& model);
+	WaterVehicle(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year,
+		double length, double width, size_t crewSize, const String& color, const String& model);
 
 
 	void setLength(double);
@@ -28,8 +28,8 @@ public:
 	void setWidth(double);
 	double getWidth() const;
 
-	void setCrewSize(double);
-	double getCrewSize() const;
+	void setCrewSize(size_t);
+	size_t getCrewSize() const;
 
 	void setColor(const String&);
 	const String& getColor() const;

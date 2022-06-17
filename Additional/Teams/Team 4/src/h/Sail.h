@@ -5,12 +5,12 @@ class Sail : public WaterVehicle
 {
 private:
 	bool hasEngine;
-	int sailsCount;
+	size_t sailsCount;
 
 public:
 
-	Sail(int maxPassengers, int maxSpeed, const String& name, int year, double length, double width, int crewSize
-		, const String& color, const String& model, bool hasEngine, int sailsCount);
+	Sail(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, double length, double width, size_t crewSize
+		, const String& color, const String& model, bool hasEngine, size_t sailsCount);
 
 	Vehicle* clone() const override;
 	WaterType getType() const override;
@@ -19,8 +19,8 @@ public:
 	bool getHasEngine() const;
 	void setHasEngine(bool);
 
-	int getSailsCount() const;
-	void setSailsCount(int);
+	size_t getSailsCount() const;
+	void setSailsCount(size_t);
 
 };
 

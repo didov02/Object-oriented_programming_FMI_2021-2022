@@ -9,7 +9,7 @@ private:
 	String frameType;
 public:
 	Motorcycle();
-	Motorcycle(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+	Motorcycle(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, const String& color, size_t doorsCount,
 		const String& brand, const String& model, const String& frameType);
 
 	Vehicle* clone() const override;

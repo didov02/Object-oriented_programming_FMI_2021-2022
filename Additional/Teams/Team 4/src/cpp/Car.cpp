@@ -8,7 +8,7 @@ Car::Car() : GroundVehicle()
 	fuelType = nullptr;
 }
 
-Car::Car(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+Car::Car(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, const String& color, size_t doorsCount,
 	const String& brand, const String& model, const String& fuelType) : GroundVehicle(maxPassengers, maxSpeed, name, year, color, doorsCount)
 {
 	this->t = GroundType::CAR;

@@ -76,7 +76,7 @@ void VehicleManager::print() const
 	}
 }
 
-void VehicleManager::createCar(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+void VehicleManager::createCar(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, const String& color, size_t doorsCount,
 	const String& brand, const String& model, const String& fuelType)
 {
 	list.pushBack(new Car(maxPassengers, maxSpeed, name, year, color, doorsCount, brand, model, fuelType));
@@ -87,7 +87,7 @@ void VehicleManager::createCar(int maxPassengers, int maxSpeed, const String& na
 	log.pushBack(newCar);
 }
 
-void VehicleManager::createTruck(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+void VehicleManager::createTruck(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, const String& color, size_t doorsCount,
 	const String& brand, size_t capacity)
 {
 	list.pushBack(new Truck(maxPassengers, maxSpeed, name, year, color, doorsCount, brand, capacity));
@@ -98,7 +98,7 @@ void VehicleManager::createTruck(int maxPassengers, int maxSpeed, const String& 
 	log.pushBack(newTruck);
 }
 
-void VehicleManager::createMotorcycle(int maxPassengers, int maxSpeed, const String& name, int year, const String& color, size_t doorsCount,
+void VehicleManager::createMotorcycle(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, const String& color, size_t doorsCount,
 	const String& brand, const String& model, const String& frameType)
 {
 	list.pushBack(new Motorcycle(maxPassengers, maxSpeed, name, year, color, doorsCount,
@@ -110,7 +110,7 @@ void VehicleManager::createMotorcycle(int maxPassengers, int maxSpeed, const Str
 	log.pushBack(newMotorcycle);
 }
 
-void VehicleManager::createPlane(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan, double maxAltitude,
+void VehicleManager::createPlane(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, double wingspan, double maxAltitude,
 	const String& color, const String& model, double maxStorage, double maxAirTime)
 {
 	list.pushBack(new Plane(maxPassengers, maxSpeed, name, year, wingspan, maxAltitude, color, model, maxStorage, maxAirTime));
@@ -121,7 +121,7 @@ void VehicleManager::createPlane(int maxPassengers, int maxSpeed, const String& 
 	log.pushBack(newPlane);
 }
 
-void VehicleManager::createPrivateJet(int maxPassengers, int maxSpeed, const String& name, int year, double wingspan, double maxAltitude,
+void VehicleManager::createPrivateJet(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, double wingspan, double maxAltitude,
 	const String& color, const String& model, bool hasDrinkBar, bool hasSleepingRoom)
 {
 	list.pushBack(new PrivateJet(maxPassengers, maxSpeed, name, year, wingspan, maxAltitude, color, model, hasDrinkBar, hasSleepingRoom));
@@ -132,8 +132,8 @@ void VehicleManager::createPrivateJet(int maxPassengers, int maxSpeed, const Str
 	log.pushBack(newPrivateJet);
 }
 
-void VehicleManager::createJacht(int maxPassengers, int maxSpeed, const String& name, int year, double width, double length, int crewSize, const String& color,
-	const String& model, bool hasSwimmingPool, int roomCount)
+void VehicleManager::createJacht(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, double width, double length, size_t crewSize, const String& color,
+	const String& model, bool hasSwimmingPool, size_t roomCount)
 {
 	list.pushBack(new Jacht(maxPassengers, maxSpeed, name, year, length, width, crewSize, color, model, hasSwimmingPool, roomCount));
 
@@ -143,8 +143,8 @@ void VehicleManager::createJacht(int maxPassengers, int maxSpeed, const String& 
 	log.pushBack(newJacht);
 }
 
-void VehicleManager::createSail(int maxPassengers, int maxSpeed, const String& name, int year, double width, double length, int crewSize, const String& color,
-	const String& model, bool hasEngine, int sailsCount)
+void VehicleManager::createSail(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, double width, double length, size_t crewSize, const String& color,
+	const String& model, bool hasEngine, size_t sailsCount)
 {
 	list.pushBack(new Jacht(maxPassengers, maxSpeed, name, year, length, width, crewSize, color, model, hasEngine, sailsCount));
 
@@ -203,12 +203,12 @@ void VehicleManager::showOldestVehicle() const
 
 void VehicleManager::showFastestVehicle() const
 {
-	int maxSpeed = 0;
+	size_t maxSpeed = 0;
 	size_t maxSpeedIndex;
 
 	size_t size = list.getSize();
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 	{
 		if (list[i]->getMaxSpeed() > maxSpeed)
 		{
