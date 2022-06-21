@@ -1,10 +1,5 @@
 #include "Truck.h"
 
-Truck::Truck() : GroundVehicle()
-{
-
-}
-
 Truck::Truck(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, const String& color, size_t doorsCount,
 	const String& brand, size_t capacity) : GroundVehicle(maxPassengers, maxSpeed, name, year, color, doorsCount)
 {
