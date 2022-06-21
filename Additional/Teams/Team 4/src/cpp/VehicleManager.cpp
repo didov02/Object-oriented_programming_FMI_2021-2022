@@ -4,15 +4,13 @@ void VehicleManager::copy(const VehicleManager& other)
 {
 	size_t size = other.list.getSize();
 
-	for (int i = 0; i < size; i++)
-	{
+	for (size_t i = 0; i < size; i++) {
 		list.pushBack(other.list[i]->clone());
 	}
 
 	size = other.log.getSize();
 
-	for (int i = 0; i < size; i++)
-	{
+	for (size_t i = 0; i < size; i++) {
 		log.pushBack(other.log[i]);
 	}
 }
@@ -21,8 +19,9 @@ void VehicleManager::free()
 {
 	size_t size = list.getSize();
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++) {
 		delete[] list[i];
+	}
 
 	list.clear();
 
@@ -38,8 +37,7 @@ VehicleManager::VehicleManager(const Vector<Vehicle*>& other)
 {
 	size_t size = other.getSize();
 
-	for (int i = 0; i < size; i++)
-	{
+	for (size_t i = 0; i < size; i++) {
 		list.pushBack(other[i]->clone());
 	}
 }
@@ -69,8 +67,7 @@ void VehicleManager::print() const
 {
 	size_t size = list.getSize();
 
-	for (int i = 0; i < size; i++)
-	{
+	for (size_t i = 0; i < size; i++) {
 		list[i]->display();
 		std::cout << std::endl;
 	}
@@ -171,10 +168,8 @@ void VehicleManager::showNewestVehicle() const
 	int newestYear = 0;
 	size_t size = list.getSize();
 
-	for (int i = 0; i < size; i++)
-	{
-		if (list[i]->getYear() > newestYear)
-		{
+	for (size_t i = 0; i < size; i++) {
+		if (list[i]->getYear() > newestYear) {
 			newestYear = list[i]->getYear();
 			newestVehicleIndex = i;
 		}
@@ -189,10 +184,8 @@ void VehicleManager::showOldestVehicle() const
 	int oldestYear = BIG_NUMBER;
 	size_t size = list.getSize();
 
-	for (int i = 0; i < size; i++)
-	{
-		if (list[i]->getYear() < oldestYear)
-		{
+	for (size_t i = 0; i < size; i++) {
+		if (list[i]->getYear() < oldestYear) {
 			oldestYear = list[i]->getYear();
 			oldestVehicleIndex = i;
 		}
@@ -236,8 +229,7 @@ void VehicleManager::save() const
 
 	size_t logSize = log.getSize();
 
-	for (int i = 0; i < logSize; i++)
-	{
+	for (size_t i = 0; i < logSize; i++) {
 		file << log[i];
 	}
 
