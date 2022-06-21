@@ -7,7 +7,7 @@ private:
 	String brand;
 	size_t capacity;
 public:
-	Truck();
+	Truck() = default;
 	Truck(size_t maxPassengers, size_t maxSpeed, const String& name, size_t year, const String& color, size_t doorsCount,
 		const String& brand, size_t capacity);
 
